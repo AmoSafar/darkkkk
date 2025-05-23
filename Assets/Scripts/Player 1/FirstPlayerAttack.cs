@@ -1,19 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class FirstPlayerAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
-    [SerializeField] private float attackCooldown = 1f;       // زمان بین دو حمله نزدیک
-    [SerializeField] private float shootDelay = 0.5f;          // زمان تاخیر بین فشردن کلید و پرتاب تیر
+    [SerializeField] private float meleeAttackCooldown = 1f;       // Cooldown for melee attacks
+    [SerializeField] private float rangedAttackCooldown = 1f;     // Cooldown for ranged attacks
+    [SerializeField] private float shootDelay = 0.5f;             // Delay before projectile is fired
 
     [Header("Arrow Settings")]
-    [SerializeField] private Transform arrowPoint;             // محل شلیک تیر
-    [SerializeField] private GameObject[] Arrows;              // آرایه‌ای از تیرها (Object Pool)
+    [SerializeField] private Transform arrowPoint;                // Position where arrows are fired from
+    [SerializeField] private GameObject[] arrows;                 // Arrow object pool
 
     private Animator anim;
     private PlayerMovement playerMovement;
-    private float cooldownTimer = Mathf.Infinity;
+    private float meleeCooldownTimer = Mathf.Infinity;
+    private float rangedCooldownTimer = Mathf.Infinity;
 
     private void Awake()
     {
@@ -23,50 +25,72 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        cooldownTimer += Time.deltaTime;
+        // Update cooldown timers
+        meleeCooldownTimer += Time.deltaTime;
+        rangedCooldownTimer += Time.deltaTime;
 
-        // حمله نزدیک (با شمشیر یا مشت)
-        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
+        // Melee Attack
+        if (Input.GetKeyDown(KeyCode.LeftShift) && CanMeleeAttack())
         {
             Attack();
         }
 
-        // حمله دور (با تیر) همراه با delay
-        if (Input.GetKeyDown(KeyCode.RightShift) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
+        // Ranged Attack
+        if (Input.GetKeyDown(KeyCode.RightShift) && CanRangedAttack())
         {
             StartCoroutine(ShootWithDelay());
         }
     }
 
+    private bool CanMeleeAttack()
+    {
+        return meleeCooldownTimer > meleeAttackCooldown && playerMovement.CanAttack();
+    }
+
+    private bool CanRangedAttack()
+    {
+        return rangedCooldownTimer > rangedAttackCooldown && playerMovement.CanAttack();
+    }
+
     private void Attack()
     {
         anim.SetTrigger("Attack");
-        cooldownTimer = 0f;
+        meleeCooldownTimer = 0f;
     }
 
     private IEnumerator ShootWithDelay()
     {
         anim.SetTrigger("Shoot");
-        cooldownTimer = 0f;
+        rangedCooldownTimer = 0f;
 
-        yield return new WaitForSeconds(shootDelay); // تاخیر قابل تنظیم
+        yield return new WaitForSeconds(shootDelay);
 
         int arrowIndex = FindAvailableArrow();
 
-        if (arrowIndex == -1) yield break; // اگه تیر آزاد نداریم، خارج شو
+        if (arrowIndex == -1)
+        {
+            Debug.LogWarning("No available arrows.");
+            yield break;
+        }
 
-        Arrows[arrowIndex].transform.position = arrowPoint.position;
-        Arrows[arrowIndex].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        if (arrowPoint == null)
+        {
+            Debug.LogError("ArrowPoint is not assigned.");
+            yield break;
+        }
+
+        arrows[arrowIndex].transform.position = arrowPoint.position;
+        arrows[arrowIndex].SetActive(true);
+        arrows[arrowIndex].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
     }
 
-    // پیدا کردن اولین تیر غیرفعال
     private int FindAvailableArrow()
     {
-        for (int i = 0; i < Arrows.Length; i++)
+        for (int i = 0; i < arrows.Length; i++)
         {
-            if (!Arrows[i].activeInHierarchy)
+            if (!arrows[i].activeInHierarchy)
                 return i;
         }
-        return -1; // پیدا نشد
+        return -1;
     }
 }
