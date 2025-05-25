@@ -5,15 +5,19 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerInputActions inputActions;
     private Vector2 moveInput;
+    private float verticalInput;
 
     private Rigidbody2D rb;
     private Animator anim;
 
-
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
-    private bool isGrounded = false;
+    [SerializeField] private float climbSpeed = 3f;
 
+    private bool isGrounded = false;
+    private bool isClimbing = false;
+    private bool canClimb = false;
+    private bool climbingStarted = false;
 
     private void Awake()
     {
@@ -25,39 +29,94 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Player.Enable();
+
         inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+
         inputActions.Player.Jump.performed += ctx => TryJump();
+
+        // تغییر این خط به Shoot
+        inputActions.Player.Shoot.performed += ctx => OnShoot();
     }
 
     private void OnDisable()
     {
         inputActions.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
+
         inputActions.Player.Jump.performed -= ctx => TryJump();
+
+        // تغییر این خط به Shoot
+        inputActions.Player.Shoot.performed -= ctx => OnShoot();
+
         inputActions.Player.Disable();
     }
 
     private void Update()
     {
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        HandleClimbingInput();
 
-        anim.SetBool("Run", moveInput.x != 0);
+        if (isClimbing && canClimb && climbingStarted)
+        {
+            rb.gravityScale = 0f;
+            rb.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
+        }
+        else
+        {
+            if (isClimbing)
+            {
+                isClimbing = false;
+                rb.gravityScale = 1f;
+            }
+
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+
+            if (moveInput.x > 0.01f)
+                transform.localScale = new Vector3(1, 1, 1);
+            else if (moveInput.x < -0.01f)
+                transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        anim.SetBool("Run", moveInput.x != 0 && !isClimbing);
         anim.SetBool("Grounded", isGrounded);
+        anim.SetBool("Climb", isClimbing && Mathf.Abs(verticalInput) > 0.1f);
+    }
 
-        if (moveInput.x > 0.01f)
-            transform.localScale = new Vector3(1, 1, 1);
-        else if (moveInput.x < -0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
+    private void HandleClimbingInput()
+    {
+        verticalInput = moveInput.y;
+
+        if (canClimb)
+        {
+            climbingStarted = Mathf.Abs(verticalInput) > 0.1f;
+
+            if (climbingStarted)
+                isClimbing = true;
+        }
+        else
+        {
+            verticalInput = 0f;
+            climbingStarted = false;
+            isClimbing = false;
+        }
     }
 
     private void TryJump()
     {
-        if (isGrounded)
+        if (isGrounded && !isClimbing)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
             anim.SetTrigger("Jump");
+        }
+    }
+
+    private void OnShoot()
+    {
+        if (CanAttack())
+        {
+            anim.SetTrigger("Shoot");
+            // اینجا کد واقعی شلیک رو اضافه کن
         }
     }
 
@@ -69,8 +128,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = false;
+            climbingStarted = false;
+            isClimbing = false;
+            rb.gravityScale = 1f;
+        }
+    }
+
     public bool CanAttack()
     {
-        return isGrounded && moveInput.x == 0;
+        return isGrounded && moveInput.x == 0 && !isClimbing;
     }
 }

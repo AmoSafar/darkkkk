@@ -25,6 +25,7 @@ public class SecondPlayerMovement : MonoBehaviour
         inputActions.Player2.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player2.Move.canceled += ctx => moveInput = Vector2.zero;
         inputActions.Player2.Jump.performed += ctx => TryJump();
+        inputActions.Player2.Attack.performed += ctx => Attack();
     }
 
     private void OnDisable()
@@ -32,6 +33,7 @@ public class SecondPlayerMovement : MonoBehaviour
         inputActions.Player2.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player2.Move.canceled -= ctx => moveInput = Vector2.zero;
         inputActions.Player2.Jump.performed -= ctx => TryJump();
+        inputActions.Player2.Attack.performed -= ctx => Attack();
         inputActions.Player2.Disable();
     }
 
@@ -69,5 +71,11 @@ public class SecondPlayerMovement : MonoBehaviour
     public bool CanAttack()
     {
         return isGrounded && moveInput.x == 0;
+    }
+
+    private void Attack()
+    {
+        if (!CanAttack()) return;
+        anim.SetTrigger("Attack"); // انیمیشن ضربه اجرا می‌شود
     }
 }
