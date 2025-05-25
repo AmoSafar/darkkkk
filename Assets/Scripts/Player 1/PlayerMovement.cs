@@ -1,151 +1,76 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed = 5f;
-    [SerializeField] private float JumpSpeed = 7f;
-    [SerializeField] private float ClimbSpeed = 3f;
+    private PlayerInputActions inputActions;
+    private Vector2 moveInput;
 
-    private Rigidbody2D body;
-    private float moveInput;
-    private float verticalInput;
+    private Rigidbody2D rb;
     private Animator anim;
-    private bool Grounded;
-    private bool isClimbing;
-    private bool canClimb;
-    private bool climbingStarted; // برای تشخیص اینکه آیا کاربر شروع به بالا رفتن کرده
-    private BoxCollider2D boxCollider;
+
+
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 7f;
+    private bool isGrounded = false;
+
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        inputActions = new PlayerInputActions();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Player.Enable();
+        inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        inputActions.Player.Jump.performed += ctx => TryJump();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputActions.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
+        inputActions.Player.Jump.performed -= ctx => TryJump();
+        inputActions.Player.Disable();
     }
 
     private void Update()
     {
-        HandleInput();
-        HandleMovement();
-        HandleAnimation();
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
 
-        // دیباگ وضعیت‌ها
-        Debug.Log($"canClimb: {canClimb}, climbingStarted: {climbingStarted}, isClimbing: {isClimbing}, Gravity: {body.gravityScale}");
+        anim.SetBool("Run", moveInput.x != 0);
+        anim.SetBool("Grounded", isGrounded);
+
+        if (moveInput.x > 0.01f)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (moveInput.x < -0.01f)
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    private void HandleInput()
+    private void TryJump()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-
-        if (canClimb)
+        if (isGrounded)
         {
-            verticalInput = Input.GetAxisRaw("Vertical");
-
-            // فقط وقتی W/S فشرده شود، شروع به بالا/پایین رفتن کن
-            if (Mathf.Abs(verticalInput) > 0.1f)
-            {
-                climbingStarted = true;
-            }
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isGrounded = false;
+            anim.SetTrigger("Jump");
         }
-        else
-        {
-            verticalInput = 0f;
-            climbingStarted = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && Grounded && !isClimbing)
-        {
-            Jump();
-        }
-
-        if (canClimb && climbingStarted && Mathf.Abs(verticalInput) > 0.1f)
-        {
-            isClimbing = true;
-            body.gravityScale = 0f;
-            body.linearVelocity = Vector2.zero;
-        }
-        else
-        {
-            if (isClimbing)
-            {
-                isClimbing = false;
-                body.gravityScale = 1f;
-            }
-        }
-    }
-
-    private void HandleMovement()
-    {
-        if (isClimbing && canClimb && climbingStarted)
-        {
-            // فقط حرکت عمودی مجاز است
-            body.linearVelocity = new Vector2(0, verticalInput * ClimbSpeed);
-        }
-        else
-        {
-            isClimbing = false;
-            body.gravityScale = 1f;
-
-            body.linearVelocity = new Vector2(moveInput * Speed, body.linearVelocity.y);
-
-            if (moveInput > 0.01f)
-                transform.localScale = Vector3.one;
-            else if (moveInput < -0.01f)
-                transform.localScale = new Vector3(-1, 1, 1);
-        }
-    }
-
-    private void HandleAnimation()
-    {
-        anim.SetBool("Run", moveInput != 0 && !isClimbing);
-        anim.SetBool("Grounded", Grounded);
-        anim.SetBool("Climb", isClimbing && Mathf.Abs(verticalInput) > 0.1f);
-    }
-
-    private void Jump()
-    {
-        body.linearVelocity = new Vector2(body.linearVelocity.x, JumpSpeed);
-        Grounded = false;
-        anim.SetTrigger("Jump");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground"))
         {
-            Grounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Grounded = false;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Ladder"))
-        {
-            canClimb = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.CompareTag("Ladder"))
-        {
-            canClimb = false;
-            climbingStarted = false;
-            isClimbing = false;
-            body.gravityScale = 1f;
+            isGrounded = true;
         }
     }
 
     public bool CanAttack()
     {
-        return moveInput == 0 && Grounded && !isClimbing;
+        return isGrounded && moveInput.x == 0;
     }
 }

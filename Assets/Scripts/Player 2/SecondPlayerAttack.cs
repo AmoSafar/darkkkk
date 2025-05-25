@@ -1,32 +1,46 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SecondPlayerAttack : MonoBehaviour
 {
-[SerializeField] private float attackCooldown = 1f;  // زمان بین دو حمله
+    [SerializeField] private float attackCooldown = 1f;
+
     private Animator anim;
-    private PlayerMovement playerMovement;
+    private SecondPlayerMovement playerMovement;
     private float cooldownTimer = Mathf.Infinity;
+
+    private PlayerInputActions1 inputActions;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<SecondPlayerMovement>();
+        inputActions = new PlayerInputActions1();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Player2.Enable();
+        inputActions.Player2.Shoot.performed += OnShootPerformed;
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player2.Shoot.performed -= OnShootPerformed;
+        inputActions.Player2.Disable();
     }
 
     private void Update()
     {
-        // اگر کلید Shift چپ زده شد، cooldown تموم شده و پلیر اجازه‌ی حمله داره
-        if (Input.GetKeyDown(KeyCode.RightShift) && cooldownTimer > attackCooldown && playerMovement.CanAttack())
-        {
-            Attack();
-        }
-
         cooldownTimer += Time.deltaTime;
     }
 
-    private void Attack()
+    private void OnShootPerformed(InputAction.CallbackContext context)
     {
-        anim.SetTrigger("Attack");
-        cooldownTimer = 0f;
+        if (cooldownTimer > attackCooldown && playerMovement.CanAttack())
+        {
+            anim.SetTrigger("Shoot");
+            cooldownTimer = 0f;
+        }
     }
 }
