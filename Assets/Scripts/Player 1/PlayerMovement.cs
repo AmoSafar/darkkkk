@@ -34,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
 
         inputActions.Player.Jump.performed += ctx => TryJump();
-
-        // تغییر این خط به Shoot
         inputActions.Player.Shoot.performed += ctx => OnShoot();
     }
 
@@ -45,8 +43,6 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
 
         inputActions.Player.Jump.performed -= ctx => TryJump();
-
-        // تغییر این خط به Shoot
         inputActions.Player.Shoot.performed -= ctx => OnShoot();
 
         inputActions.Player.Disable();
@@ -56,19 +52,14 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleClimbingInput();
 
-        if (isClimbing && canClimb && climbingStarted)
+        if (isClimbing && climbingStarted)
         {
             rb.gravityScale = 0f;
             rb.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
         }
         else
         {
-            if (isClimbing)
-            {
-                isClimbing = false;
-                rb.gravityScale = 1f;
-            }
-
+            rb.gravityScale = 1f;
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
 
             if (moveInput.x > 0.01f)
@@ -90,14 +81,31 @@ public class PlayerMovement : MonoBehaviour
         {
             climbingStarted = Mathf.Abs(verticalInput) > 0.1f;
 
-            if (climbingStarted)
+            if (climbingStarted && !isClimbing)
+            {
                 isClimbing = true;
+                Physics2D.IgnoreLayerCollision(
+                    LayerMask.NameToLayer("Player"),
+                    LayerMask.NameToLayer("Ground"),
+                    true
+                );
+            }
         }
         else
         {
-            verticalInput = 0f;
             climbingStarted = false;
-            isClimbing = false;
+
+            if (isClimbing)
+            {
+                isClimbing = false;
+                rb.gravityScale = 1f;
+
+                Physics2D.IgnoreLayerCollision(
+                    LayerMask.NameToLayer("Player"),
+                    LayerMask.NameToLayer("Ground"),
+                    false
+                );
+            }
         }
     }
 
@@ -116,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
         if (CanAttack())
         {
             anim.SetTrigger("Shoot");
-            // اینجا کد واقعی شلیک رو اضافه کن
+            // اینجا می‌تونی شلیک واقعی رو اضافه کنی
         }
     }
 
@@ -150,8 +158,18 @@ public class PlayerMovement : MonoBehaviour
         {
             canClimb = false;
             climbingStarted = false;
-            isClimbing = false;
-            rb.gravityScale = 1f;
+
+            if (isClimbing)
+            {
+                isClimbing = false;
+                rb.gravityScale = 1f;
+
+                Physics2D.IgnoreLayerCollision(
+                    LayerMask.NameToLayer("Player"),
+                    LayerMask.NameToLayer("Ground"),
+                    false
+                );
+            }
         }
     }
 

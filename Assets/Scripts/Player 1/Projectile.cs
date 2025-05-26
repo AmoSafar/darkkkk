@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground") || collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Ground") /*|| collision.CompareTag("Enemy")*/)
         {
             hit = true;
             boxCollider.enabled = false;

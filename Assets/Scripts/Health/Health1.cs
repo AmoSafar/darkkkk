@@ -5,35 +5,33 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth = 10f;
     [SerializeField] private float _Damage = 1f;
     public float currentHealth { get; private set; }
-
+    private Animator anim;
+    private bool Dead;
     public float maxHealth => startingHealth;
 
     private void Awake()
     {
         currentHealth = startingHealth;
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage()
     {
         currentHealth = Mathf.Clamp(currentHealth - _Damage, 0, startingHealth);
 
-        if (currentHealth > 0)
+       if (currentHealth > 0)
         {
-            Debug.Log("Player damaged. Current health: " + currentHealth);
+           anim.SetTrigger("Damage");
         }
         else
         {
-            Debug.Log("Player died.");
-            // مرگ پلیر
+            if(!Dead) {
+            anim.SetTrigger("Dead");
+            GetComponent<PlayerMovement>().enabled = false;
+            Dead = true;
+            }
         }
     }
 
-    private void Update()
-    {
-        // فقط برای تست با کلید E
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage();
-        }
-    }
+
 }
