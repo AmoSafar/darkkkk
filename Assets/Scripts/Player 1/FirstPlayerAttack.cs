@@ -11,12 +11,12 @@ public class FirstPlayerAttack : MonoBehaviour
     [Header("Arrow Settings")]
     [SerializeField] private Transform arrowPoint;            // نقطه شلیک تیر
     [SerializeField] private GameObject[] arrows;             // آرایه تیرها
+    [SerializeField] private float arrowLifetime = 2f;        // مدت زمانی که تیر فعال می‌مونه
 
     private Animator anim;
     private PlayerMovement playerMovement;
 
     private float cooldownTimer = Mathf.Infinity;
-
     private PlayerInputActions inputActions;
 
     private void Awake()
@@ -72,9 +72,13 @@ public class FirstPlayerAttack : MonoBehaviour
             yield break;
         }
 
-        arrows[arrowIndex].transform.position = arrowPoint.position;
-        arrows[arrowIndex].SetActive(true);
-        arrows[arrowIndex].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        GameObject arrow = arrows[arrowIndex];
+        arrow.transform.position = arrowPoint.position;
+        arrow.SetActive(true);
+        arrow.GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+        // غیرفعال‌سازی خودکار تیر
+        StartCoroutine(DisableArrowAfterTime(arrow, arrowLifetime));
     }
 
     private int FindAvailableArrow()
@@ -85,5 +89,11 @@ public class FirstPlayerAttack : MonoBehaviour
                 return i;
         }
         return -1;
+    }
+
+    private IEnumerator DisableArrowAfterTime(GameObject arrow, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        arrow.SetActive(false);
     }
 }
