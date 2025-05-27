@@ -3,15 +3,25 @@ using UnityEngine;
 public class HealthCollectible : MonoBehaviour
 {
     [SerializeField] private float healthValue = 1f;
+    [SerializeField] private string sortingLayerName = "ForeGround";
+    [SerializeField] private int sortingOrder = 10;
 
-    private void OnEnable()
+    private void Start()
     {
+        // اطمینان از اینکه Sprite روی لایه‌ی مناسب هست
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.sortingLayerName = sortingLayerName;
+            sr.sortingOrder = sortingOrder;
+        }
+
         gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // بررسی اینکه آیا پلیر دارای Health هست
+        // بررسی برای اسکریپت Health
         Health health = collision.GetComponent<Health>();
         if (health != null)
         {
@@ -20,7 +30,7 @@ public class HealthCollectible : MonoBehaviour
             return;
         }
 
-        // بررسی اینکه آیا پلیر دارای Health2 هست
+        // بررسی برای اسکریپت Health2
         Health2 health2 = collision.GetComponent<Health2>();
         if (health2 != null)
         {

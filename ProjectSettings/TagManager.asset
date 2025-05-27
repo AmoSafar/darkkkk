@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Ladder
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Ladder
   - Ground
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -42,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3747759275
     locked: 0
   m_RenderingLayers:
   - Default
