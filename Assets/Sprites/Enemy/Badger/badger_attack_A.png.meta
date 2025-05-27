@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +114,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -147,10 +147,10 @@ TextureImporter:
         serializedVersion: 2
         x: 139
         y: 0
-        width: 106
-        height: 50
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,10 +169,10 @@ TextureImporter:
         serializedVersion: 2
         x: 522
         y: 0
-        width: 107
-        height: 50
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,10 +191,10 @@ TextureImporter:
         serializedVersion: 2
         x: 898
         y: 0
-        width: 115
-        height: 50
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,10 +213,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1271
         y: 0
-        width: 126
-        height: 50
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: badger_attack_A_4
       rect:
         serializedVersion: 2
-        x: 1647
+        x: 1648
         y: 0
-        width: 134
-        height: 54
+        width: 133
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,10 +257,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2038
         y: 0
-        width: 127
-        height: 60
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,10 +279,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2428
         y: 0
-        width: 121
-        height: 74
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,10 +301,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2812
         y: 0
-        width: 121
-        height: 73
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -323,10 +323,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3195
         y: 0
-        width: 122
-        height: 72
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -345,10 +345,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3579
         y: 0
-        width: 122
-        height: 71
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,10 +367,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3959
         y: 0
-        width: 126
-        height: 65
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -389,10 +389,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4342
         y: 0
-        width: 127
-        height: 57
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -411,10 +411,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4727
         y: 0
-        width: 126
-        height: 51
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -433,10 +433,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5121
         y: 0
-        width: 116
-        height: 49
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -455,10 +455,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5514
         y: 0
-        width: 107
-        height: 49
+        width: 125
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -475,7 +475,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 258e389ac9d77eb49990e45acac86a31
     internalID: 0
     vertices: []
     indices: 
@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      badger_attack_A_0: -9134001243788223633
+      badger_attack_A_1: -4128308350390960355
+      badger_attack_A_10: 5106666027728546506
+      badger_attack_A_11: -6784319521297111305
+      badger_attack_A_12: 8599173328104911533
+      badger_attack_A_13: 1235506627439852834
+      badger_attack_A_14: -1516014874233535125
+      badger_attack_A_2: 7143110874469345187
+      badger_attack_A_3: 3158870357045514654
+      badger_attack_A_4: -2037451288702844374
+      badger_attack_A_5: 1751690883452589285
+      badger_attack_A_6: -6871953114407765949
+      badger_attack_A_7: -5062687390215178380
+      badger_attack_A_8: -7166364375600091017
+      badger_attack_A_9: 1015532040221254725
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

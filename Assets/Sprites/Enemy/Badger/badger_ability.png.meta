@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +114,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -484,7 +484,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      badger_ability_0: -5223749326435588999
+      badger_ability_1: 8787872282446817905
+      badger_ability_10: -5477663548153205241
+      badger_ability_11: -7346885987134587337
+      badger_ability_12: -3099762500374895902
+      badger_ability_13: 7564952996454268051
+      badger_ability_14: 5070529009603618500
+      badger_ability_2: 5186739058110970974
+      badger_ability_3: 8959045235396902555
+      badger_ability_4: 4299143678290657218
+      badger_ability_5: -2032897716711750062
+      badger_ability_6: -37931447961238761
+      badger_ability_7: -3315757559358641186
+      badger_ability_8: -4578338859299056113
+      badger_ability_9: -265972253369535015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
