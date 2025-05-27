@@ -1,0 +1,1042 @@
+fileFormatVersion: 2
+guid: 6651c4da29091bc47b5195d01a0736f7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3748371812846026571
+    second: dino_tri_attack_B_0
+  - first:
+      213: -749600634993095563
+    second: dino_tri_attack_B_1
+  - first:
+      213: -3121992400384455412
+    second: dino_tri_attack_B_2
+  - first:
+      213: -850645101016375193
+    second: dino_tri_attack_B_3
+  - first:
+      213: 4625395863521966310
+    second: dino_tri_attack_B_4
+  - first:
+      213: -6185501426631121509
+    second: dino_tri_attack_B_5
+  - first:
+      213: 3226549390045059144
+    second: dino_tri_attack_B_6
+  - first:
+      213: 16876633884411043
+    second: dino_tri_attack_B_7
+  - first:
+      213: -3729136718873724146
+    second: dino_tri_attack_B_8
+  - first:
+      213: 1936573048850454450
+    second: dino_tri_attack_B_9
+  - first:
+      213: 3406587459621436317
+    second: dino_tri_attack_B_10
+  - first:
+      213: -7091435317867448149
+    second: dino_tri_attack_B_11
+  - first:
+      213: 8178050536462737515
+    second: dino_tri_attack_B_12
+  - first:
+      213: -921422194364465474
+    second: dino_tri_attack_B_13
+  - first:
+      213: -5074372543266664302
+    second: dino_tri_attack_B_14
+  - first:
+      213: 8254207668774347911
+    second: dino_tri_attack_B_15
+  - first:
+      213: 5736454603960191416
+    second: dino_tri_attack_B_16
+  - first:
+      213: -5870735175979551789
+    second: dino_tri_attack_B_17
+  - first:
+      213: -8684023846277104406
+    second: dino_tri_attack_B_18
+  - first:
+      213: 2525391557396263635
+    second: dino_tri_attack_B_19
+  - first:
+      213: 904119953122675887
+    second: dino_tri_attack_B_20
+  - first:
+      213: 2525340647506146138
+    second: dino_tri_attack_B_21
+  - first:
+      213: 1863020246997109034
+    second: dino_tri_attack_B_22
+  - first:
+      213: -2001023810282481266
+    second: dino_tri_attack_B_23
+  - first:
+      213: 3420962858500521075
+    second: dino_tri_attack_B_24
+  - first:
+      213: -101090288942101694
+    second: dino_tri_attack_B_25
+  - first:
+      213: -6152696396136201237
+    second: dino_tri_attack_B_26
+  - first:
+      213: 982063061951947451
+    second: dino_tri_attack_B_27
+  - first:
+      213: 3334414638473310555
+    second: dino_tri_attack_B_28
+  - first:
+      213: -5394304702970803282
+    second: dino_tri_attack_B_29
+  - first:
+      213: -5489118123681869674
+    second: dino_tri_attack_B_30
+  - first:
+      213: 6987731953369392361
+    second: dino_tri_attack_B_31
+  - first:
+      213: -7832283566719083201
+    second: dino_tri_attack_B_32
+  - first:
+      213: -5795348193099271347
+    second: dino_tri_attack_B_33
+  - first:
+      213: 6983264658029789996
+    second: dino_tri_attack_B_34
+  - first:
+      213: 3704381080829610998
+    second: dino_tri_attack_B_35
+  - first:
+      213: 3279038390878958488
+    second: dino_tri_attack_B_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dino_tri_attack_B_0
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f36c6dd44e40430800000000000000
+      internalID: 3748371812846026571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_1
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57c44dba132e895f0800000000000000
+      internalID: -749600634993095563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_2
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d8d9fe3747ca4d0800000000000000
+      internalID: -3121992400384455412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_3
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7602efb99c6e134f0800000000000000
+      internalID: -850645101016375193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_4
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 0
+        width: 102
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e8b9ce0805b03040800000000000000
+      internalID: 4625395863521966310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_5
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 0
+        width: 109
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b95eaf3893fa82aa0800000000000000
+      internalID: -6185501426631121509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_6
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 0
+        width: 109
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84893e3439107cc20800000000000000
+      internalID: 3226549390045059144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_7
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 0
+        width: 110
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a44fa78535fb3000800000000000000
+      internalID: 16876633884411043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_8
+      rect:
+        serializedVersion: 2
+        x: 3218
+        y: 0
+        width: 109
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b7aa879e17f3cc0800000000000000
+      internalID: -3729136718873724146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_9
+      rect:
+        serializedVersion: 2
+        x: 3602
+        y: 0
+        width: 108
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b793527de610ea10800000000000000
+      internalID: 1936573048850454450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_10
+      rect:
+        serializedVersion: 2
+        x: 3986
+        y: 0
+        width: 107
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b3903ee31a64f20800000000000000
+      internalID: 3406587459621436317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_11
+      rect:
+        serializedVersion: 2
+        x: 4370
+        y: 0
+        width: 108
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba8f9d28629269d90800000000000000
+      internalID: -7091435317867448149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_12
+      rect:
+        serializedVersion: 2
+        x: 4754
+        y: 0
+        width: 105
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60ed0d32a54e7170800000000000000
+      internalID: 8178050536462737515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_13
+      rect:
+        serializedVersion: 2
+        x: 5138
+        y: 0
+        width: 99
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebebeb865637633f0800000000000000
+      internalID: -921422194364465474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_14
+      rect:
+        serializedVersion: 2
+        x: 5522
+        y: 0
+        width: 88
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290589c9e053499b0800000000000000
+      internalID: -5074372543266664302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_15
+      rect:
+        serializedVersion: 2
+        x: 5906
+        y: 0
+        width: 88
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784a99f5426dc8270800000000000000
+      internalID: 8254207668774347911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_16
+      rect:
+        serializedVersion: 2
+        x: 6290
+        y: 0
+        width: 95
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9833bb11bfb9f40800000000000000
+      internalID: 5736454603960191416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_17
+      rect:
+        serializedVersion: 2
+        x: 6674
+        y: 0
+        width: 133
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d339514675f68ea0800000000000000
+      internalID: -5870735175979551789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_18
+      rect:
+        serializedVersion: 2
+        x: 7058
+        y: 0
+        width: 153
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aecb1ad52562c7780800000000000000
+      internalID: -8684023846277104406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_19
+      rect:
+        serializedVersion: 2
+        x: 7442
+        y: 0
+        width: 148
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2ff59cd3efb0320800000000000000
+      internalID: 2525391557396263635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_20
+      rect:
+        serializedVersion: 2
+        x: 7587
+        y: 7
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac4830ae441c8c00800000000000000
+      internalID: 904119953122675887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_21
+      rect:
+        serializedVersion: 2
+        x: 7599
+        y: 18
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a53757760ffcb0320800000000000000
+      internalID: 2525340647506146138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_22
+      rect:
+        serializedVersion: 2
+        x: 7826
+        y: 0
+        width: 109
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a298f9f3b07cad910800000000000000
+      internalID: 1863020246997109034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_23
+      rect:
+        serializedVersion: 2
+        x: 7909
+        y: 0
+        width: 78
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e899309427fea34e0800000000000000
+      internalID: -2001023810282481266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_24
+      rect:
+        serializedVersion: 2
+        x: 8006
+        y: 9
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c7ab24893b97f20800000000000000
+      internalID: 3420962858500521075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_25
+      rect:
+        serializedVersion: 2
+        x: 8210
+        y: 0
+        width: 108
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24b4d55faead89ef0800000000000000
+      internalID: -101090288942101694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_26
+      rect:
+        serializedVersion: 2
+        x: 8291
+        y: 0
+        width: 141
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3c971e93b3d9aa0800000000000000
+      internalID: -6152696396136201237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_27
+      rect:
+        serializedVersion: 2
+        x: 8594
+        y: 0
+        width: 109
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2ada2d62df0ad00800000000000000
+      internalID: 982063061951947451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_28
+      rect:
+        serializedVersion: 2
+        x: 8978
+        y: 0
+        width: 232
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51701c7278364e20800000000000000
+      internalID: 3334414638473310555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_29
+      rect:
+        serializedVersion: 2
+        x: 9362
+        y: 0
+        width: 235
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eabc431f3749325b0800000000000000
+      internalID: -5394304702970803282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_30
+      rect:
+        serializedVersion: 2
+        x: 9746
+        y: 0
+        width: 237
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69098cb262cb2d3b0800000000000000
+      internalID: -5489118123681869674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_31
+      rect:
+        serializedVersion: 2
+        x: 10130
+        y: 0
+        width: 239
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4aa32603969f060800000000000000
+      internalID: 6987731953369392361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_32
+      rect:
+        serializedVersion: 2
+        x: 10514
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d5491e7932e4390800000000000000
+      internalID: -7832283566719083201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_33
+      rect:
+        serializedVersion: 2
+        x: 10898
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43bd900689c29fa0800000000000000
+      internalID: -5795348193099271347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_34
+      rect:
+        serializedVersion: 2
+        x: 11282
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23c762253a89e060800000000000000
+      internalID: 6983264658029789996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_35
+      rect:
+        serializedVersion: 2
+        x: 7996
+        y: 0
+        width: 40
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fbc68367fa986330800000000000000
+      internalID: 3704381080829610998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_attack_B_36
+      rect:
+        serializedVersion: 2
+        x: 8674
+        y: 0
+        width: 151
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893753d1b0c718d20800000000000000
+      internalID: 3279038390878958488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

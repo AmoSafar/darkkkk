@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 667719639b7f53b43be5c66c840cb0b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6544904342706267062
+    second: frogger_heal_0
+  - first:
+      213: 7036895758860326363
+    second: frogger_heal_1
+  - first:
+      213: -7667417335255049464
+    second: frogger_heal_2
+  - first:
+      213: 6833569134387581646
+    second: frogger_heal_3
+  - first:
+      213: -8416188157409880849
+    second: frogger_heal_4
+  - first:
+      213: 1828385003359186631
+    second: frogger_heal_5
+  - first:
+      213: -4777224636723364869
+    second: frogger_heal_6
+  - first:
+      213: 4221328371505332817
+    second: frogger_heal_7
+  - first:
+      213: -3216360453675628959
+    second: frogger_heal_8
+  - first:
+      213: -4164379984006831602
+    second: frogger_heal_9
+  - first:
+      213: -2086495819782469029
+    second: frogger_heal_10
+  - first:
+      213: 5879498199162105680
+    second: frogger_heal_11
+  - first:
+      213: 8398195420525993926
+    second: frogger_heal_12
+  - first:
+      213: 8452735369778355106
+    second: frogger_heal_13
+  - first:
+      213: -209542790009703474
+    second: frogger_heal_14
+  - first:
+      213: -1763423795953353505
+    second: frogger_heal_15
+  - first:
+      213: 7889514201789934930
+    second: frogger_heal_16
+  - first:
+      213: -5609401066074197685
+    second: frogger_heal_17
+  - first:
+      213: -2425014177037775508
+    second: frogger_heal_18
+  - first:
+      213: -3081504815295926974
+    second: frogger_heal_19
+  - first:
+      213: 7422026376192231482
+    second: frogger_heal_20
+  - first:
+      213: 5185854412772447743
+    second: frogger_heal_21
+  - first:
+      213: 7090949628317317211
+    second: frogger_heal_22
+  - first:
+      213: -2518043524575886119
+    second: frogger_heal_23
+  - first:
+      213: -2201939733103868538
+    second: frogger_heal_24
+  - first:
+      213: -8182717236216536525
+    second: frogger_heal_25
+  - first:
+      213: -5350084260773173991
+    second: frogger_heal_26
+  - first:
+      213: 1780817626709185938
+    second: frogger_heal_27
+  - first:
+      213: 6795355890920262349
+    second: frogger_heal_28
+  - first:
+      213: 7544640631986812828
+    second: frogger_heal_29
+  - first:
+      213: -7794926121423577129
+    second: frogger_heal_30
+  - first:
+      213: -848403797870669776
+    second: frogger_heal_31
+  - first:
+      213: 5349624336567678042
+    second: frogger_heal_32
+  - first:
+      213: 7134271712998650019
+    second: frogger_heal_33
+  - first:
+      213: 1680664883397131013
+    second: frogger_heal_34
+  - first:
+      213: -8630110158535810663
+    second: frogger_heal_35
+  - first:
+      213: 34460283969548698
+    second: frogger_heal_36
+  - first:
+      213: 8074019064599084524
+    second: frogger_heal_37
+  - first:
+      213: 416177001142058871
+    second: frogger_heal_38
+  - first:
+      213: -1416157816650539577
+    second: frogger_heal_39
+  - first:
+      213: 823338264353317643
+    second: frogger_heal_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: frogger_heal_0
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4cd41c3d24db25a0800000000000000
+      internalID: -6544904342706267062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_1
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e689981b3df01240a62d338f070c90b
+      internalID: 7036895758860326363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_2
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c038d4ad3536d944812ad2c345b5553
+      internalID: -7667417335255049464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_4
+      rect:
+        serializedVersion: 2
+        x: 2072
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9530acd5a2161b41bad1f124f8e22f7
+      internalID: -8416188157409880849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_5
+      rect:
+        serializedVersion: 2
+        x: 2454
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc59e18108d9e8b4088296595d92276c
+      internalID: 1828385003359186631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_6
+      rect:
+        serializedVersion: 2
+        x: 2840
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63abb01b7fb1b91499ac89381419c94b
+      internalID: -4777224636723364869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_8
+      rect:
+        serializedVersion: 2
+        x: 3223
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db41c4ef72e74145aba3d70e4e09d0f
+      internalID: -3216360453675628959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_10
+      rect:
+        serializedVersion: 2
+        x: 3609
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef232b6c1ad1ca44982983e3bb7fc913
+      internalID: -2086495819782469029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_12
+      rect:
+        serializedVersion: 2
+        x: 3991
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127bd6d367396c94097f200d712a060c
+      internalID: 8398195420525993926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_15
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c40234cad5187c458599807ea621e2b
+      internalID: -1763423795953353505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_16
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c28e4ab4d1b64fb44abd6506a616ec34
+      internalID: 7889514201789934930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_17
+      rect:
+        serializedVersion: 2
+        x: 4376
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7afb9aefa812214194bd71209729235
+      internalID: -5609401066074197685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_18
+      rect:
+        serializedVersion: 2
+        x: 4759
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8286ddc9adc29849a770122cec7931f
+      internalID: -2425014177037775508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_19
+      rect:
+        serializedVersion: 2
+        x: 5145
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b6c4fdccb69de449ab38b2f210d8aa
+      internalID: -3081504815295926974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_20
+      rect:
+        serializedVersion: 2
+        x: 5527
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e7f1d6cd0026d45a576524f4e25fc6
+      internalID: 7422026376192231482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_21
+      rect:
+        serializedVersion: 2
+        x: 5913
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcfda13e99b7f534ab6e960a80378af6
+      internalID: 5185854412772447743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogger_heal_22
+      rect:
+        serializedVersion: 2
+        x: 6298
+        y: 0
+        width: 92
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c45fb84721daf4cb479bf47db40885
+      internalID: 7090949628317317211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 22f00b21117de4b42b532c4338530887
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      frogger_heal_0: -6544904342706267062
+      frogger_heal_1: 7036895758860326363
+      frogger_heal_10: -2086495819782469029
+      frogger_heal_11: -2112799192
+      frogger_heal_12: 8398195420525993926
+      frogger_heal_13: -979598176
+      frogger_heal_14: 763539670
+      frogger_heal_15: -1763423795953353505
+      frogger_heal_16: 7889514201789934930
+      frogger_heal_17: -5609401066074197685
+      frogger_heal_18: -2425014177037775508
+      frogger_heal_19: -3081504815295926974
+      frogger_heal_2: -7667417335255049464
+      frogger_heal_20: 7422026376192231482
+      frogger_heal_21: 5185854412772447743
+      frogger_heal_22: 7090949628317317211
+      frogger_heal_3: -714125167
+      frogger_heal_4: -8416188157409880849
+      frogger_heal_5: 1828385003359186631
+      frogger_heal_6: -4777224636723364869
+      frogger_heal_7: 297811159
+      frogger_heal_8: -3216360453675628959
+      frogger_heal_9: -394420566
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

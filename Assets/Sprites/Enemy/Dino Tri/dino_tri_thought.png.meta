@@ -1,0 +1,1492 @@
+fileFormatVersion: 2
+guid: 90d87f6ec49479b4ea57a6e62c350ffc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2928795145457254398
+    second: dino_tri_thought_0
+  - first:
+      213: -9082895325324347366
+    second: dino_tri_thought_1
+  - first:
+      213: -5290884596492034207
+    second: dino_tri_thought_2
+  - first:
+      213: -3437210717249239434
+    second: dino_tri_thought_3
+  - first:
+      213: 8827454813131374504
+    second: dino_tri_thought_4
+  - first:
+      213: 8557951898984041563
+    second: dino_tri_thought_5
+  - first:
+      213: -6463491418155688027
+    second: dino_tri_thought_6
+  - first:
+      213: 7986221918490420868
+    second: dino_tri_thought_7
+  - first:
+      213: 3941994010534435721
+    second: dino_tri_thought_8
+  - first:
+      213: -8825447263486092996
+    second: dino_tri_thought_9
+  - first:
+      213: 8278907557322573666
+    second: dino_tri_thought_10
+  - first:
+      213: 7166792845656629971
+    second: dino_tri_thought_11
+  - first:
+      213: -8714738954907880326
+    second: dino_tri_thought_12
+  - first:
+      213: -3690009572449072557
+    second: dino_tri_thought_13
+  - first:
+      213: -5460327977212817471
+    second: dino_tri_thought_14
+  - first:
+      213: -103208253581743391
+    second: dino_tri_thought_15
+  - first:
+      213: 810052310817807788
+    second: dino_tri_thought_16
+  - first:
+      213: -5182181674949852740
+    second: dino_tri_thought_17
+  - first:
+      213: -2141359983415429299
+    second: dino_tri_thought_18
+  - first:
+      213: -3468789156220107671
+    second: dino_tri_thought_19
+  - first:
+      213: 537692123041787632
+    second: dino_tri_thought_20
+  - first:
+      213: -4318020563668280514
+    second: dino_tri_thought_21
+  - first:
+      213: -5924617180285547064
+    second: dino_tri_thought_22
+  - first:
+      213: 1993921357837967476
+    second: dino_tri_thought_23
+  - first:
+      213: -1737839206304474994
+    second: dino_tri_thought_24
+  - first:
+      213: 2340931298323708903
+    second: dino_tri_thought_25
+  - first:
+      213: -4534240141240962650
+    second: dino_tri_thought_26
+  - first:
+      213: 3846461691293429951
+    second: dino_tri_thought_27
+  - first:
+      213: 8276009591517045402
+    second: dino_tri_thought_28
+  - first:
+      213: -8017772413810299138
+    second: dino_tri_thought_29
+  - first:
+      213: 6663447309947261619
+    second: dino_tri_thought_30
+  - first:
+      213: 593781572140534532
+    second: dino_tri_thought_31
+  - first:
+      213: -1716705689586257773
+    second: dino_tri_thought_32
+  - first:
+      213: -5227164123959623532
+    second: dino_tri_thought_33
+  - first:
+      213: -1300962016443877299
+    second: dino_tri_thought_34
+  - first:
+      213: 7409313262942173268
+    second: dino_tri_thought_35
+  - first:
+      213: 4605956841888645306
+    second: dino_tri_thought_36
+  - first:
+      213: 4883022105235157884
+    second: dino_tri_thought_37
+  - first:
+      213: 6290147935604601400
+    second: dino_tri_thought_38
+  - first:
+      213: 2843693110233407640
+    second: dino_tri_thought_39
+  - first:
+      213: 4394375470425999794
+    second: dino_tri_thought_40
+  - first:
+      213: -5187950143579296093
+    second: dino_tri_thought_41
+  - first:
+      213: -7868821232094166296
+    second: dino_tri_thought_42
+  - first:
+      213: 2160288554364376840
+    second: dino_tri_thought_43
+  - first:
+      213: -2483073006299260119
+    second: dino_tri_thought_44
+  - first:
+      213: -3499190399035072607
+    second: dino_tri_thought_45
+  - first:
+      213: -6936917884712289463
+    second: dino_tri_thought_46
+  - first:
+      213: 1048989598211948277
+    second: dino_tri_thought_47
+  - first:
+      213: 1469911174100724136
+    second: dino_tri_thought_48
+  - first:
+      213: 1014778790780561386
+    second: dino_tri_thought_49
+  - first:
+      213: -8495575101658204519
+    second: dino_tri_thought_50
+  - first:
+      213: 517418645266011807
+    second: dino_tri_thought_51
+  - first:
+      213: -7180744561901441273
+    second: dino_tri_thought_52
+  - first:
+      213: 6089503939698433689
+    second: dino_tri_thought_53
+  - first:
+      213: 5090835844616229470
+    second: dino_tri_thought_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dino_tri_thought_0
+      rect:
+        serializedVersion: 2
+        x: 3283
+        y: 74
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eff3ed8daab25a820800000000000000
+      internalID: 2928795145457254398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_1
+      rect:
+        serializedVersion: 2
+        x: 3667
+        y: 75
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a187cf923d213f180800000000000000
+      internalID: -9082895325324347366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_2
+      rect:
+        serializedVersion: 2
+        x: 4051
+        y: 76
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f9186ed700396b0800000000000000
+      internalID: -5290884596492034207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_3
+      rect:
+        serializedVersion: 2
+        x: 4435
+        y: 75
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676813450139c40d0800000000000000
+      internalID: -3437210717249239434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_4
+      rect:
+        serializedVersion: 2
+        x: 4819
+        y: 74
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aff187f16b618a70800000000000000
+      internalID: 8827454813131374504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_5
+      rect:
+        serializedVersion: 2
+        x: 5203
+        y: 74
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5cc2dff8e3f3c670800000000000000
+      internalID: 8557951898984041563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_6
+      rect:
+        serializedVersion: 2
+        x: 5587
+        y: 75
+        width: 59
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af5b0cdcc01d46a0800000000000000
+      internalID: -6463491418155688027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_7
+      rect:
+        serializedVersion: 2
+        x: 5970
+        y: 73
+        width: 61
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4866f05a582c4de60800000000000000
+      internalID: 7986221918490420868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_8
+      rect:
+        serializedVersion: 2
+        x: 6352
+        y: 71
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98b5f90caa6c4b630800000000000000
+      internalID: 3941994010534435721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_9
+      rect:
+        serializedVersion: 2
+        x: 6734
+        y: 70
+        width: 32
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39d7fb1976b58580800000000000000
+      internalID: -8825447263486092996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_10
+      rect:
+        serializedVersion: 2
+        x: 6769
+        y: 76
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26742825f8694e270800000000000000
+      internalID: 8278907557322573666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_11
+      rect:
+        serializedVersion: 2
+        x: 7117
+        y: 70
+        width: 32
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2ac203f10957360800000000000000
+      internalID: 7166792845656629971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_12
+      rect:
+        serializedVersion: 2
+        x: 7153
+        y: 112
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74f47ad7170f0780800000000000000
+      internalID: -8714738954907880326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_13
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 98
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ac16828d37accc0800000000000000
+      internalID: -3690009572449072557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_14
+      rect:
+        serializedVersion: 2
+        x: 7510
+        y: 111
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cf4a1182a40934b0800000000000000
+      internalID: -5460327977212817471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_15
+      rect:
+        serializedVersion: 2
+        x: 7519
+        y: 118
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ea2f53e3a4519ef0800000000000000
+      internalID: -103208253581743391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_16
+      rect:
+        serializedVersion: 2
+        x: 7539
+        y: 116
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cad97cbe842ed3b00800000000000000
+      internalID: 810052310817807788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_17
+      rect:
+        serializedVersion: 2
+        x: 7545
+        y: 116
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb1431719313518b0800000000000000
+      internalID: -5182181674949852740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_18
+      rect:
+        serializedVersion: 2
+        x: 7557
+        y: 112
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d477944c07c5842e0800000000000000
+      internalID: -2141359983415429299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_19
+      rect:
+        serializedVersion: 2
+        x: 2143
+        y: 73
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96406ce04a26cdfc0800000000000000
+      internalID: -3468789156220107671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_20
+      rect:
+        serializedVersion: 2
+        x: 2522
+        y: 78
+        width: 49
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fe6e681324467700800000000000000
+      internalID: 537692123041787632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_21
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 76
+        width: 55
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b58b9dc2f4314c0800000000000000
+      internalID: -4318020563668280514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_22
+      rect:
+        serializedVersion: 2
+        x: 7503
+        y: 102
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd47e2801887cda0800000000000000
+      internalID: -5924617180285547064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_23
+      rect:
+        serializedVersion: 2
+        x: 7563
+        y: 86
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4702ff329e4dbab10800000000000000
+      internalID: 1993921357837967476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_24
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 84
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8899770374f1e7e0800000000000000
+      internalID: -1737839206304474994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_25
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 73
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ebbd20fc98ac7020800000000000000
+      internalID: 2340931298323708903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_26
+      rect:
+        serializedVersion: 2
+        x: 7165
+        y: 75
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a1f30f6d942311c0800000000000000
+      internalID: -4534240141240962650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_27
+      rect:
+        serializedVersion: 2
+        x: 7500
+        y: 86
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb071bf5780616530800000000000000
+      internalID: 3846461691293429951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_28
+      rect:
+        serializedVersion: 2
+        x: 7509
+        y: 84
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92691410ea4ad270800000000000000
+      internalID: 8276009591517045402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_29
+      rect:
+        serializedVersion: 2
+        x: 7549
+        y: 75
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe29e838762bb090800000000000000
+      internalID: -8017772413810299138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_30
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b250f02602597c50800000000000000
+      internalID: 6663447309947261619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_31
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40b0c91a1398d3800800000000000000
+      internalID: 593781572140534532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_32
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390b15455490d28e0800000000000000
+      internalID: -1716705689586257773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_33
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 71
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49088b88ce16577b0800000000000000
+      internalID: -5227164123959623532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_34
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d48369750fd02fde0800000000000000
+      internalID: -1300962016443877299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_35
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 72
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458324b082b23d660800000000000000
+      internalID: 7409313262942173268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_36
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab08d832855abef30800000000000000
+      internalID: 4605956841888645306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_37
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c73fbecbbbaf3c340800000000000000
+      internalID: 4883022105235157884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_38
+      rect:
+        serializedVersion: 2
+        x: 2450
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8327e5688381b4750800000000000000
+      internalID: 6290147935604601400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_39
+      rect:
+        serializedVersion: 2
+        x: 2834
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89020b531d3d67720800000000000000
+      internalID: 2843693110233407640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_40
+      rect:
+        serializedVersion: 2
+        x: 3218
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b98e6c3535fbfc30800000000000000
+      internalID: 4394375470425999794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_41
+      rect:
+        serializedVersion: 2
+        x: 3602
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aee483d4d2b008b0800000000000000
+      internalID: -5187950143579296093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_42
+      rect:
+        serializedVersion: 2
+        x: 3986
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2c9fbb7c45cc290800000000000000
+      internalID: -7868821232094166296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_43
+      rect:
+        serializedVersion: 2
+        x: 4370
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8071b379ef2eafd10800000000000000
+      internalID: 2160288554364376840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_44
+      rect:
+        serializedVersion: 2
+        x: 4754
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92bdb24b14a5a8dd0800000000000000
+      internalID: -2483073006299260119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_45
+      rect:
+        serializedVersion: 2
+        x: 5138
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af9e002fd0607fc0800000000000000
+      internalID: -3499190399035072607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_46
+      rect:
+        serializedVersion: 2
+        x: 5522
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b7badefed1bbf90800000000000000
+      internalID: -6936917884712289463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_47
+      rect:
+        serializedVersion: 2
+        x: 5906
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5feb0865b72ce8e00800000000000000
+      internalID: 1048989598211948277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_48
+      rect:
+        serializedVersion: 2
+        x: 6290
+        y: 0
+        width: 88
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9a6a7cc6c266410800000000000000
+      internalID: 1469911174100724136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_49
+      rect:
+        serializedVersion: 2
+        x: 6674
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae763160fe7351e00800000000000000
+      internalID: 1014778790780561386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_50
+      rect:
+        serializedVersion: 2
+        x: 6765
+        y: 68
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996720fd477a91a80800000000000000
+      internalID: -8495575101658204519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_51
+      rect:
+        serializedVersion: 2
+        x: 7058
+        y: 0
+        width: 88
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f969e37348d3e2700800000000000000
+      internalID: 517418645266011807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_52
+      rect:
+        serializedVersion: 2
+        x: 7148
+        y: 67
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70feb0dbdded85c90800000000000000
+      internalID: -7180744561901441273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_53
+      rect:
+        serializedVersion: 2
+        x: 7442
+        y: 0
+        width: 88
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99e1110d193428450800000000000000
+      internalID: 6089503939698433689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dino_tri_thought_54
+      rect:
+        serializedVersion: 2
+        x: 7532
+        y: 66
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e521d207a3846a640800000000000000
+      internalID: 5090835844616229470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
