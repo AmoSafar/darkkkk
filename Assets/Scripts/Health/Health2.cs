@@ -3,7 +3,6 @@ using UnityEngine;
 public class Health2 : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 10f;
-    [SerializeField] private float _Damage = 1f;
     public float currentHealth { get; private set; }
     private Animator anim;
     private bool Dead;
@@ -15,17 +14,18 @@ public class Health2 : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float amount)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _Damage, 0, startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth - amount, 0, startingHealth);
 
         if (currentHealth > 0)
         {
-           anim.SetTrigger("Protect");
+            anim.SetTrigger("Protect"); // انیمیشن متفاوت برای پلیر ۲
         }
         else
         {
-            if(!Dead) {
+            if (!Dead)
+            {
                 anim.SetTrigger("Dead");
                 GetComponent<PlayerMovement>().enabled = false;
                 Dead = true;
