@@ -145,7 +145,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -159,7 +159,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -180,10 +180,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -213,10 +213,10 @@ TextureImporter:
         serializedVersion: 2
         x: 146
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,10 +235,10 @@ TextureImporter:
         serializedVersion: 2
         x: 530
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,10 +257,10 @@ TextureImporter:
         serializedVersion: 2
         x: 914
         y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,10 +279,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1298
         y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,10 +301,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1682
         y: 0
-        width: 102
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -323,10 +323,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2066
         y: 0
-        width: 109
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -345,10 +345,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2450
         y: 0
-        width: 109
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,10 +367,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2834
         y: 0
-        width: 110
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -389,10 +389,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3218
         y: 0
-        width: 109
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -411,10 +411,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3602
         y: 0
-        width: 108
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -433,10 +433,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3986
         y: 0
-        width: 107
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -455,10 +455,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4370
         y: 0
-        width: 108
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -477,10 +477,10 @@ TextureImporter:
         serializedVersion: 2
         x: 4754
         y: 0
-        width: 105
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -499,10 +499,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5138
         y: 0
-        width: 99
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -521,10 +521,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5522
         y: 0
-        width: 88
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -543,10 +543,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5906
         y: 0
-        width: 88
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -565,10 +565,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6290
         y: 0
-        width: 95
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -587,10 +587,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6674
         y: 0
-        width: 133
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -609,10 +609,10 @@ TextureImporter:
         serializedVersion: 2
         x: 7058
         y: 0
-        width: 153
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -631,10 +631,10 @@ TextureImporter:
         serializedVersion: 2
         x: 7442
         y: 0
-        width: 148
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -648,59 +648,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_B_20
-      rect:
-        serializedVersion: 2
-        x: 7587
-        y: 7
-        width: 38
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fac4830ae441c8c00800000000000000
-      internalID: 904119953122675887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_B_21
-      rect:
-        serializedVersion: 2
-        x: 7599
-        y: 18
-        width: 26
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a53757760ffcb0320800000000000000
-      internalID: 2525340647506146138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_B_22
       rect:
         serializedVersion: 2
-        x: 7826
+        x: 7828
         y: 0
-        width: 109
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -714,59 +670,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_B_23
-      rect:
-        serializedVersion: 2
-        x: 7909
-        y: 0
-        width: 78
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e899309427fea34e0800000000000000
-      internalID: -2001023810282481266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_B_24
-      rect:
-        serializedVersion: 2
-        x: 8006
-        y: 9
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37c7ab24893b97f20800000000000000
-      internalID: 3420962858500521075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_B_25
       rect:
         serializedVersion: 2
         x: 8210
         y: 0
-        width: 108
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -780,37 +692,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_B_26
-      rect:
-        serializedVersion: 2
-        x: 8291
-        y: 0
-        width: 141
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be3c971e93b3d9aa0800000000000000
-      internalID: -6152696396136201237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_B_27
       rect:
         serializedVersion: 2
         x: 8594
         y: 0
-        width: 109
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -831,8 +721,8 @@ TextureImporter:
         y: 0
         width: 232
         height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25862068, y: 0.37037036}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -853,8 +743,8 @@ TextureImporter:
         y: 0
         width: 235
         height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25531915, y: 0.37037036}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -875,8 +765,8 @@ TextureImporter:
         y: 0
         width: 237
         height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25316456, y: 0.37037036}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -897,8 +787,8 @@ TextureImporter:
         y: 0
         width: 239
         height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.25104603, y: 0.37037036}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -917,10 +807,10 @@ TextureImporter:
         serializedVersion: 2
         x: 10514
         y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -939,10 +829,10 @@ TextureImporter:
         serializedVersion: 2
         x: 10898
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -961,10 +851,10 @@ TextureImporter:
         serializedVersion: 2
         x: 11282
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 238
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25210086, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -977,55 +867,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_B_35
-      rect:
-        serializedVersion: 2
-        x: 7996
-        y: 0
-        width: 40
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6fbc68367fa986330800000000000000
-      internalID: 3704381080829610998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_B_36
-      rect:
-        serializedVersion: 2
-        x: 8674
-        y: 0
-        width: 151
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 893753d1b0c718d20800000000000000
-      internalID: 3279038390878958488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0f12e0f5e0e0f384e9c4e2c6d8d0ebcc
     internalID: 0
     vertices: []
     indices: 
@@ -1034,7 +880,44 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dino_tri_attack_B_0: 3748371812846026571
+      dino_tri_attack_B_1: -749600634993095563
+      dino_tri_attack_B_10: 3406587459621436317
+      dino_tri_attack_B_11: -7091435317867448149
+      dino_tri_attack_B_12: 8178050536462737515
+      dino_tri_attack_B_13: -921422194364465474
+      dino_tri_attack_B_14: -5074372543266664302
+      dino_tri_attack_B_15: 8254207668774347911
+      dino_tri_attack_B_16: 5736454603960191416
+      dino_tri_attack_B_17: -5870735175979551789
+      dino_tri_attack_B_18: -8684023846277104406
+      dino_tri_attack_B_19: 2525391557396263635
+      dino_tri_attack_B_2: -3121992400384455412
+      dino_tri_attack_B_20: 904119953122675887
+      dino_tri_attack_B_21: 2525340647506146138
+      dino_tri_attack_B_22: 1863020246997109034
+      dino_tri_attack_B_23: -2001023810282481266
+      dino_tri_attack_B_24: 3420962858500521075
+      dino_tri_attack_B_25: -101090288942101694
+      dino_tri_attack_B_26: -6152696396136201237
+      dino_tri_attack_B_27: 982063061951947451
+      dino_tri_attack_B_28: 3334414638473310555
+      dino_tri_attack_B_29: -5394304702970803282
+      dino_tri_attack_B_3: -850645101016375193
+      dino_tri_attack_B_30: -5489118123681869674
+      dino_tri_attack_B_31: 6987731953369392361
+      dino_tri_attack_B_32: -7832283566719083201
+      dino_tri_attack_B_33: -5795348193099271347
+      dino_tri_attack_B_34: 6983264658029789996
+      dino_tri_attack_B_35: 3704381080829610998
+      dino_tri_attack_B_36: 3279038390878958488
+      dino_tri_attack_B_4: 4625395863521966310
+      dino_tri_attack_B_5: -6185501426631121509
+      dino_tri_attack_B_6: 3226549390045059144
+      dino_tri_attack_B_7: 16876633884411043
+      dino_tri_attack_B_8: -3729136718873724146
+      dino_tri_attack_B_9: 1936573048850454450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

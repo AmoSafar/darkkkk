@@ -199,7 +199,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -213,7 +213,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -234,10 +234,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1484,7 +1484,62 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dino_tri_thought_0: 2928795145457254398
+      dino_tri_thought_1: -9082895325324347366
+      dino_tri_thought_10: 8278907557322573666
+      dino_tri_thought_11: 7166792845656629971
+      dino_tri_thought_12: -8714738954907880326
+      dino_tri_thought_13: -3690009572449072557
+      dino_tri_thought_14: -5460327977212817471
+      dino_tri_thought_15: -103208253581743391
+      dino_tri_thought_16: 810052310817807788
+      dino_tri_thought_17: -5182181674949852740
+      dino_tri_thought_18: -2141359983415429299
+      dino_tri_thought_19: -3468789156220107671
+      dino_tri_thought_2: -5290884596492034207
+      dino_tri_thought_20: 537692123041787632
+      dino_tri_thought_21: -4318020563668280514
+      dino_tri_thought_22: -5924617180285547064
+      dino_tri_thought_23: 1993921357837967476
+      dino_tri_thought_24: -1737839206304474994
+      dino_tri_thought_25: 2340931298323708903
+      dino_tri_thought_26: -4534240141240962650
+      dino_tri_thought_27: 3846461691293429951
+      dino_tri_thought_28: 8276009591517045402
+      dino_tri_thought_29: -8017772413810299138
+      dino_tri_thought_3: -3437210717249239434
+      dino_tri_thought_30: 6663447309947261619
+      dino_tri_thought_31: 593781572140534532
+      dino_tri_thought_32: -1716705689586257773
+      dino_tri_thought_33: -5227164123959623532
+      dino_tri_thought_34: -1300962016443877299
+      dino_tri_thought_35: 7409313262942173268
+      dino_tri_thought_36: 4605956841888645306
+      dino_tri_thought_37: 4883022105235157884
+      dino_tri_thought_38: 6290147935604601400
+      dino_tri_thought_39: 2843693110233407640
+      dino_tri_thought_4: 8827454813131374504
+      dino_tri_thought_40: 4394375470425999794
+      dino_tri_thought_41: -5187950143579296093
+      dino_tri_thought_42: -7868821232094166296
+      dino_tri_thought_43: 2160288554364376840
+      dino_tri_thought_44: -2483073006299260119
+      dino_tri_thought_45: -3499190399035072607
+      dino_tri_thought_46: -6936917884712289463
+      dino_tri_thought_47: 1048989598211948277
+      dino_tri_thought_48: 1469911174100724136
+      dino_tri_thought_49: 1014778790780561386
+      dino_tri_thought_5: 8557951898984041563
+      dino_tri_thought_50: -8495575101658204519
+      dino_tri_thought_51: 517418645266011807
+      dino_tri_thought_52: -7180744561901441273
+      dino_tri_thought_53: 6089503939698433689
+      dino_tri_thought_54: 5090835844616229470
+      dino_tri_thought_6: -6463491418155688027
+      dino_tri_thought_7: 7986221918490420868
+      dino_tri_thought_8: 3941994010534435721
+      dino_tri_thought_9: -8825447263486092996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

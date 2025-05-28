@@ -145,7 +145,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -159,7 +159,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -180,10 +180,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -213,10 +213,10 @@ TextureImporter:
         serializedVersion: 2
         x: 146
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,10 +235,10 @@ TextureImporter:
         serializedVersion: 2
         x: 530
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,10 +257,10 @@ TextureImporter:
         serializedVersion: 2
         x: 914
         y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -277,12 +277,12 @@ TextureImporter:
       name: dino_tri_attack_A_3
       rect:
         serializedVersion: 2
-        x: 1298
-        y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1297
+        y: 1
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -299,12 +299,12 @@ TextureImporter:
       name: dino_tri_attack_A_4
       rect:
         serializedVersion: 2
-        x: 1682
-        y: 0
-        width: 93
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1680
+        y: 1
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -323,10 +323,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2066
         y: 0
-        width: 99
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -345,10 +345,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2450
         y: 0
-        width: 99
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,10 +367,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2834
         y: 0
-        width: 100
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -387,12 +387,12 @@ TextureImporter:
       name: dino_tri_attack_A_8
       rect:
         serializedVersion: 2
-        x: 3218
+        x: 3217
         y: 0
-        width: 99
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -409,12 +409,12 @@ TextureImporter:
       name: dino_tri_attack_A_9
       rect:
         serializedVersion: 2
-        x: 3602
+        x: 3601
         y: 0
-        width: 98
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -431,12 +431,12 @@ TextureImporter:
       name: dino_tri_attack_A_10
       rect:
         serializedVersion: 2
-        x: 3986
+        x: 3985
         y: 0
-        width: 98
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -453,12 +453,12 @@ TextureImporter:
       name: dino_tri_attack_A_11
       rect:
         serializedVersion: 2
-        x: 4370
+        x: 4371
         y: 0
-        width: 99
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -475,12 +475,12 @@ TextureImporter:
       name: dino_tri_attack_A_12
       rect:
         serializedVersion: 2
-        x: 4754
+        x: 4755
         y: 0
-        width: 96
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -499,10 +499,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5138
         y: 0
-        width: 90
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -521,10 +521,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5522
         y: 0
-        width: 88
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -543,10 +543,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5906
         y: 0
-        width: 88
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -565,10 +565,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6290
         y: 0
-        width: 88
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -587,10 +587,10 @@ TextureImporter:
         serializedVersion: 2
         x: 6674
         y: 0
-        width: 133
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -609,10 +609,10 @@ TextureImporter:
         serializedVersion: 2
         x: 7058
         y: 0
-        width: 153
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -631,10 +631,10 @@ TextureImporter:
         serializedVersion: 2
         x: 7442
         y: 0
-        width: 148
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -651,12 +651,12 @@ TextureImporter:
       name: dino_tri_attack_A_20
       rect:
         serializedVersion: 2
-        x: 7587
-        y: 7
-        width: 38
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7826
+        y: 0
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -670,59 +670,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_A_21
-      rect:
-        serializedVersion: 2
-        x: 7599
-        y: 18
-        width: 26
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5150e0fa500fb740800000000000000
-      internalID: 5169851287832908123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_A_22
-      rect:
-        serializedVersion: 2
-        x: 7826
-        y: 0
-        width: 100
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ceae3736ff72fc530800000000000000
-      internalID: 3877361782027971308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_A_23
       rect:
         serializedVersion: 2
-        x: 7909
+        x: 8210
         y: 0
-        width: 78
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -736,37 +692,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_A_24
-      rect:
-        serializedVersion: 2
-        x: 8006
-        y: 9
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e12c611d863df4c20800000000000000
-      internalID: 3193003107966960158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_A_25
       rect:
         serializedVersion: 2
-        x: 8210
+        x: 8594
         y: 0
-        width: 99
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -780,37 +714,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dino_tri_attack_A_26
-      rect:
-        serializedVersion: 2
-        x: 8291
-        y: 0
-        width: 141
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 839b5da96b6c41440800000000000000
-      internalID: 4905764381697358136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: dino_tri_attack_A_27
       rect:
         serializedVersion: 2
-        x: 8594
+        x: 8977
         y: 0
-        width: 100
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 249
+        height: 85
+      alignment: 9
+      pivot: {x: 0.24096386, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -827,12 +739,12 @@ TextureImporter:
       name: dino_tri_attack_A_28
       rect:
         serializedVersion: 2
-        x: 8978
+        x: 9361
         y: 0
-        width: 232
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -849,12 +761,12 @@ TextureImporter:
       name: dino_tri_attack_A_29
       rect:
         serializedVersion: 2
-        x: 9362
+        x: 9745
         y: 0
-        width: 235
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -871,12 +783,12 @@ TextureImporter:
       name: dino_tri_attack_A_30
       rect:
         serializedVersion: 2
-        x: 9746
+        x: 10131
         y: 0
-        width: 237
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -893,12 +805,12 @@ TextureImporter:
       name: dino_tri_attack_A_31
       rect:
         serializedVersion: 2
-        x: 10130
+        x: 10515
         y: 0
-        width: 239
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -915,12 +827,12 @@ TextureImporter:
       name: dino_tri_attack_A_32
       rect:
         serializedVersion: 2
-        x: 10514
+        x: 10898
         y: 0
-        width: 88
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 240
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -937,12 +849,12 @@ TextureImporter:
       name: dino_tri_attack_A_33
       rect:
         serializedVersion: 2
-        x: 10898
+        x: 11282
         y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 238
+        height: 85
+      alignment: 9
+      pivot: {x: 0.25210086, y: 0.3529412}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -955,77 +867,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_A_34
-      rect:
-        serializedVersion: 2
-        x: 11282
-        y: 0
-        width: 88
-        height: 82
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a3832b9cde07a730800000000000000
-      internalID: 4010190333855105957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_A_35
-      rect:
-        serializedVersion: 2
-        x: 7996
-        y: 0
-        width: 40
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2bbc4e63703cda670800000000000000
-      internalID: 8551705703199591346
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dino_tri_attack_A_36
-      rect:
-        serializedVersion: 2
-        x: 8674
-        y: 0
-        width: 151
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 503e0291023a00500800000000000000
-      internalID: 360467328445506309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fde85a58938525e4bbfa5094a1f7c303
     internalID: 0
     vertices: []
     indices: 
@@ -1034,7 +880,41 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dino_tri_attack_A_0: -3377738847795320415
+      dino_tri_attack_A_1: 8369015161414898227
+      dino_tri_attack_A_10: 8892620000163654026
+      dino_tri_attack_A_11: 1072665267960370353
+      dino_tri_attack_A_12: -5657644220675660424
+      dino_tri_attack_A_13: 1855063224863956592
+      dino_tri_attack_A_14: 4751259485409474125
+      dino_tri_attack_A_15: 6064551462535746317
+      dino_tri_attack_A_16: -3883705153021940912
+      dino_tri_attack_A_17: 8823285360661443735
+      dino_tri_attack_A_18: 7063953814562582115
+      dino_tri_attack_A_19: 8833217006234587900
+      dino_tri_attack_A_2: 9171856931776835556
+      dino_tri_attack_A_20: -9172603857604236916
+      dino_tri_attack_A_21: 5169851287832908123
+      dino_tri_attack_A_22: 3877361782027971308
+      dino_tri_attack_A_23: 3663238146100241628
+      dino_tri_attack_A_24: 3193003107966960158
+      dino_tri_attack_A_25: 974050483352754760
+      dino_tri_attack_A_26: 4905764381697358136
+      dino_tri_attack_A_27: -6594766135399748482
+      dino_tri_attack_A_28: -1545876510738203610
+      dino_tri_attack_A_29: 214721432560975850
+      dino_tri_attack_A_3: -739447919119502057
+      dino_tri_attack_A_30: -4727431730594443457
+      dino_tri_attack_A_31: 1649374681893781195
+      dino_tri_attack_A_32: 6690327925281984451
+      dino_tri_attack_A_33: 6119216213241379026
+      dino_tri_attack_A_4: -1273407877318757906
+      dino_tri_attack_A_5: -4803003149196121115
+      dino_tri_attack_A_6: 2212898547166456109
+      dino_tri_attack_A_7: 835202453710079326
+      dino_tri_attack_A_8: -7937785605734281747
+      dino_tri_attack_A_9: -3535337477617852527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
