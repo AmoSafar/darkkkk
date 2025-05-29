@@ -18,7 +18,8 @@ public class SecondPlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private bool isClimbing = false;
     private bool canClimb = false;
-    private bool climbingStarted = false;
+    private bool atLadderTop = false;
+    private bool lockAtLadderTop = false; // متغیر قفل
 
     private void Awake()
     {
@@ -47,38 +48,88 @@ public class SecondPlayerMovement : MonoBehaviour
     }
 
     private void Update()
-{
-    verticalInput = moveInput.y;
-    HandleClimbingInput();
-
-    if (isClimbing)
     {
-        rb.gravityScale = 0f;
-        rb.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
+        verticalInput = moveInput.y;
+        float horizontalInput = moveInput.x;
+
+        // منطق قفل شدن بالای نردبان با شرط جدید
+        if (lockAtLadderTop)
+        {
+            if (verticalInput < -0.1f)
+            {
+                // فقط اگر پایین زد، وارد نردبان شود
+                lockAtLadderTop = false;
+                atLadderTop = false;
+                canClimb = true;
+                isClimbing = true;
+                rb.gravityScale = 0f;
+            }
+            else if (Mathf.Abs(horizontalInput) > 0.1f)
+            {
+                // اگر فقط چپ یا راست زد، قفل باز شود اما وارد نردبان نشود
+                lockAtLadderTop = false;
+                rb.gravityScale = 1f;
+            }
+            else
+            {
+                rb.gravityScale = 0f;
+                rb.linearVelocity = Vector2.zero;
+                isGrounded = true;
+                canClimb = false;
+                isClimbing = false;
+                UpdateAnimations();
+                HandleFlip();
+                return;
+            }
+        }
+
+        // ادامه منطق قبلی...
+        if (atLadderTop)
+        {
+            if (verticalInput < -0.1f)
+            {
+                atLadderTop = false;
+                canClimb = true;
+                isClimbing = true;
+            }
+            else
+            {
+                canClimb = false;
+                isClimbing = false;
+            }
+        }
+        else
+        {
+            HandleClimbingInput();
+        }
+
+        if (isClimbing)
+        {
+            rb.gravityScale = 0f;
+            rb.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
+        }
+        else
+        {
+            rb.gravityScale = 1f;
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        }
+
+        UpdateAnimations();
+        HandleFlip();
     }
-    else
+
+    private void HandleClimbingInput()
     {
-        rb.gravityScale = 1f;
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
-    }
-
-    UpdateAnimations();
-    HandleFlip();
-}
-
-private void HandleClimbingInput()
-{
         if (canClimb && Mathf.Abs(verticalInput) > 0.1f)
         {
             isClimbing = true;
             isGrounded = false;
-    }
+        }
         else if (!canClimb || Mathf.Abs(verticalInput) <= 0.1f)
         {
             isClimbing = false;
         }
-}
-
+    }
 
     private void TryJump()
     {
@@ -118,13 +169,12 @@ private void HandleClimbingInput()
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.collider.CompareTag("Ground") && !isClimbing)
     {
-        isGrounded = true;
+        if (collision.collider.CompareTag("Ground") && !isClimbing)
+        {
+            isGrounded = true;
+        }
     }
-}
-
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -135,24 +185,38 @@ private void HandleClimbingInput()
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-{
-    if (collision.CompareTag("Ladder"))
     {
-        canClimb = true;
-        Debug.Log("Entered ladder zone.");
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = true;
+        }
+        else if (collision.CompareTag("LadderExit"))
+        {
+            // وقتی به بالای هر نردبان رسیدیم
+            atLadderTop = true;
+            lockAtLadderTop = true; // قفل فعال شود
+            isClimbing = false;
+            canClimb = false;
+            rb.gravityScale = 0f; // جاذبه را غیرفعال کن
+            rb.linearVelocity = Vector2.zero; // سرعت را صفر کن
+            transform.position = new Vector2(transform.position.x, collision.transform.position.y);
+            isGrounded = true;
+        }
     }
-}
-
 
     private void OnTriggerExit2D(Collider2D collision)
-{
-    if (collision.CompareTag("Ladder"))
     {
-        canClimb = false;
-        isClimbing = false;
-        rb.gravityScale = 1f;
-        isGrounded = false; // بازیکن الان روی زمین نیست، باید صبر کنیم تا بخوره به Ground
+        if (collision.CompareTag("Ladder"))
+        {
+            canClimb = false;
+            isClimbing = false;
+            rb.gravityScale = 1f;
+            isGrounded = false; // بازیکن الان روی زمین نیست، باید صبر کنیم تا بخوره به Ground
+        }
+        else if (collision.CompareTag("LadderExit"))
+        {
+            atLadderTop = false;
+            lockAtLadderTop = false;
+        }
     }
-}
-
 }
