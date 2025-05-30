@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using System.Linq; // برای استفاده از LINQ
+using System.Linq;
 
 public class EnemyAttackController : MonoBehaviour
 {
@@ -9,16 +9,22 @@ public class EnemyAttackController : MonoBehaviour
     public float attackRangeX = 5.0f;
     public float attackRangeY = 5.0f;
 
+    [Header("Damage Settings")]
+    public int damage = 1;
+    public float attackRange = 1f;
+    public float attackWidth = 1f;
+    public LayerMask playerLayer;
+    public BoxCollider2D boxCollider;
+
     [Header("References")]
     public Animator animator;
-    public Transform[] players;
+    private Transform[] players;
 
     private bool isAttacking = false;
     private Transform targetPlayer;
 
     void Start()
     {
-        // پیدا کردن تمام پلیرها با تگ "Player"
         players = GameObject.FindGameObjectsWithTag("Player")
                   .Select(go => go.transform)
                   .ToArray();
@@ -44,8 +50,6 @@ public class EnemyAttackController : MonoBehaviour
 
         foreach (Transform player in players)
         {
-            Debug.Log("Checking player: " + player.name);
-
             Vector3 diff = player.position - transform.position;
             float dx = Mathf.Abs(diff.x);
             float dy = Mathf.Abs(diff.y);
@@ -68,28 +72,61 @@ public class EnemyAttackController : MonoBehaviour
     {
         isAttacking = true;
 
-        // چرخش به سمت پلیر در بازی 2D (فقط با تغییر scale)
         if (targetPlayer != null)
         {
             Vector3 direction = (targetPlayer.position - transform.position).normalized;
-
-            if (direction.x > 0)
-                transform.localScale = new Vector3(1, 1, 1);
-            else if (direction.x < 0)
-                transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
         }
 
-        // اجرای انیمیشن‌ها
         animator.SetTrigger("Stand");
-        yield return new WaitForSeconds(0.3f); // زمان تقریبی برای انیمیشن Stand
+        yield return new WaitForSeconds(0.3f);
 
         animator.SetTrigger("FirstAttack");
-        yield return new WaitForSeconds(0.5f); // زمان تقریبی برای FirstAttack
+        yield return new WaitForSeconds(0.5f);
 
         animator.SetTrigger("SecondAttack");
-        yield return new WaitForSeconds(0.5f); // زمان تقریبی برای SecondAttack
+        yield return new WaitForSeconds(0.5f);
 
         yield return new WaitForSeconds(1f / attackSpeed);
         isAttacking = false;
+    }
+
+    /// <summary>
+    /// Called from animation event to damage player
+    /// </summary>
+    public void DamagePlayer()
+    {
+        Vector3 boxCenter = boxCollider.bounds.center + transform.right * attackRange * transform.localScale.x;
+        Vector3 boxSize = new Vector3(boxCollider.bounds.size.x * attackWidth, boxCollider.bounds.size.y, boxCollider.bounds.size.z);
+
+        RaycastHit2D hit = Physics2D.BoxCast(boxCenter, boxSize, 0f, Vector2.zero, 0f, playerLayer);
+        if (hit.collider != null)
+        {
+            // برای پلیر 1
+            var health1 = hit.transform.GetComponent<Health>();
+            if (health1 != null)
+            {
+                health1.TakeDamage(damage);
+                return;
+            }
+
+            // برای پلیر 2
+            var health2 = hit.transform.GetComponent<Health2>();
+            if (health2 != null)
+            {
+                health2.TakeDamage(damage);
+                return;
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (boxCollider == null) return;
+
+        Gizmos.color = Color.red;
+        Vector3 boxCenter = boxCollider.bounds.center + transform.right * attackRange * transform.localScale.x;
+        Vector3 boxSize = new Vector3(boxCollider.bounds.size.x * attackWidth, boxCollider.bounds.size.y, boxCollider.bounds.size.z);
+        Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }
