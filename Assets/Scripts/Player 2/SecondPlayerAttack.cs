@@ -10,18 +10,20 @@ public class SecondPlayerAttack : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
 
     private PlayerInputActions1 inputActions;
+    private MeleeAttack meleeAttack;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<SecondPlayerMovement>();
         inputActions = new PlayerInputActions1();
+        meleeAttack = GetComponent<MeleeAttack>();
     }
 
     private void OnEnable()
     {
         inputActions.Player2.Enable();
-        inputActions.Player2.Attack.performed += OnAttackPerformed; // اصلاح شده
+        inputActions.Player2.Attack.performed += OnAttackPerformed;
     }
 
     private void OnDisable()
@@ -42,5 +44,11 @@ public class SecondPlayerAttack : MonoBehaviour
             anim.SetTrigger("Attack");
             cooldownTimer = 0f;
         }
+    }
+
+    // این تابع در انیمیشن Event صدا زده می‌شود
+    public void PerformMeleeAttack()
+    {
+        meleeAttack?.Attack();
     }
 }
