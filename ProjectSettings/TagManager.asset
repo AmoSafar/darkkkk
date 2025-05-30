@@ -8,6 +8,7 @@ TagManager:
   - Ladder
   - Enemy
   - LadderExit
+  - Dead
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Player
   - Enemy
   - LadderExit
-  - 
-  - 
+  - 'Pushable '
+  - Dead
   - 
   - 
   - 

@@ -9,8 +9,8 @@ public class SecondPlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private Health2 health;
 
-    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float climbSpeed = 3f;
@@ -19,13 +19,22 @@ public class SecondPlayerMovement : MonoBehaviour
     private bool isClimbing = false;
     private bool canClimb = false;
     private bool atLadderTop = false;
-    private bool lockAtLadderTop = false; // متغیر قفل
+    private bool lockAtLadderTop = false;
+
+    // اضافه شده: ذخیره آخرین محل برخورد با زمین
+    private Vector3 lastGroundedPosition;
 
     private void Awake()
     {
         inputActions = new PlayerInputActions1();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        health = GetComponent<Health2>();
+    }
+
+    private void Start()
+    {
+        lastGroundedPosition = transform.position;
     }
 
     private void OnEnable()
@@ -49,6 +58,8 @@ public class SecondPlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (health.currentHealth <= 0) return;
+
         verticalInput = moveInput.y;
         float horizontalInput = moveInput.x;
 
@@ -57,7 +68,6 @@ public class SecondPlayerMovement : MonoBehaviour
         {
             if (verticalInput < -0.1f)
             {
-                // فقط اگر پایین زد، وارد نردبان شود
                 lockAtLadderTop = false;
                 atLadderTop = false;
                 canClimb = true;
@@ -66,7 +76,6 @@ public class SecondPlayerMovement : MonoBehaviour
             }
             else if (Mathf.Abs(horizontalInput) > 0.1f)
             {
-                // اگر فقط چپ یا راست زد، قفل باز شود اما وارد نردبان نشود
                 lockAtLadderTop = false;
                 rb.gravityScale = 1f;
             }
@@ -83,7 +92,6 @@ public class SecondPlayerMovement : MonoBehaviour
             }
         }
 
-        // ادامه منطق قبلی...
         if (atLadderTop)
         {
             if (verticalInput < -0.1f)
@@ -120,12 +128,12 @@ public class SecondPlayerMovement : MonoBehaviour
 
     private void HandleClimbingInput()
     {
-        if (canClimb && Mathf.Abs(verticalInput) > 0.1f)
+        if (canClimb && Mathf.Abs(moveInput.y) > 0.1f)
         {
             isClimbing = true;
             isGrounded = false;
         }
-        else if (!canClimb || Mathf.Abs(verticalInput) <= 0.1f)
+        else if (!canClimb || Mathf.Abs(moveInput.y) <= 0.1f)
         {
             isClimbing = false;
         }
@@ -133,7 +141,7 @@ public class SecondPlayerMovement : MonoBehaviour
 
     private void TryJump()
     {
-        if (isGrounded && !isClimbing)
+        if (isGrounded && !isClimbing && health.currentHealth > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false;
@@ -143,9 +151,8 @@ public class SecondPlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (!CanAttack()) return;
+        if (!CanAttack() || health.currentHealth <= 0) return;
         anim.SetTrigger("Attack");
-        // اینجا کد واقعی حمله یا شلیک را بنویس
     }
 
     public bool CanAttack()
@@ -165,7 +172,7 @@ public class SecondPlayerMovement : MonoBehaviour
     {
         anim.SetBool("Run", Mathf.Abs(moveInput.x) > 0.1f && isGrounded && !isClimbing);
         anim.SetBool("Grounded", isGrounded);
-        anim.SetBool("Climb", isClimbing && Mathf.Abs(verticalInput) > 0.1f);
+        anim.SetBool("Climb", isClimbing && Mathf.Abs(moveInput.y) > 0.1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -173,6 +180,7 @@ public class SecondPlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground") && !isClimbing)
         {
             isGrounded = true;
+            lastGroundedPosition = transform.position; // ذخیره آخرین محل برخورد با زمین
         }
     }
 
@@ -192,15 +200,32 @@ public class SecondPlayerMovement : MonoBehaviour
         }
         else if (collision.CompareTag("LadderExit"))
         {
-            // وقتی به بالای هر نردبان رسیدیم
             atLadderTop = true;
-            lockAtLadderTop = true; // قفل فعال شود
+            lockAtLadderTop = true;
             isClimbing = false;
             canClimb = false;
-            rb.gravityScale = 0f; // جاذبه را غیرفعال کن
-            rb.linearVelocity = Vector2.zero; // سرعت را صفر کن
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
             transform.position = new Vector2(transform.position.x, collision.transform.position.y);
             isGrounded = true;
+        }
+        else if (collision.CompareTag("Dead"))
+        {
+            if (health.currentHealth <= 0) return;
+
+            health.TakeDamage(1f);
+
+            if (health.currentHealth > 0)
+            {
+                // بازگرداندن پلیر به آخرین محل برخورد با زمین
+                transform.position = lastGroundedPosition;
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+            else
+            {
+                rb.simulated = false;
+            }
         }
     }
 
@@ -211,7 +236,7 @@ public class SecondPlayerMovement : MonoBehaviour
             canClimb = false;
             isClimbing = false;
             rb.gravityScale = 1f;
-            isGrounded = false; // بازیکن الان روی زمین نیست، باید صبر کنیم تا بخوره به Ground
+            isGrounded = false;
         }
         else if (collision.CompareTag("LadderExit"))
         {

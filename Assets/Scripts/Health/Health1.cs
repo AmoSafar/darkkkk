@@ -15,12 +15,16 @@ public class Health : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRend;
     private Collider2D playerCollider;
 
+    // برای Respawn
+    [HideInInspector] public Vector3 lastSafePlatformPos;
+
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
+        lastSafePlatformPos = transform.position;
     }
 
     public void TakeDamage(float amount)
@@ -45,6 +49,16 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void RespawnAtLastSafePos()
+    {
+        // کمی بالاتر از سکو قرار بگیر
+        Vector3 respawnPos = lastSafePlatformPos + Vector3.up * -0.5f;
+        transform.position = respawnPos;
+        var rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+    }
+
     public void AddHealth(float value)
     {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
@@ -52,19 +66,16 @@ public class Health : MonoBehaviour
 
     private IEnumerator Invulnerability()
     {
-        // جلوگیری از برخورد با دشمنان در مدت iFrame
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 
-        // Flash کردن بازیکن
         for (int i = 0; i < numberOfFlashes; i++)
         {
-            spriteRend.color = new Color(1, 0, 0, 0.5f); // قرمز نیمه‌شفاف
+            spriteRend.color = new Color(1, 0, 0, 0.5f);
             yield return new WaitForSeconds(invulnerabilityDuration / (numberOfFlashes * 2));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(invulnerabilityDuration / (numberOfFlashes * 2));
         }
 
-        // بازگرداندن برخورد با دشمن
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
     }
 }

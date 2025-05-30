@@ -27,7 +27,7 @@ public class Health2 : MonoBehaviour
             if (!Dead)
             {
                 anim.SetTrigger("Dead");
-                GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<SecondPlayerMovement>().enabled = false;
                 Dead = true;
             }
         }
