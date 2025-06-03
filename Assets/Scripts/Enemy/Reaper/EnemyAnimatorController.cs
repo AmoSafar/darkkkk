@@ -1,138 +1,191 @@
 using UnityEngine;
+using System.Collections;
 
-[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
-public class EnemyAnimatorController : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb;
+    public Transform player;
 
-    [Header("Target Detection")]
-    [SerializeField] private Transform target; // تعیین پلیر در انسپکتور یا خودکار
-    [SerializeField] private float detectionRange = 15f; // محدوده تشخیص
+    [Header("Movement Settings")]
+    public float walkSpeed = 2f;
+    public float runSpeed = 4f;
 
-    [Header("Ground Check")]
-    public bool isGrounded = true;
+    [Header("Ranges")]
+    public float attackRange = 1.5f;
+    public float runRange = 6f;
 
-    [Header("Attack Settings")]
+    [Header("Damage")]
+    public float slashDamage = 10f;
+    public float kickDamage = 20f;
+    public int maxSlashBeforeKick = 3;
+
+    private Animator animator;
+    private MonoBehaviour playerHealthScript;
+    private bool isHealth1 = false;
+
+    private float blinkTimer;
+    private float nextBlinkTime;
+
     private bool isAttacking = false;
-    private int attackType = 0; // 0: Slash, 1: Kick, 2: RunSlash, 3: AirSlash
+    private int slashCount = 0;
 
-    [Header("Other States")]
-    private bool isHurt = false;
+    private enum State { Idle, Running, Attacking, Hurt, Dying }
+    private State currentState = State.Idle;
+
     private bool isDead = false;
 
-    [Header("Speed Threshold")]
-    [SerializeField] private float speedThreshold = 0.1f;
-
-    private bool isFacingRight = true;
-
-    private void Awake()
+    void Start()
     {
-        if (animator == null)
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        FindHealthComponent();
+        SetNextBlinkTime();
+        StartCoroutine(StateMachine());
+    }
 
-        if (rb == null)
-            rb = GetComponent<Rigidbody2D>();
+    void Update()
+    {
+        HandleBlink();
+    }
 
-        if (target == null)
+    private void FindHealthComponent()
+    {
+        if (player.TryGetComponent<Health>(out Health h1))
         {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-                target = playerObj.transform;
+            playerHealthScript = h1;
+            isHealth1 = true;
+        }
+        else if (player.TryGetComponent<Health2>(out Health2 h2))
+        {
+            playerHealthScript = h2;
+            isHealth1 = false;
+        }
+        else
+        {
+            Debug.LogError("Player does not have Health or Health2 component!");
         }
     }
 
-    private void Update()
+    IEnumerator StateMachine()
     {
-        if (isDead)
+        while (true)
         {
-            animator.SetBool(AnimationParameters.IsDead, true);
-            return;
-        }
+            if (isDead)
+                yield break;
 
-        // بررسی فاصله با پلیر
-        if (target != null)
-        {
-            float distance = Vector2.Distance(transform.position, target.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distance <= detectionRange)
+            switch (currentState)
             {
-                // چرخش به سمت پلیر
-                float direction = target.position.x - transform.position.x;
-                if (direction > 0 && !isFacingRight)
-                    Flip(true);
-                else if (direction < 0 && isFacingRight)
-                    Flip(false);
+                case State.Idle:
+                    SetAnimState(idle: true);
+                    if (distanceToPlayer <= runRange)
+                        currentState = State.Running;
+                    break;
+
+                case State.Running:
+                    SetAnimState(running: true);
+                    if (distanceToPlayer <= attackRange)
+                    {
+                        currentState = State.Attacking;
+                        SetAnimState();
+                        isAttacking = false;
+                    }
+                    else if (distanceToPlayer > runRange)
+                    {
+                        currentState = State.Idle;
+                        SetAnimState(idle: true);
+                    }
+                    else
+                    {
+                        MoveTowards(player.position, runSpeed);
+                    }
+                    break;
+
+                case State.Attacking:
+                    SetAnimState();
+                    if (distanceToPlayer > attackRange)
+                    {
+                        currentState = State.Running;
+                        SetAnimState(running: true);
+                        isAttacking = false;
+                    }
+                    else if (!isAttacking)
+                    {
+                        yield return StartCoroutine(AttackRoutine());
+                    }
+                    break;
+
+                case State.Hurt:
+                    yield return new WaitForSeconds(0.5f);
+                    currentState = State.Idle;
+                    break;
+
+                case State.Dying:
+                    yield break;
             }
+
+            yield return null;
         }
-
-        animator.SetBool(AnimationParameters.IsGrounded, isGrounded);
-        animator.SetFloat(AnimationParameters.Speed, Mathf.Abs(rb.linearVelocity.x));
-        animator.SetBool(AnimationParameters.IsHurt, isHurt);
-
-        HandleAttackTransition();
     }
 
-    private void HandleAttackTransition()
+    IEnumerator AttackRoutine()
     {
-        if (isAttacking)
-        {
-            animator.SetBool(AnimationParameters.IsAttacking, true);
-            animator.SetInteger(AnimationParameters.AttackType, attackType);
-        }
+        isAttacking = true;
+        slashCount = 0;
 
-        if (!isAttacking && animator.GetBool(AnimationParameters.IsAttacking))
+        while (Vector3.Distance(transform.position, player.position) <= attackRange)
         {
-            animator.SetBool(AnimationParameters.IsAttacking, false);
-
-            if (isGrounded)
+            if (slashCount < maxSlashBeforeKick)
             {
-                if (Mathf.Abs(rb.linearVelocity.x) > speedThreshold)
-                    animator.Play(AnimationParameters.RunningState);
-                else
-                    animator.Play(AnimationParameters.IdleState);
+                animator.SetTrigger("slash");
+                yield return new WaitForSeconds(0.3f);
+                DealDamage(slashDamage);
+                slashCount++;
             }
             else
             {
-                animator.Play(AnimationParameters.FallingState);
+                animator.SetTrigger("kick");
+                yield return new WaitForSeconds(0.3f);
+                DealDamage(kickDamage);
+                slashCount = 0;
             }
+
+            yield return new WaitForSeconds(0.7f);
         }
-    }
 
-    private void Flip(bool faceRight)
-    {
-        isFacingRight = faceRight;
-        Vector3 scale = transform.localScale;
-        scale.x = faceRight ? 1 : -1;
-        transform.localScale = scale;
-    }
-
-    // Called from animation event
-    public void EndAttack()
-    {
         isAttacking = false;
     }
 
-    // Call externally to begin attack
-    public void StartAttack(int type)
+    void MoveTowards(Vector3 target, float speed)
     {
-        isAttacking = true;
-        attackType = type;
+        Vector3 direction = (target - transform.position).normalized;
+        transform.position += direction * speed * Time.deltaTime;
+
+        if (target.x > transform.position.x)
+            transform.localScale = new Vector3(1, 1, 1);
+        else
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    public void Hurt()
+    void DealDamage(float amount)
+    {
+        if (playerHealthScript == null)
+            return;
+
+        if (isHealth1)
+            ((Health)playerHealthScript).TakeDamage(amount);
+        else
+            ((Health2)playerHealthScript).TakeDamage(amount);
+    }
+
+    public void TakeDamage(float damage)
     {
         if (isDead) return;
 
-        isHurt = true;
-        animator.SetBool(AnimationParameters.IsHurt, true);
-    }
+        animator.SetTrigger("hurt");
+        currentState = State.Hurt;
 
-    public void Recover()
-    {
-        isHurt = false;
-        animator.SetBool(AnimationParameters.IsHurt, false);
+        // For demo: Reduce health to zero instantly if hit
+        Die();
     }
 
     public void Die()
@@ -140,7 +193,43 @@ public class EnemyAnimatorController : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        animator.SetBool(AnimationParameters.IsDead, true);
+        currentState = State.Dying;
+        animator.SetTrigger("die");
+        StopAllCoroutines();
+        this.enabled = false;
     }
 
+    void SetAnimState(bool idle = false, bool running = false)
+    {
+        animator.SetBool("isIdle", idle);
+        animator.SetBool("isRunning", running);
+    }
+
+    void HandleBlink()
+    {
+        if (currentState == State.Idle)
+        {
+            blinkTimer += Time.deltaTime;
+            if (blinkTimer >= nextBlinkTime)
+            {
+                animator.SetTrigger("doBlink");
+                SetNextBlinkTime();
+                blinkTimer = 0f;
+            }
+        }
+    }
+
+    void SetNextBlinkTime()
+    {
+        nextBlinkTime = Random.Range(3f, 7f);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, runRange);
+    }
 }
