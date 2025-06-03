@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
 public class EnemyAIAnimator : MonoBehaviour
 {
     [Header("Player References")]
@@ -21,18 +22,25 @@ public class EnemyAIAnimator : MonoBehaviour
 
     private Transform closestPlayer;
     private Animator animator;
-    private Rigidbody2D rb;  // اینجا Rigidbody2D
+    private Rigidbody2D rb;
+
+    private int groundLayer;
 
     private bool isDead = false;
     private bool isChasing = false;
     private bool hasJumped = false;
     private bool isFacingRight = true;
 
+    void Awake()
+    {
+        TryGetComponent(out animator);
+        TryGetComponent(out rb);
+
+        groundLayer = LayerMask.GetMask("Ground");
+    }
+
     void Start()
     {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();  // اصلاح شده
-
         if (player1 == null)
             player1 = GameObject.FindGameObjectWithTag("Player1")?.transform;
         if (player2 == null)
@@ -46,41 +54,36 @@ public class EnemyAIAnimator : MonoBehaviour
         closestPlayer = GetClosestPlayer();
         if (closestPlayer == null) return;
 
-        float distance = Vector3.Distance(transform.position, closestPlayer.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, closestPlayer.position);
 
-        // بررسی زمین بودن با استفاده از Physics2D.Raycast
-        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, LayerMask.GetMask("Ground"));
+        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
 
         animator.SetBool("isGrounded", isGrounded);
 
         LookAtTarget(closestPlayer);
 
-        if (distance <= jumpRange)
+        if (distanceToPlayer <= jumpRange)
         {
             isChasing = true;
 
             if (!hasJumped && isGrounded)
             {
                 animator.SetBool("isJumping", true);
-
-                // پرش در Rigidbody2D
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
                 hasJumped = true;
             }
 
             if (hasJumped && isGrounded)
             {
-                float dir = Mathf.Sign(closestPlayer.position.x - transform.position.x);
-                rb.linearVelocity = new Vector2(dir * runSpeed, rb.linearVelocity.y);
+                float direction = Mathf.Sign(closestPlayer.position.x - transform.position.x);
+                rb.linearVelocity = new Vector2(direction * runSpeed, rb.linearVelocity.y);
                 animator.SetBool("isRunning", true);
             }
 
-            animator.SetBool("playerInAttackRange", distance <= attackRange);
+            animator.SetBool("playerInAttackRange", distanceToPlayer <= attackRange);
         }
         else
         {
-            // منطق گشت زنی
             isChasing = false;
             animator.SetBool("isRunning", false);
             animator.SetBool("playerInAttackRange", false);
@@ -112,7 +115,7 @@ public class EnemyAIAnimator : MonoBehaviour
     {
         isFacingRight = faceRight;
         Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * (isFacingRight ? 1 : -1);
+        scale.x = faceRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 
@@ -127,8 +130,11 @@ public class EnemyAIAnimator : MonoBehaviour
 
     Transform GetClosestPlayer()
     {
+        if (player1 == null && player2 == null) return null;
+
         float dist1 = player1 ? Vector3.Distance(transform.position, player1.position) : Mathf.Infinity;
         float dist2 = player2 ? Vector3.Distance(transform.position, player2.position) : Mathf.Infinity;
+
         return dist1 < dist2 ? player1 : player2;
     }
 

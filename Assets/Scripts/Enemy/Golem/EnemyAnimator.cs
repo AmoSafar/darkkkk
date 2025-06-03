@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyAnimator : MonoBehaviour
 {
     [Header("Player References")]
@@ -21,10 +22,13 @@ public class EnemyAnimator : MonoBehaviour
     private bool hasJumped = false;
     private bool isDead = false;
 
+    void Awake()
+    {
+        TryGetComponent(out animator);
+    }
+
     void Start()
     {
-        animator = GetComponent<Animator>();
-
         // پیدا کردن پلیرها اگر دستی تنظیم نشده باشند
         if (player1 == null)
             player1 = GameObject.FindGameObjectWithTag("Player1")?.transform;
@@ -39,26 +43,24 @@ public class EnemyAnimator : MonoBehaviour
         if (isDead || (player1 == null && player2 == null)) return;
 
         closestPlayer = GetClosestPlayer();
-
         if (closestPlayer == null) return;
 
         float distance = Vector3.Distance(transform.position, closestPlayer.position);
 
-        // چرخش به سمت پلیر
         LookAtTarget(closestPlayer);
 
-        // کنترل راه رفتن
+        // تعیین وضعیت حرکت
         bool shouldWalk = distance <= walkRange && distance > jumpRange;
         animator.SetBool("isWalking", shouldWalk);
 
-        // اجرای JumpStart یک بار
+        // منطق Jump
         if (!hasJumped && distance <= jumpRange)
         {
             animator.SetBool("playerInJumpRange", true);
             hasJumped = true;
         }
 
-        // اجرای حمله
+        // منطق حمله
         animator.SetBool("playerInAttackRange", distance <= attackRange);
     }
 
@@ -72,33 +74,28 @@ public class EnemyAnimator : MonoBehaviour
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 animator.SetBool("shouldBlink", true);
-                yield return null;
+                yield return null; // یک فریم صبر کن
                 animator.SetBool("shouldBlink", false);
             }
         }
     }
 
-    /// <summary>
-    /// پیدا کردن نزدیک‌ترین پلیر
-    /// </summary>
     Transform GetClosestPlayer()
     {
-        float dist1 = player1 != null ? Vector3.Distance(transform.position, player1.position) : Mathf.Infinity;
-        float dist2 = player2 != null ? Vector3.Distance(transform.position, player2.position) : Mathf.Infinity;
+        if (player1 == null && player2 == null) return null;
 
-        if (dist1 < dist2)
-            return player1;
-        else
-            return player2;
+        float dist1 = player1 ? Vector3.Distance(transform.position, player1.position) : Mathf.Infinity;
+        float dist2 = player2 ? Vector3.Distance(transform.position, player2.position) : Mathf.Infinity;
+
+        return dist1 < dist2 ? player1 : player2;
     }
 
-    /// <summary>
-    /// چرخش نرم به سمت هدف
-    /// </summary>
     void LookAtTarget(Transform target)
     {
+        if (target == null) return;
+
         Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0f; // فقط چرخش حول محور Y
+        direction.y = 0f;
 
         if (direction != Vector3.zero)
         {
@@ -118,16 +115,12 @@ public class EnemyAnimator : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-
         animator.SetBool("isDead", true);
         animator.SetBool("isWalking", false);
         animator.SetBool("playerInJumpRange", false);
         animator.SetBool("playerInAttackRange", false);
     }
 
-    /// <summary>
-    /// نمایش محدوده‌ها در صحنه
-    /// </summary>
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
