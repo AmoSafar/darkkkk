@@ -2771,7 +2771,7 @@ Transform:
   m_GameObject: {fileID: 1441845492}
   serializedVersion: 2
   m_LocalRotation: {x: -0.024779707, y: -0, z: -0, w: 0.9996929}
-  m_LocalPosition: {x: -15.28, y: 4.71, z: 0.37}
+  m_LocalPosition: {x: 36.55, y: 4.71, z: 0.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18586,16 +18586,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1441845499}
-  chaseRange: 5
-  sprintRange: 3
+  walkRange: 10
+  runRange: 6
   attackRange: 1.5
-  moveSpeed: 2
-  sprintSpeed: 4
+  walkSpeed: 2
+  runSpeed: 4
   jumpForce: 7
   animManager: {fileID: 1596083939468097754}
   attackPoint: {fileID: 548431001}
   attackHitRange: 1
-  attackDamage: 1
+  slashDamage: 10
+  kickDamage: 20
+  maxSlashBeforeKick: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -18710,7 +18712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469000860475034344, guid: f872b1a77834f214da486f8094eb7824, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4664174629950767763, guid: f872b1a77834f214da486f8094eb7824, type: 3}
       propertyPath: m_LocalScale.x
@@ -18760,7 +18762,7 @@ PrefabInstance:
       addedObject: {fileID: 5298272248771051861}
     - targetCorrespondingSourceObject: {fileID: 4469000860475034344, guid: f872b1a77834f214da486f8094eb7824, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5298272248771051865}
+      addedObject: {fileID: 5298272248771051869}
   m_SourcePrefab: {fileID: 100100000, guid: f872b1a77834f214da486f8094eb7824, type: 3}
 --- !u!4 &5298272248771051854 stripped
 Transform:
@@ -18831,7 +18833,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 1.5
   flashInterval: 0.1
---- !u!114 &5298272248771051865
+--- !u!114 &5298272248771051869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18840,18 +18842,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5298272248771051857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85241dc0ec91d954f87cec3295e9ee73, type: 3}
+  m_Script: {fileID: 11500000, guid: b6826df339e2de64da9eddc939126df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1441845499}
-  player2: {fileID: 1917229610}
-  leftPoint: {fileID: 308822360}
-  rightPoint: {fileID: 747349519}
-  patrolSpeed: 1.13
-  runSpeed: 4.38
-  jumpRange: 8.65
-  attackRange: 3.25
-  jumpForce: 10
+  player: {fileID: 1441845499}
+  walkSpeed: 2
+  runSpeed: 4
+  attackRange: 3
+  runRange: 6
+  walkRange: 10
+  slashDamage: 10
+  kickDamage: 20
+  maxSlashBeforeKick: 3
 --- !u!1001 &5844179208759857056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18910,7 +18912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2726318284819480809, guid: 5c5aa939f109e114ab5e3934f5978511, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6168731414321638110, guid: 5c5aa939f109e114ab5e3934f5978511, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -19036,6 +19038,7 @@ MonoBehaviour:
   runSpeed: 7.18
   attackRange: 2.29
   runRange: 6.91
+  walkRange: 10
   slashDamage: 10.38
   kickDamage: 20
   maxSlashBeforeKick: 3

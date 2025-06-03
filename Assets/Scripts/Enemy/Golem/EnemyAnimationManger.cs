@@ -28,7 +28,7 @@ public class EnemyAnimationManager : MonoBehaviour
         idleBlinkTimer -= Time.deltaTime;
         if (idleBlinkTimer <= 0f)
         {
-            animator.SetTrigger("idleBlink");
+            TriggerBlink();
             ResetIdleBlinkTimer();
         }
     }
@@ -38,10 +38,20 @@ public class EnemyAnimationManager : MonoBehaviour
         idleBlinkTimer = Random.Range(idleBlinkIntervalMin, idleBlinkIntervalMax);
     }
 
-    // دسترسی عمومی برای سایر اسکریپت‌ها
+    // متدهای ست کردن حالت‌ها
+    public void SetIdle(bool idle)
+    {
+        animator.SetBool("isIdle", idle);
+    }
+
     public void SetWalking(bool walking)
     {
         animator.SetBool("isWalking", walking);
+    }
+
+    public void SetRunning(bool running)
+    {
+        animator.SetBool("isRunning", running);
     }
 
     public void SetAttacking(bool attacking)
@@ -49,7 +59,8 @@ public class EnemyAnimationManager : MonoBehaviour
         animator.SetBool("isAttacking", attacking);
     }
 
-    public void TriggerJumpStart()
+    // متدهای تریگر انیمیشن‌ها
+    public void TriggerJump()
     {
         animator.SetTrigger("jumpStart");
     }
@@ -62,5 +73,20 @@ public class EnemyAnimationManager : MonoBehaviour
     public void TriggerDie()
     {
         animator.SetTrigger("die");
+    }
+
+    public void TriggerBlink()
+    {
+        animator.SetTrigger("idleBlink");
+    }
+
+    public void TriggerSlash()
+    {
+        animator.SetTrigger("slash");
+    }
+
+    public void TriggerKick()
+    {
+        animator.SetTrigger("kick");
     }
 }

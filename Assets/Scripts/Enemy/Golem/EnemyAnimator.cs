@@ -5,21 +5,24 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
 
     [Header("Ranges")]
-    public float chaseRange = 5f;
-    public float sprintRange = 3f;
-    public float attackRange = 1.5f;
+    public float walkRange = 10f;       // شروع راه رفتن وقتی پلیر داخلش باشه
+    public float runRange = 6f;         // شروع دویدن
+    public float attackRange = 2f;      // شروع حمله
 
     [Header("Movement")]
-    public float moveSpeed = 2f;
-    public float sprintSpeed = 4f;
+    public float walkSpeed = 2f;
+    public float runSpeed = 4f;
     public float jumpForce = 7f;
 
     private Rigidbody2D rb;
     private bool isGrounded = true;
     private bool hasJumped = false;
 
-    private enum State { Idle, Patrol, Chase, JumpBeforeSprint, Sprint, Attack, Hurt, Die }
+    private enum State { Idle, Walk, Run, Jump, Slash, Kick, Hurt, Die }
     private State currentState;
+
+    private float blinkTimer;
+    private float nextBlinkTime;
 
     [Header("Animation")]
     [SerializeField] private EnemyAnimationManager animManager;
@@ -27,32 +30,46 @@ public class EnemyAI : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackHitRange = 1f;
-    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private int slashDamage = 10;
+    [SerializeField] private int kickDamage = 20;
+    [SerializeField] private int maxSlashBeforeKick = 3;
     [SerializeField] private LayerMask playerLayer;
+
+    private int slashCount = 0;
+    private bool isAttacking = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        SetNextBlinkTime();
     }
 
     private void Update()
     {
+        if (currentState == State.Die || currentState == State.Hurt)
+            return;
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
+        // حالت‌های بر اساس فاصله و شرایط
         if (distanceToPlayer <= attackRange)
         {
-            currentState = State.Attack;
+            currentState = State.Slash;  // اول اسلش شروع می‌کنیم
         }
-        else if (distanceToPlayer <= sprintRange)
+        else if (distanceToPlayer <= runRange)
         {
-            if (!hasJumped)
-                currentState = State.JumpBeforeSprint;
+            if (!hasJumped && isGrounded)
+            {
+                currentState = State.Jump;
+            }
             else
-                currentState = State.Sprint;
+            {
+                currentState = State.Run;
+            }
         }
-        else if (distanceToPlayer <= chaseRange)
+        else if (distanceToPlayer <= walkRange)
         {
-            currentState = State.Chase;
+            currentState = State.Walk;
         }
         else
         {
@@ -61,8 +78,11 @@ public class EnemyAI : MonoBehaviour
 
         HandleState();
 
+        // بررسی زمین بودن
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
         isGrounded = hit.collider != null;
+
+        HandleBlink();
     }
 
     private void HandleState()
@@ -70,34 +90,45 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case State.Idle:
+                animManager.SetIdle(true);
                 animManager.SetWalking(false);
+                animManager.SetRunning(false);
                 animManager.SetAttacking(false);
                 break;
 
-            case State.Chase:
+            case State.Walk:
+                animManager.SetIdle(false);
                 animManager.SetWalking(true);
+                animManager.SetRunning(false);
                 animManager.SetAttacking(false);
-                MoveTowardsPlayer(moveSpeed);
+                MoveTowardsPlayer(walkSpeed);
                 break;
 
-            case State.JumpBeforeSprint:
-                if (isGrounded)
+            case State.Run:
+                animManager.SetIdle(false);
+                animManager.SetWalking(false);
+                animManager.SetRunning(true);
+                animManager.SetAttacking(false);
+                MoveTowardsPlayer(runSpeed);
+                break;
+
+            case State.Jump:
+                if (isGrounded && !hasJumped)
                 {
-                    animManager.TriggerJumpStart();
+                    animManager.TriggerJump();
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     hasJumped = true;
                 }
                 break;
 
-            case State.Sprint:
-                animManager.SetWalking(true);
-                animManager.SetAttacking(false);
-                MoveTowardsPlayer(sprintSpeed);
+            case State.Slash:
+                if (!isAttacking)
+                    StartCoroutine(AttackSequence());
                 break;
 
-            case State.Attack:
-                animManager.SetWalking(false);
-                animManager.SetAttacking(true);
+            case State.Kick:
+                if (!isAttacking)
+                    StartCoroutine(KickAttack());
                 break;
 
             case State.Hurt:
@@ -115,10 +146,78 @@ public class EnemyAI : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
 
-        if (direction.x > 0)
-            transform.localScale = new Vector3(1, 1, 1);
-        else if (direction.x < 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+        transform.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
+    }
+
+    private void HandleBlink()
+    {
+        if (currentState == State.Idle)
+        {
+            blinkTimer += Time.deltaTime;
+            if (blinkTimer >= nextBlinkTime)
+            {
+                animManager.TriggerBlink();
+                SetNextBlinkTime();
+                blinkTimer = 0f;
+            }
+        }
+    }
+
+    private void SetNextBlinkTime()
+    {
+        nextBlinkTime = Random.Range(3f, 7f);
+    }
+
+    private System.Collections.IEnumerator AttackSequence()
+    {
+        isAttacking = true;
+        slashCount = 0;
+
+        while (Vector2.Distance(transform.position, player.position) <= attackRange)
+        {
+            if (slashCount < maxSlashBeforeKick)
+            {
+                animManager.TriggerSlash();
+                yield return new WaitForSeconds(0.3f); // زمان تاخیر انیمیشن
+                DealDamage(slashDamage);
+                slashCount++;
+            }
+            else
+            {
+                animManager.TriggerKick();
+                yield return new WaitForSeconds(0.3f);
+                DealDamage(kickDamage);
+                slashCount = 0;
+            }
+
+            yield return new WaitForSeconds(0.7f);
+        }
+
+        isAttacking = false;
+    }
+
+    private System.Collections.IEnumerator KickAttack()
+    {
+        isAttacking = true;
+        animManager.TriggerKick();
+        yield return new WaitForSeconds(0.3f);
+        DealDamage(kickDamage);
+        isAttacking = false;
+    }
+
+    private void DealDamage(int amount)
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackHitRange, playerLayer);
+        foreach (var hit in hits)
+        {
+            Health health1 = hit.GetComponent<Health>();
+            if (health1 != null)
+                health1.TakeDamage(amount);
+
+            Health2 health2 = hit.GetComponent<Health2>();
+            if (health2 != null)
+                health2.TakeDamage(amount);
+        }
     }
 
     public void OnHurt()
@@ -131,31 +230,6 @@ public class EnemyAI : MonoBehaviour
         currentState = State.Die;
     }
 
-    /// <summary>
-    /// Called by animation event to deal damage to player(s)
-    /// </summary>
-    public void TryDealDamageToPlayer()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackHitRange, playerLayer);
-
-        foreach (Collider2D hit in hits)
-        {
-            Health health1 = hit.GetComponent<Health>();
-            if (health1 != null)
-            {
-                health1.TakeDamage(attackDamage);
-                Debug.Log("Player 1 hit by enemy!");
-            }
-
-            Health2 health2 = hit.GetComponent<Health2>();
-            if (health2 != null)
-            {
-                health2.TakeDamage(attackDamage);
-                Debug.Log("Player 2 hit by enemy!");
-            }
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (attackPoint != null)
@@ -163,5 +237,9 @@ public class EnemyAI : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(attackPoint.position, attackHitRange);
         }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, runRange);
+        Gizmos.DrawWireSphere(transform.position, walkRange);
     }
 }
