@@ -1,135 +1,167 @@
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class EnemyAnimator : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    [Header("Player References")]
-    public Transform player1;
-    public Transform player2;
+    public Transform player;
 
     [Header("Ranges")]
-    public float walkRange = 15f;
-    public float jumpRange = 10f;
-    public float attackRange = 3f;
+    public float chaseRange = 5f;
+    public float sprintRange = 3f;
+    public float attackRange = 1.5f;
 
-    [Header("Blink Settings")]
-    public float minBlinkDelay = 3f;
-    public float maxBlinkDelay = 7f;
+    [Header("Movement")]
+    public float moveSpeed = 2f;
+    public float sprintSpeed = 4f;
+    public float jumpForce = 7f;
 
-    private Animator animator;
-    private Transform closestPlayer;
+    private Rigidbody2D rb;
+    private bool isGrounded = true;
     private bool hasJumped = false;
-    private bool isDead = false;
 
-    void Awake()
+    private enum State { Idle, Patrol, Chase, JumpBeforeSprint, Sprint, Attack, Hurt, Die }
+    private State currentState;
+
+    [Header("Animation")]
+    [SerializeField] private EnemyAnimationManager animManager;
+
+    [Header("Attack Settings")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackHitRange = 1f;
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private LayerMask playerLayer;
+
+    private void Awake()
     {
-        TryGetComponent(out animator);
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    private void Update()
     {
-        // پیدا کردن پلیرها اگر دستی تنظیم نشده باشند
-        if (player1 == null)
-            player1 = GameObject.FindGameObjectWithTag("Player1")?.transform;
-        if (player2 == null)
-            player2 = GameObject.FindGameObjectWithTag("Player2")?.transform;
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        StartCoroutine(BlinkRoutine());
-    }
-
-    void Update()
-    {
-        if (isDead || (player1 == null && player2 == null)) return;
-
-        closestPlayer = GetClosestPlayer();
-        if (closestPlayer == null) return;
-
-        float distance = Vector3.Distance(transform.position, closestPlayer.position);
-
-        LookAtTarget(closestPlayer);
-
-        // تعیین وضعیت حرکت
-        bool shouldWalk = distance <= walkRange && distance > jumpRange;
-        animator.SetBool("isWalking", shouldWalk);
-
-        // منطق Jump
-        if (!hasJumped && distance <= jumpRange)
+        if (distanceToPlayer <= attackRange)
         {
-            animator.SetBool("playerInJumpRange", true);
-            hasJumped = true;
+            currentState = State.Attack;
+        }
+        else if (distanceToPlayer <= sprintRange)
+        {
+            if (!hasJumped)
+                currentState = State.JumpBeforeSprint;
+            else
+                currentState = State.Sprint;
+        }
+        else if (distanceToPlayer <= chaseRange)
+        {
+            currentState = State.Chase;
+        }
+        else
+        {
+            currentState = State.Idle;
         }
 
-        // منطق حمله
-        animator.SetBool("playerInAttackRange", distance <= attackRange);
+        HandleState();
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+        isGrounded = hit.collider != null;
     }
 
-    IEnumerator BlinkRoutine()
+    private void HandleState()
     {
-        while (true)
+        switch (currentState)
         {
-            float delay = Random.Range(minBlinkDelay, maxBlinkDelay);
-            yield return new WaitForSeconds(delay);
+            case State.Idle:
+                animManager.SetWalking(false);
+                animManager.SetAttacking(false);
+                break;
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            case State.Chase:
+                animManager.SetWalking(true);
+                animManager.SetAttacking(false);
+                MoveTowardsPlayer(moveSpeed);
+                break;
+
+            case State.JumpBeforeSprint:
+                if (isGrounded)
+                {
+                    animManager.TriggerJumpStart();
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    hasJumped = true;
+                }
+                break;
+
+            case State.Sprint:
+                animManager.SetWalking(true);
+                animManager.SetAttacking(false);
+                MoveTowardsPlayer(sprintSpeed);
+                break;
+
+            case State.Attack:
+                animManager.SetWalking(false);
+                animManager.SetAttacking(true);
+                break;
+
+            case State.Hurt:
+                animManager.TriggerHurt();
+                break;
+
+            case State.Die:
+                animManager.TriggerDie();
+                break;
+        }
+    }
+
+    private void MoveTowardsPlayer(float speed)
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+
+        if (direction.x > 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (direction.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public void OnHurt()
+    {
+        currentState = State.Hurt;
+    }
+
+    public void OnDie()
+    {
+        currentState = State.Die;
+    }
+
+    /// <summary>
+    /// Called by animation event to deal damage to player(s)
+    /// </summary>
+    public void TryDealDamageToPlayer()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackHitRange, playerLayer);
+
+        foreach (Collider2D hit in hits)
+        {
+            Health health1 = hit.GetComponent<Health>();
+            if (health1 != null)
             {
-                animator.SetBool("shouldBlink", true);
-                yield return null; // یک فریم صبر کن
-                animator.SetBool("shouldBlink", false);
+                health1.TakeDamage(attackDamage);
+                Debug.Log("Player 1 hit by enemy!");
+            }
+
+            Health2 health2 = hit.GetComponent<Health2>();
+            if (health2 != null)
+            {
+                health2.TakeDamage(attackDamage);
+                Debug.Log("Player 2 hit by enemy!");
             }
         }
     }
 
-    Transform GetClosestPlayer()
+    private void OnDrawGizmosSelected()
     {
-        if (player1 == null && player2 == null) return null;
-
-        float dist1 = player1 ? Vector3.Distance(transform.position, player1.position) : Mathf.Infinity;
-        float dist2 = player2 ? Vector3.Distance(transform.position, player2.position) : Mathf.Infinity;
-
-        return dist1 < dist2 ? player1 : player2;
-    }
-
-    void LookAtTarget(Transform target)
-    {
-        if (target == null) return;
-
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0f;
-
-        if (direction != Vector3.zero)
+        if (attackPoint != null)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPoint.position, attackHitRange);
         }
-    }
-
-    public void PlayHurt()
-    {
-        if (isDead) return;
-        animator.SetTrigger("isHurt");
-    }
-
-    public void Die()
-    {
-        if (isDead) return;
-
-        isDead = true;
-        animator.SetBool("isDead", true);
-        animator.SetBool("isWalking", false);
-        animator.SetBool("playerInJumpRange", false);
-        animator.SetBool("playerInAttackRange", false);
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, walkRange);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, jumpRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
