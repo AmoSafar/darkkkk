@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDebuffable
 {
     private PlayerInputActions inputActions;
     private Vector2 moveInput;
@@ -22,8 +23,13 @@ public class PlayerMovement : MonoBehaviour
     private bool atLadderTop = false;
     private bool lockAtLadderTop = false;
 
-    // اضافه شده: ذخیره آخرین محل برخورد با زمین
     private Vector3 lastGroundedPosition;
+
+    // بخش کاهش سرعت هنگام برخورد با دشمن
+    [SerializeField] private float slowDuration = 1f;
+    [SerializeField] private float slowAmount = 0.5f;
+    private bool isSlowed = false;
+    private float originalMoveSpeed;
 
     private void Awake()
     {
@@ -36,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         lastGroundedPosition = transform.position;
+        originalMoveSpeed = moveSpeed;
     }
 
     private void OnEnable()
@@ -182,7 +189,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = true;
-            lastGroundedPosition = transform.position; // ذخیره آخرین محل برخورد با زمین
+            lastGroundedPosition = transform.position;
+        }
+
+        // اگر به دشمن برخورد کرد، کاهش سرعت بده
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            ApplySlow();
         }
     }
 
@@ -219,7 +232,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (health.currentHealth > 0)
             {
-                // بازگرداندن پلیر به آخرین محل برخورد با زمین
                 transform.position = lastGroundedPosition;
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
@@ -261,4 +273,43 @@ public class PlayerMovement : MonoBehaviour
     {
         return isGrounded && moveInput.x == 0 && !isClimbing && health.currentHealth > 0;
     }
+
+    // کاهش سرعت موقت پس از برخورد با دشمن
+    public void ApplySlow()
+    {
+        if (!isSlowed)
+            StartCoroutine(SlowCoroutine());
+    }
+
+    private IEnumerator SlowCoroutine()
+    {
+        isSlowed = true;
+        moveSpeed *= slowAmount;
+
+        yield return new WaitForSeconds(slowDuration);
+
+        moveSpeed = originalMoveSpeed;
+        isSlowed = false;
+    }
+    public void ApplyDebuff(float speedFactor, float jumpFactor, float duration)
+    {
+        if (!isSlowed)
+            StartCoroutine(DebuffCoroutine(speedFactor, jumpFactor, duration));
+    }
+
+    private IEnumerator DebuffCoroutine(float speedFactor, float jumpFactor, float duration)
+    {
+        isSlowed = true;
+
+        float originalJumpForce = jumpForce;
+        moveSpeed *= speedFactor;
+        jumpForce *= jumpFactor;
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = originalMoveSpeed;
+        jumpForce = originalJumpForce;
+        isSlowed = false;
+    }
+
 }

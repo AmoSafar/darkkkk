@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
-public class SecondPlayerMovement : MonoBehaviour
+public class SecondPlayerMovement : MonoBehaviour, IDebuffable
 {
     private PlayerInputActions1 inputActions;
     private Vector2 moveInput;
@@ -11,8 +12,8 @@ public class SecondPlayerMovement : MonoBehaviour
     private Animator anim;
     private Health2 health;
 
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 7f;
+    [HideInInspector] public float moveSpeed = 5f;
+    [HideInInspector] public float jumpForce = 7f;
     [SerializeField] private float climbSpeed = 3f;
 
     private bool isGrounded = false;
@@ -21,8 +22,12 @@ public class SecondPlayerMovement : MonoBehaviour
     private bool atLadderTop = false;
     private bool lockAtLadderTop = false;
 
-    // اضافه شده: ذخیره آخرین محل برخورد با زمین
     private Vector3 lastGroundedPosition;
+
+    // متغیرهای دیباف
+    private bool isDebuffed = false;
+    private float originalMoveSpeed;
+    private float originalJumpForce;
 
     private void Awake()
     {
@@ -35,6 +40,8 @@ public class SecondPlayerMovement : MonoBehaviour
     private void Start()
     {
         lastGroundedPosition = transform.position;
+        originalMoveSpeed = moveSpeed;
+        originalJumpForce = jumpForce;
     }
 
     private void OnEnable()
@@ -63,7 +70,6 @@ public class SecondPlayerMovement : MonoBehaviour
         verticalInput = moveInput.y;
         float horizontalInput = moveInput.x;
 
-        // منطق قفل شدن بالای نردبان با شرط جدید
         if (lockAtLadderTop)
         {
             if (verticalInput < -0.1f)
@@ -180,7 +186,7 @@ public class SecondPlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ground") && !isClimbing)
         {
             isGrounded = true;
-            lastGroundedPosition = transform.position; // ذخیره آخرین محل برخورد با زمین
+            lastGroundedPosition = transform.position;
         }
     }
 
@@ -217,7 +223,6 @@ public class SecondPlayerMovement : MonoBehaviour
 
             if (health.currentHealth > 0)
             {
-                // بازگرداندن پلیر به آخرین محل برخورد با زمین
                 transform.position = lastGroundedPosition;
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
@@ -236,12 +241,33 @@ public class SecondPlayerMovement : MonoBehaviour
             canClimb = false;
             isClimbing = false;
             rb.gravityScale = 1f;
-            isGrounded = false;
         }
         else if (collision.CompareTag("LadderExit"))
         {
             atLadderTop = false;
             lockAtLadderTop = false;
         }
+    }
+
+    // متد دیباف برای کاهش سرعت و پرش به صورت موقت
+    public void ApplyDebuff(float speedAmount, float jumpAmount, float duration)
+    {
+        if (!isDebuffed)
+            StartCoroutine(DebuffCoroutine(speedAmount, jumpAmount, duration));
+    }
+
+    private IEnumerator DebuffCoroutine(float speedAmount, float jumpAmount, float duration)
+    {
+        isDebuffed = true;
+
+        moveSpeed *= speedAmount;
+        jumpForce *= jumpAmount;
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = originalMoveSpeed;
+        jumpForce = originalJumpForce;
+
+        isDebuffed = false;
     }
 }
