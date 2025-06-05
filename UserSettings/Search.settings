@@ -9,7 +9,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.66F56946" = "Used by Composite"
+	"last_search.66F56946" = "build setting"
 	"OpenInspectorPreview.66F56946" = "0"
 	"currentGroup.66F56946" = null
 }
@@ -68,6 +68,7 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	""
 	"Used by Composite"
 ]
 searchItemFavorites = [
