@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 0067bdefa95e99f429a2e56481c2e9c2
+guid: c7444f6d9ecbca04fa77b2aeb8b78889
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5553548636791380804
-    second: crystal_white-gold1_0
+      213: -9070830737692571085
+    second: KeyIcons-removebg-preview_0
+  - first:
+      213: 831964113113369758
+    second: KeyIcons-removebg-preview_1
+  - first:
+      213: 5648041602289044683
+    second: KeyIcons-removebg-preview_2
+  - first:
+      213: 7390755801307978085
+    second: KeyIcons-removebg-preview_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,10 +81,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crystal_white-gold1_0
+      name: KeyIcons-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 146
-        height: 92
+        width: 30
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb4e13550f4dde2b0800000000000000
-      internalID: -5553548636791380804
+      spriteID: 33ac32ed08fed1280800000000000000
+      internalID: -9070830737692571085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeyIcons-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9ccef3f3fabb8b00800000000000000
+      internalID: 831964113113369758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeyIcons-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc0115a9efd16e40800000000000000
+      internalID: 5648041602289044683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeyIcons-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5699e9e4e3d319660800000000000000
+      internalID: 7390755801307978085
       vertices: []
       indices: 
       edges: []
@@ -148,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crystal_white-gold1_0: -5553548636791380804
+      KeyIcons-removebg-preview_0: -9070830737692571085
+      KeyIcons-removebg-preview_1: 831964113113369758
+      KeyIcons-removebg-preview_2: 5648041602289044683
+      KeyIcons-removebg-preview_3: 7390755801307978085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
