@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health_1_level2 : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 10f;
     public float currentHealth { get; private set; }
@@ -15,16 +15,33 @@ public class Health : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRend;
     private Collider2D playerCollider;
 
-    // برای Respawn
     [HideInInspector] public Vector3 lastSafePlatformPos;
 
     private void Awake()
     {
-        currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
         lastSafePlatformPos = transform.position;
+    }
+
+    private void Start()
+    {
+        var identifier = GetComponent<PlayerIdentifier>();
+
+        if (identifier != null && HealthManager.Instance != null)
+        {
+            if (identifier.isPlayerOne)
+                currentHealth = HealthManager.Instance.player1Health;
+            else
+                currentHealth = HealthManager.Instance.player2Health;
+        }
+        else
+        {
+            currentHealth = startingHealth;
+        }
+
+        Debug.Log($"💚 Loaded health for {gameObject.name}: {currentHealth}");
     }
 
     public void TakeDamage(float amount)
@@ -38,20 +55,16 @@ public class Health : MonoBehaviour
             anim.SetTrigger("Damage");
             StartCoroutine(Invulnerability());
         }
-        else
+        else if (!Dead)
         {
-            if (!Dead)
-            {
-                anim.SetTrigger("Dead");
-                GetComponent<PlayerMovement>().enabled = false;
-                Dead = true;
-            }
+            anim.SetTrigger("Dead");
+            GetComponent<PlayerMovement>().enabled = false;
+            Dead = true;
         }
     }
 
     public void RespawnAtLastSafePos()
     {
-        // کمی بالاتر از سکو قرار بگیر
         Vector3 respawnPos = lastSafePlatformPos + Vector3.up * -0.5f;
         transform.position = respawnPos;
         var rb = GetComponent<Rigidbody2D>();

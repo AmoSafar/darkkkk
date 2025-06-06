@@ -10,7 +10,7 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
 
     private Rigidbody2D rb;
     private Animator anim;
-    private Health2 health;
+    private Health health;
 
     [HideInInspector] public float moveSpeed = 5f;
     [HideInInspector] public float jumpForce = 7f;
@@ -37,7 +37,7 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
         inputActions = new PlayerInputActions1();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        health = GetComponent<Health2>();
+        health = GetComponent<Health>();
     }
 
     private void Start()

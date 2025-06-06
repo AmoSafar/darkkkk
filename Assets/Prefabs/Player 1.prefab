@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1518928290436238092}
   - component: {fileID: 1935479072547634243}
   - component: {fileID: 778400757947802403}
+  - component: {fileID: -1556511774325567969}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -205,6 +206,19 @@ MonoBehaviour:
   numberOfFlashes: 5
   spriteRend: {fileID: 1518928290436238092}
   lastSafePlatformPos: {x: 0, y: 0, z: 0}
+--- !u!114 &-1556511774325567969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915758856160371169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542c682fed7af814da6a0374c9905dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerOne: 1
 --- !u!1 &7111955326818540670
 GameObject:
   m_ObjectHideFlags: 0
