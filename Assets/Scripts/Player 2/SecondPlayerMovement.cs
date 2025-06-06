@@ -15,6 +15,9 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
     [HideInInspector] public float moveSpeed = 5f;
     [HideInInspector] public float jumpForce = 7f;
     [SerializeField] private float climbSpeed = 3f;
+    [SerializeField] private int maxJumps = 2;
+
+    private int jumpCount;
 
     private bool isGrounded = false;
     private bool isClimbing = false;
@@ -147,13 +150,17 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
 
     private void TryJump()
     {
-        if (isGrounded && !isClimbing && health.currentHealth > 0)
+        if ((isGrounded || jumpCount < maxJumps) && !isClimbing && health.currentHealth > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            isGrounded = false;
             anim.SetTrigger("Jump");
+            jumpCount++;
+
+            // اطمینان از غیر فعال بودن Grounded
+            isGrounded = false;
         }
     }
+
 
     private void Attack()
     {
@@ -186,6 +193,7 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
         if (collision.collider.CompareTag("Ground") && !isClimbing)
         {
             isGrounded = true;
+            jumpCount = 0;
             lastGroundedPosition = transform.position;
         }
     }

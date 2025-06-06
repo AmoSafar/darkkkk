@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float climbSpeed = 3f;
+    [SerializeField] private float fastRunSpeed = 10f;
+    [SerializeField] private float fastRunDuration = 2f;
+    
+    private bool isFastRunning = false;
 
     private bool isGrounded = false;
     private bool isClimbing = false;
@@ -54,6 +58,8 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
         inputActions.Player.Jump.performed += ctx => TryJump();
         inputActions.Player.Shoot.performed += ctx => OnShoot();
+
+        inputActions.Player.Dash.performed += ctx => TryDash();
     }
 
     private void OnDisable()
@@ -63,6 +69,8 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
         inputActions.Player.Jump.performed -= ctx => TryJump();
         inputActions.Player.Shoot.performed -= ctx => OnShoot();
+
+        inputActions.Player.Dash.performed -= ctx => TryDash();
 
         inputActions.Player.Disable();
     }
@@ -90,10 +98,20 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
                 transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        anim.SetBool("Run", moveInput.x != 0 && !isClimbing);
-        anim.SetBool("Grounded", isGrounded);
-        anim.SetBool("Climb", isClimbing && Mathf.Abs(verticalInput) > 0.1f);
-    }
+        // Update Run/Idle animation states
+        bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
+
+        if (!isFastRunning)
+        {
+            anim.SetBool("Run", isMoving);
+            anim.SetBool("Idle", !isMoving);
+        }
+        else
+        {
+            anim.SetBool("Run", false);
+            anim.SetBool("Idle", false);
+        }
+}
 
     private void HandleLadderLockLogic()
     {
@@ -310,6 +328,40 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         moveSpeed = originalMoveSpeed;
         jumpForce = originalJumpForce;
         isSlowed = false;
+    }
+
+    private void TryDash()
+    {
+        if (!isFastRunning && isGrounded && Mathf.Abs(moveInput.x) > 0.1f)
+        {
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        isFastRunning = true;
+        float originalSpeed = moveSpeed;
+        float originalAnimSpeed = anim.speed;
+        moveSpeed = fastRunSpeed;
+        anim.speed = 1.8f;
+        anim.SetBool("FastRun", true);
+
+        yield return new WaitForSeconds(fastRunDuration);
+
+        moveSpeed = originalSpeed;
+        anim.speed = originalAnimSpeed;
+        anim.SetBool("FastRun", false);
+
+        isFastRunning = false;
+
+        // ❗ با اضافه کردن این‌ها فوراً به وضعیت درست برمی‌گرده
+        bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
+        anim.SetBool("Run", isMoving);
+        anim.SetBool("Idle", !isMoving);
+
+        anim.Play(isMoving ? "Run" : "Idle"); // اجرای فوری انیمیشن درست
+        anim.Update(0f); // آپدیت فوری فریم انیمیشن
     }
 
 }
