@@ -27,6 +27,12 @@ public class UIGameOverManger : MonoBehaviour
         }
     }
 
+    public void Resume()
+    {
+        PauseScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     public void GameOver()
     {
         GameOverScreen.SetActive(true);
@@ -51,8 +57,12 @@ public class UIGameOverManger : MonoBehaviour
     #endif
     }
 
-    private void PauseGame(bool status)
+    public void PauseGame(bool status)
     {
         PauseScreen.SetActive(status);
+        if(status)
+        Time.timeScale = 0;
+        else
+        Time.timeScale = 1;
     }
 }
