@@ -35,8 +35,9 @@ public class Lantern : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         startPos = transform.position;
-        uiManager = FindObjectOfType<LanternUIManager>();
+        uiManager = FindFirstObjectByType<LanternUIManager>(); // به‌روزرسانی شده
     }
+
 
     private void Update()
     {

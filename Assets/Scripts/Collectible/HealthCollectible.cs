@@ -21,20 +21,11 @@ public class HealthCollectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // بررسی برای اسکریپت Health
+        // بررسی برای هر شی که اسکریپت Health داشته باشه
         Health health = collision.GetComponent<Health>();
         if (health != null)
         {
             health.AddHealth(healthValue);
-            gameObject.SetActive(false);
-            return;
-        }
-
-        // بررسی برای اسکریپت Health2
-        Health2 health2 = collision.GetComponent<Health2>();
-        if (health2 != null)
-        {
-            health2.AddHealth(healthValue);
             gameObject.SetActive(false);
         }
     }

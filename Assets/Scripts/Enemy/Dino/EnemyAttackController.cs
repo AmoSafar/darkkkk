@@ -102,20 +102,10 @@ public class EnemyAttackController : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(boxCenter, boxSize, 0f, Vector2.zero, 0f, playerLayer);
         if (hit.collider != null)
         {
-            // برای پلیر 1
-            var health1 = hit.transform.GetComponent<Health>();
-            if (health1 != null)
+            var health = hit.transform.GetComponent<Health>();
+            if (health != null)
             {
-                health1.TakeDamage(damage);
-                return;
-            }
-
-            // برای پلیر 2
-            var health2 = hit.transform.GetComponent<Health2>();
-            if (health2 != null)
-            {
-                health2.TakeDamage(damage);
-                return;
+                health.TakeDamage(damage);
             }
         }
     }

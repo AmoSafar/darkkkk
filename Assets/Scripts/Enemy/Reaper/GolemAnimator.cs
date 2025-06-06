@@ -20,8 +20,7 @@ public class GolemAnimator : MonoBehaviour
     public int maxSlashBeforeKick = 3;
 
     private Animator animator;
-    private MonoBehaviour playerHealthScript;
-    private bool isHealthType1 = false;
+    private Health playerHealthScript;
 
     private float blinkTimer;
     private float nextBlinkTime;
@@ -47,22 +46,16 @@ public class GolemAnimator : MonoBehaviour
         HandleBlinking();
     }
 
-    // پیدا کردن کامپوننت سلامتی پلیر (مناسب با دو نوع Health)
+    // پیدا کردن کامپوننت سلامتی پلیر
     private void FindPlayerHealthComponent()
     {
         if (player.TryGetComponent<Health>(out Health h1))
         {
             playerHealthScript = h1;
-            isHealthType1 = true;
-        }
-        else if (player.TryGetComponent<Health2>(out Health2 h2))
-        {
-            playerHealthScript = h2;
-            isHealthType1 = false;
         }
         else
         {
-            Debug.LogError("Player does not have Health or Health2 component!");
+            Debug.LogError("Player does not have a Health component!");
         }
     }
 
@@ -163,13 +156,11 @@ public class GolemAnimator : MonoBehaviour
         isAttacking = false;
     }
 
-    // حرکت نرم به سمت پلیر و چرخش
     void MoveTowardsPlayer(float speed)
     {
         Vector3 direction = (player.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
 
-        // چرخش نرم به سمت پلیر (Smooth Rotation)
         float targetScaleX = player.position.x > transform.position.x ? 1f : -1f;
         Vector3 currentScale = transform.localScale;
         currentScale.x = Mathf.Lerp(currentScale.x, targetScaleX, Time.deltaTime * 10f);
@@ -181,10 +172,7 @@ public class GolemAnimator : MonoBehaviour
         if (playerHealthScript == null)
             return;
 
-        if (isHealthType1)
-            ((Health)playerHealthScript).TakeDamage(damageAmount);
-        else
-            ((Health2)playerHealthScript).TakeDamage(damageAmount);
+        playerHealthScript.TakeDamage(damageAmount);
     }
 
     public void TakeDamage(float damage)
@@ -195,7 +183,7 @@ public class GolemAnimator : MonoBehaviour
         animator.SetTrigger("hurt");
         currentState = State.Hurt;
 
-        // اگر می‌خوای بلافاصله دشمن بمیره، می‌تونی این خط رو فعال کنی:
+        // می‌تونی در صورت نیاز بلافاصله دشمن رو بکشی:
         // Die();
     }
 
@@ -211,7 +199,6 @@ public class GolemAnimator : MonoBehaviour
         this.enabled = false;
     }
 
-    // تنظیم وضعیت انیمیشن
     void SetAnimationState(bool idle = false, bool running = false)
     {
         animator.SetBool("isIdle", idle);
@@ -219,7 +206,6 @@ public class GolemAnimator : MonoBehaviour
         animator.SetBool("isRunning", running);
     }
 
-    // مدیریت پلک زدن تصادفی در حالت Idle
     void HandleBlinking()
     {
         if (currentState == State.Idle)

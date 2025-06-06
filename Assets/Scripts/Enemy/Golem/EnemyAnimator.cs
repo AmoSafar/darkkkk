@@ -51,10 +51,9 @@ public class EnemyAI : MonoBehaviour
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        // حالت‌های بر اساس فاصله و شرایط
         if (distanceToPlayer <= attackRange)
         {
-            currentState = State.Slash;  // اول اسلش شروع می‌کنیم
+            currentState = State.Slash;
         }
         else if (distanceToPlayer <= runRange)
         {
@@ -78,7 +77,6 @@ public class EnemyAI : MonoBehaviour
 
         HandleState();
 
-        // بررسی زمین بودن
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
         isGrounded = hit.collider != null;
 
@@ -178,7 +176,7 @@ public class EnemyAI : MonoBehaviour
             if (slashCount < maxSlashBeforeKick)
             {
                 animManager.TriggerSlash();
-                yield return new WaitForSeconds(0.3f); // زمان تاخیر انیمیشن
+                yield return new WaitForSeconds(0.3f);
                 DealDamage(slashDamage);
                 slashCount++;
             }
@@ -210,13 +208,9 @@ public class EnemyAI : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackHitRange, playerLayer);
         foreach (var hit in hits)
         {
-            Health health1 = hit.GetComponent<Health>();
-            if (health1 != null)
-                health1.TakeDamage(amount);
-
-            Health2 health2 = hit.GetComponent<Health2>();
-            if (health2 != null)
-                health2.TakeDamage(amount);
+            Health health = hit.GetComponent<Health>();
+            if (health != null)
+                health.TakeDamage(amount);
         }
     }
 

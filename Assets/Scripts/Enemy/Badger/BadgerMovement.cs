@@ -24,11 +24,12 @@ public class BadgerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
 
         // پیدا کردن تمام پلیرهایی که Health دارند
-        Health[] healthComponents = FindObjectsOfType<Health>();
+        Health[] healthComponents = FindObjectsByType<Health>(FindObjectsSortMode.None);
         players = new Transform[healthComponents.Length];
         for (int i = 0; i < healthComponents.Length; i++)
             players[i] = healthComponents[i].transform;
     }
+
 
     private void Update()
     {

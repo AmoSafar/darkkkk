@@ -1,5 +1,3 @@
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_SideAway : MonoBehaviour
@@ -18,47 +16,37 @@ public class Enemy_SideAway : MonoBehaviour
     }
 
     private void Update()
-{
-    if (movingLeft)
     {
-        if (transform.position.x > leftEdge)
+        if (movingLeft)
         {
-            transform.position = new UnityEngine.Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+            if (transform.position.x > leftEdge)
+            {
+                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                movingLeft = false;
+            }
         }
         else
         {
-            movingLeft = false; // ← تغییر جهت
+            if (transform.position.x < rightEdge)
+            {
+                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                movingLeft = true;
+            }
         }
     }
-    else
-    {
-        if (transform.position.x < rightEdge)
-        {
-            transform.position = new UnityEngine.Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
-        }
-        else
-        {
-            movingLeft = true; // ← تغییر جهت
-        }
-    }
-}
 
-     private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // اگر به Player 1 برخورد کرد
-        Health health1 = collision.GetComponent<Health>();
-        if (health1 != null)
+        Health health = collision.GetComponent<Health>();
+        if (health != null)
         {
-            health1.TakeDamage(damage);
-            return;
-        }
-
-        // اگر به Player 2 برخورد کرد
-        Health2 health2 = collision.GetComponent<Health2>();
-        if (health2 != null)
-        {
-            health2.TakeDamage(damage);
-            return;
+            health.TakeDamage(damage);
         }
     }
 }

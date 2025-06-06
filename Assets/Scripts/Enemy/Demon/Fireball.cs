@@ -25,31 +25,22 @@ public class Fireball : MonoBehaviour
     {
         direction = newDirection;
 
-        // اگر جهت به راست باشه، مقیاس X مثبت باشه، در غیر این صورت منفی
+        // تغییر مقیاس بر اساس جهت حرکت
         if (newDirection.x > 0)
             transform.localScale = new Vector3(1f, 1f, 1f);
         else if (newDirection.x < 0)
             transform.localScale = new Vector3(-1f, 1f, 1f);
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // اگر پلیر دارای کامپوننت Health بود
-            Health health1 = collision.GetComponent<Health>();
-            // اگر پلیر دارای کامپوننت Health2 بود
-            Health2 health2 = collision.GetComponent<Health2>();
-
-            if (health1 != null)
+            // فقط یک نوع Health وجود دارد
+            Health health = collision.GetComponent<Health>();
+            if (health != null)
             {
-                health1.TakeDamage(damage);
-                Destroy(gameObject);
-            }
-            else if (health2 != null)
-            {
-                health2.TakeDamage(damage);
+                health.TakeDamage(damage);
                 Destroy(gameObject);
             }
         }
