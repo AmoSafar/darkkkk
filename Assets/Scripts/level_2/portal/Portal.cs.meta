@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 2504b8c50bf64bc4faef42a75d1a3c62
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - destination: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - teleportSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

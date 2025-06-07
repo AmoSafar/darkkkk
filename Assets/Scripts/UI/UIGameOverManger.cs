@@ -9,28 +9,42 @@ public class UIGameOverManger : MonoBehaviour
 
     [Header("Pause")]
     [SerializeField] private GameObject PauseScreen;
-    
+
+    [Header("Settings")]
+    [SerializeField] private GameObject SettingsPanel;
+
+    [Header("Restart Settings")]
+    [Tooltip("Index of the scene to restart from (e.g. 1 for Map1, 2 for Map2)")]
+    [SerializeField] private int restartSceneIndex = 1;
+
     private void Awake()
     {
         GameOverScreen.SetActive(false);
+        SettingsPanel.SetActive(false); // مخفی کردن پنل تنظیمات در ابتدا
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(PauseScreen.activeInHierarchy)
-                PauseGame(false);
+            if (SettingsPanel.activeInHierarchy)
+            {
+                CloseSettings();
+            }
             else
-                PauseGame(true);
-
+            {
+                if (PauseScreen.activeInHierarchy)
+                    PauseGame(false);
+                else
+                    PauseGame(true);
+            }
         }
     }
 
     public void Resume()
     {
         PauseScreen.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
     }
 
     public void GameOver()
@@ -40,12 +54,14 @@ public class UIGameOverManger : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f; // اطمینان از اینکه بازی از حالت pause خارج شده
+        SceneManager.LoadScene(restartSceneIndex); // بارگذاری سین مشخص‌شده
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0); // فرض بر این است که منوی اصلی ایندکس 0 دارد
     }
 
     public void Quit()
@@ -60,9 +76,18 @@ public class UIGameOverManger : MonoBehaviour
     public void PauseGame(bool status)
     {
         PauseScreen.SetActive(status);
-        if(status)
-        Time.timeScale = 0;
-        else
-        Time.timeScale = 1;
+        Time.timeScale = status ? 0f : 1f;
+    }
+
+    public void OpenSettings()
+    {
+        PauseScreen.SetActive(false);
+        SettingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        SettingsPanel.SetActive(false);
+        PauseScreen.SetActive(true);
     }
 }

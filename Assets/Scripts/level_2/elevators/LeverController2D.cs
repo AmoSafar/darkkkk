@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class LeverController2D : MonoBehaviour
 {
-    public ElevatorController2D elevator;   // رفرنس به اسکریپت آسانسور
-    public Sprite sprite1;                  // اسپرایت حالت اول
-    public Sprite sprite2;                  // اسپرایت حالت دوم
+    public ElevatorController2D elevator;
+    public Sprite sprite1;
+    public Sprite sprite2;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip leverSound;
 
     private bool playerInZone = false;
     private bool isFirstSprite = true;
@@ -20,12 +23,15 @@ public class LeverController2D : MonoBehaviour
     {
         if (playerInZone && Input.GetKeyDown(KeyCode.P))
         {
-            // تغییر حالت آسانسور
             elevator.ToggleMove();
 
-            // تغییر اسپرایت اهرم
             isFirstSprite = !isFirstSprite;
             spriteRenderer.sprite = isFirstSprite ? sprite1 : sprite2;
+
+            if (audioSource != null && leverSound != null)
+            {
+                audioSource.PlayOneShot(leverSound);
+            }
         }
     }
 

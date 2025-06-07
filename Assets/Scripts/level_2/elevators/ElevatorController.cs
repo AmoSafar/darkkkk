@@ -9,6 +9,9 @@ public class ElevatorController2D : MonoBehaviour
     private bool isMoving = false;
     private bool movingDown = true;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip moveSound;
+
     void FixedUpdate()
     {
         if (isMoving)
@@ -34,11 +37,22 @@ public class ElevatorController2D : MonoBehaviour
         {
             movingDown = false;
             isMoving = true;
+            PlayMoveSound();
         }
         else if (!isMoving && IsAtTop())
         {
             movingDown = true;
             isMoving = true;
+            PlayMoveSound();
+        }
+    }
+
+    private void PlayMoveSound()
+    {
+        if (audioSource != null && moveSound != null)
+        {
+            audioSource.clip = moveSound;
+            audioSource.Play();
         }
     }
 
