@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Enemy_SideAway : MonoBehaviour
 {
+    [Header("Movement Settings")]
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float movementDistance = 5f;
+
+    [Header("Damage Settings")]
     [SerializeField] private float damage = 1f;
-    [SerializeField] private float speed;
-    [SerializeField] private float movementDistance;
+
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
@@ -17,11 +21,16 @@ public class Enemy_SideAway : MonoBehaviour
 
     private void Update()
     {
+        Patrol();
+    }
+
+    private void Patrol()
+    {
         if (movingLeft)
         {
             if (transform.position.x > leftEdge)
             {
-                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+                transform.position += Vector3.left * speed * Time.deltaTime;
             }
             else
             {
@@ -32,21 +41,12 @@ public class Enemy_SideAway : MonoBehaviour
         {
             if (transform.position.x < rightEdge)
             {
-                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+                transform.position += Vector3.right * speed * Time.deltaTime;
             }
             else
             {
                 movingLeft = true;
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Health health = collision.GetComponent<Health>();
-        if (health != null)
-        {
-            health.TakeDamage(damage);
         }
     }
 }
