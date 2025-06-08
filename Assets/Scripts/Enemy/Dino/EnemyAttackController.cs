@@ -23,11 +23,22 @@ public class EnemyAttackController : MonoBehaviour
     private bool isAttacking = false;
     private Transform targetPlayer;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip firstAttackClip;
+    [SerializeField] private AudioClip secondAttackClip;
+    [SerializeField] private AudioClip destroyClip;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player")
                   .Select(go => go.transform)
                   .ToArray();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -108,6 +119,26 @@ public class EnemyAttackController : MonoBehaviour
                 health.TakeDamage(damage);
             }
         }
+    }
+
+    // --- 🔊 متدهای صدا از Animation Events --- //
+    public void PlayFirstAttackSound()
+    {
+        if (firstAttackClip != null && audioSource != null)
+            audioSource.PlayOneShot(firstAttackClip);
+    }
+
+    public void PlaySecondAttackSound()
+    {
+        if (secondAttackClip != null && audioSource != null)
+            audioSource.PlayOneShot(secondAttackClip);
+    }
+
+    // --- 🔥 پخش صدا هنگام Destroy --- //
+    private void OnDestroy()
+    {
+        if (destroyClip != null)
+            AudioSource.PlayClipAtPoint(destroyClip, transform.position);
     }
 
     private void OnDrawGizmosSelected()

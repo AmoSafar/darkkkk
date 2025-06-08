@@ -10,6 +10,10 @@ public class BadgerMovement : MonoBehaviour
     [SerializeField] private float prepareTime = 1f;
     [SerializeField] private float attackRange = 0.5f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip moveClip; // صدای حالت Move
+    private AudioSource audioSource;
+
     private Transform[] players;
     private Transform targetPlayer;
     private float lastAttackTime;
@@ -23,6 +27,11 @@ public class BadgerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
+        // گرفتن یا ساختن AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         // پیدا کردن تمام پلیرهایی که Health دارند
         Health[] healthComponents = FindObjectsByType<Health>(FindObjectsSortMode.None);
         players = new Transform[healthComponents.Length];
@@ -30,18 +39,20 @@ public class BadgerMovement : MonoBehaviour
             players[i] = healthComponents[i].transform;
     }
 
-
     private void Update()
     {
         targetPlayer = GetClosestPlayer();
-        // Flip کردن دشمن به سمت پلیر
-        Vector3 scale = transform.localScale;
-        if (targetPlayer.position.x < transform.position.x)
-            scale.x = Mathf.Abs(scale.x) * -1f; // نگاه به چپ
-        else
-            scale.x = Mathf.Abs(scale.x);      // نگاه به راست
-        transform.localScale = scale;
 
+        // Flip به سمت پلیر
+        if (targetPlayer != null)
+        {
+            Vector3 scale = transform.localScale;
+            if (targetPlayer.position.x < transform.position.x)
+                scale.x = Mathf.Abs(scale.x) * -1f;
+            else
+                scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
 
         switch (currentState)
         {
@@ -61,6 +72,10 @@ public class BadgerMovement : MonoBehaviour
                 {
                     currentState = State.Move;
                     anim.Play("Move");
+
+                    // پخش صدای ورود به حالت Move
+                    if (moveClip != null && audioSource != null)
+                        audioSource.PlayOneShot(moveClip);
                 }
                 break;
 
@@ -68,6 +83,7 @@ public class BadgerMovement : MonoBehaviour
                 if (targetPlayer == null)
                 {
                     currentState = State.Idle;
+                    anim.Play("Idle");
                     break;
                 }
 
@@ -84,7 +100,6 @@ public class BadgerMovement : MonoBehaviour
                 }
                 else
                 {
-                    // حرکت به سمت پلیر
                     transform.position = Vector2.MoveTowards(transform.position, targetPlayer.position, moveSpeed * Time.deltaTime);
                 }
                 break;
@@ -99,6 +114,10 @@ public class BadgerMovement : MonoBehaviour
                     {
                         currentState = State.Move;
                         anim.Play("Move");
+
+                        // پخش دوباره صدا هنگام بازگشت به Move
+                        if (moveClip != null && audioSource != null)
+                            audioSource.PlayOneShot(moveClip);
                     }
                 }
                 break;
