@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - LadderExit
   - Dead
+  - Rock
   layers:
   - Default
   - TransparentFX
