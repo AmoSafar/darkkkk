@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     [SerializeField] private float climbSpeed = 3f;
     [SerializeField] private float fastRunSpeed = 10f;
     [SerializeField] private float fastRunDuration = 2f;
-    
+
     private bool isFastRunning = false;
 
     private bool isGrounded = false;
