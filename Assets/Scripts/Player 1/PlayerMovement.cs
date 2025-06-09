@@ -23,13 +23,12 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     private bool isGrounded = false;
     private bool isClimbing = false;
     private bool canClimb = false;
-    private bool climbingStarted = false;
     private bool atLadderTop = false;
     private bool lockAtLadderTop = false;
 
     private Vector3 lastGroundedPosition;
 
-    // بخش کاهش سرعت هنگام برخورد با دشمن
+    // کاهش سرعت هنگام برخورد با دشمن
     [SerializeField] private float slowDuration = 1f;
     [SerializeField] private float slowAmount = 0.5f;
     private bool isSlowed = false;
@@ -79,10 +78,38 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     {
         if (health.currentHealth <= 0) return;
 
-        HandleLadderLockLogic();
-        HandleClimbingInput();
+        verticalInput = moveInput.y;
+        float horizontalInput = moveInput.x;
 
-        if (isClimbing && climbingStarted)
+        // منطق قفل شدن در بالای نردبان (LadderExit)
+        if (lockAtLadderTop)
+        {
+            HandleLadderLockLogic();
+            return;
+        }
+
+        // منطق خروج از بالای نردبان
+        if (atLadderTop)
+        {
+            if (verticalInput < -0.1f)
+            {
+                atLadderTop = false;
+                canClimb = true;
+                isClimbing = true;
+            }
+            else
+            {
+                canClimb = false;
+                isClimbing = false;
+            }
+        }
+        else
+        {
+            HandleClimbingInput();
+        }
+
+        // حرکت روی نردبان
+        if (isClimbing)
         {
             rb.gravityScale = 0f;
             rb.linearVelocity = new Vector2(0, verticalInput * climbSpeed);
@@ -111,40 +138,36 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
             anim.SetBool("Run", false);
             anim.SetBool("Idle", false);
         }
-}
+    }
 
     private void HandleLadderLockLogic()
     {
         verticalInput = moveInput.y;
         float horizontalInput = moveInput.x;
 
-        if (lockAtLadderTop)
+        if (verticalInput < -0.1f)
         {
-            if (verticalInput < -0.1f)
-            {
-                lockAtLadderTop = false;
-                atLadderTop = false;
-                canClimb = true;
-                isClimbing = true;
-                rb.gravityScale = 0f;
-            }
-            else if (Mathf.Abs(horizontalInput) > 0.1f)
-            {
-                lockAtLadderTop = false;
-                rb.gravityScale = 1f;
-            }
-            else
-            {
-                rb.gravityScale = 0f;
-                rb.linearVelocity = Vector2.zero;
-                isGrounded = true;
-                canClimb = false;
-                isClimbing = false;
-                anim.SetBool("Run", false);
-                anim.SetBool("Climb", false);
-                anim.SetBool("Grounded", true);
-                return;
-            }
+            lockAtLadderTop = false;
+            atLadderTop = false;
+            canClimb = true;
+            isClimbing = true;
+            rb.gravityScale = 0f;
+        }
+        else if (Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            lockAtLadderTop = false;
+            rb.gravityScale = 1f;
+        }
+        else
+        {
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            isGrounded = true;
+            canClimb = false;
+            isClimbing = false;
+            anim.SetBool("Run", false);
+            anim.SetBool("Climb", false);
+            anim.SetBool("Grounded", true);
         }
     }
 
@@ -152,35 +175,14 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     {
         verticalInput = moveInput.y;
 
-        if (canClimb)
+        if (canClimb && Mathf.Abs(verticalInput) > 0.1f)
         {
-            climbingStarted = Mathf.Abs(verticalInput) > 0.1f;
-
-            if (climbingStarted && !isClimbing)
-            {
-                isClimbing = true;
-                Physics2D.IgnoreLayerCollision(
-                    LayerMask.NameToLayer("Player"),
-                    LayerMask.NameToLayer("Ground"),
-                    true
-                );
-            }
+            isClimbing = true;
+            isGrounded = false;
         }
-        else
+        else if (!canClimb || Mathf.Abs(verticalInput) <= 0.1f)
         {
-            climbingStarted = false;
-
-            if (isClimbing)
-            {
-                isClimbing = false;
-                rb.gravityScale = 1f;
-
-                Physics2D.IgnoreLayerCollision(
-                    LayerMask.NameToLayer("Player"),
-                    LayerMask.NameToLayer("Ground"),
-                    false
-                );
-            }
+            isClimbing = false;
         }
     }
 
@@ -266,19 +268,8 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         if (collision.CompareTag("Ladder"))
         {
             canClimb = false;
-            climbingStarted = false;
-
-            if (isClimbing)
-            {
-                isClimbing = false;
-                rb.gravityScale = 1f;
-
-                Physics2D.IgnoreLayerCollision(
-                    LayerMask.NameToLayer("Player"),
-                    LayerMask.NameToLayer("Ground"),
-                    false
-                );
-            }
+            isClimbing = false;
+            rb.gravityScale = 1f;
         }
         else if (collision.CompareTag("LadderExit"))
         {
@@ -309,6 +300,7 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         moveSpeed = originalMoveSpeed;
         isSlowed = false;
     }
+
     public void ApplyDebuff(float speedFactor, float jumpFactor, float duration)
     {
         if (!isSlowed)
@@ -355,13 +347,11 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
         isFastRunning = false;
 
-        // ❗ با اضافه کردن این‌ها فوراً به وضعیت درست برمی‌گرده
         bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
         anim.SetBool("Run", isMoving);
         anim.SetBool("Idle", !isMoving);
 
-        anim.Play(isMoving ? "Run" : "Idle"); // اجرای فوری انیمیشن درست
-        anim.Update(0f); // آپدیت فوری فریم انیمیشن
+        anim.Play(isMoving ? "Run" : "Idle");
+        anim.Update(0f);
     }
-
 }

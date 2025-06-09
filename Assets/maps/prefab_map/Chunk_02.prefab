@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 334487480818548059}
   - component: {fileID: 3944850388578921349}
   - component: {fileID: 3600653284474228628}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3628,6 +3628,9 @@ MonoBehaviour:
     m_Bits: 256
   boxCollider: {fileID: 2682063609837680901}
   animator: {fileID: 3521766060513373405}
+  firstAttackClip: {fileID: 0}
+  secondAttackClip: {fileID: 0}
+  destroyClip: {fileID: 0}
 --- !u!95 &3521766060513373405
 Animator:
   serializedVersion: 7
