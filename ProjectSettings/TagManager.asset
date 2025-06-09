@@ -10,6 +10,8 @@ TagManager:
   - LadderExit
   - Dead
   - Rock
+  - G
+  - D
   layers:
   - Default
   - TransparentFX

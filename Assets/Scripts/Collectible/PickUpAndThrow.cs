@@ -43,24 +43,27 @@ public class PickUpAndThrow : MonoBehaviour
             }
         }
     }
+void PickUp()
+{
+    heldRock = nearbyRock;
+    heldRock.transform.SetParent(holdPoint);
+    heldRock.transform.localPosition = Vector3.zero;
+    Rigidbody2D rb = heldRock.GetComponent<Rigidbody2D>();
+    rb.isKinematic = true;
+    rb.gravityScale = 0f; // سنگ بدون جاذبه در دست بازیکن
+    heldRock.GetComponent<Collider2D>().isTrigger = true;
+    nearbyRock = null;
+}
 
-    void PickUp()
-    {
-        heldRock = nearbyRock;
-        heldRock.transform.SetParent(holdPoint);
-        heldRock.transform.localPosition = Vector3.zero;
-        heldRock.GetComponent<Rigidbody2D>().isKinematic = true;
-        heldRock.GetComponent<Collider2D>().enabled = false;
-        nearbyRock = null;
-    }
+void Throw()
+{
+    heldRock.transform.SetParent(null);
+    Rigidbody2D rb = heldRock.GetComponent<Rigidbody2D>();
+    rb.isKinematic = false;
+    rb.gravityScale = 1f; // جاذبه فعال می‌شود
+    heldRock.GetComponent<Collider2D>().isTrigger = false;
+    rb.AddForce(transform.right * throwForce);
+    heldRock = null;
+}
 
-    void Throw()
-    {
-        heldRock.transform.SetParent(null);
-        Rigidbody2D rb = heldRock.GetComponent<Rigidbody2D>();
-        rb.isKinematic = false;
-        rb.AddForce(transform.right * throwForce); // پرتاب به سمت راست بازیکن
-        heldRock.GetComponent<Collider2D>().enabled = true;
-        heldRock = null;
-    }
 }
