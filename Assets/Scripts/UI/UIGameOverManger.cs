@@ -50,7 +50,13 @@ public class UIGameOverManger : MonoBehaviour
     public void GameOver()
     {
         GameOverScreen.SetActive(true);
+
+        if (GameOverSound != null)
+        {
+            AudioSource.PlayClipAtPoint(GameOverSound, Camera.main.transform.position, SoundManager.Instance.SFXVolume);
+        }
     }
+
 
     public void Restart()
     {

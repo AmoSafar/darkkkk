@@ -11,18 +11,24 @@ public class BackgroundMusic : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject); // جلوگیری از تکرار در صحنه‌های بعدی
+            Destroy(gameObject);
             return;
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject); // از بین نرفتن هنگام تغییر صحنه
+        DontDestroyOnLoad(gameObject);
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = backgroundMusic;
         audioSource.loop = true;
         audioSource.playOnAwake = false;
-        audioSource.volume = 0.5f;
+        audioSource.volume = SoundManager.Instance.MusicVolume;
         audioSource.Play();
+    }
+
+    private void Update()
+    {
+        // بروزرسانی ولوم موسیقی
+        audioSource.volume = SoundManager.Instance.MusicVolume;
     }
 }
