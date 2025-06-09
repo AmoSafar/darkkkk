@@ -616,7 +616,7 @@ Transform:
   m_GameObject: {fileID: 203690821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1587822, y: 0.7623999, z: -16}
+  m_LocalPosition: {x: -2.161885, y: 0.7623999, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1143,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 1085536449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3512235, y: -0.25, z: -15.63}
+  m_LocalPosition: {x: 4.3481164, y: -0.25, z: -15.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1463,7 +1463,7 @@ Transform:
   m_GameObject: {fileID: 1196871065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3512235, y: -0.25, z: -15.63}
+  m_LocalPosition: {x: 4.3481164, y: -0.25, z: -15.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1764,7 +1764,7 @@ Transform:
   m_GameObject: {fileID: 1560465297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1587768, y: 4.47, z: -16}
+  m_LocalPosition: {x: -2.1618838, y: 4.47, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   secondPlayerAudioSource: {fileID: 1954937734}
   secondPlayerJumpClip: {fileID: 8300000, guid: c87def5e3d505564aa0f3a7d2278a745, type: 3}
   secondPlayerAttackClip: {fileID: 8300000, guid: bb367b8683d02f94c94bd965750752a3, type: 3}
-  secondPlayerDamageClip: {fileID: 0}
+  secondPlayerDamageClip: {fileID: 8300000, guid: 32d6cef935e84e04da0db178c8f13e17, type: 3}
 --- !u!95 &1954937733 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7411047423893161807, guid: e0a7bc1f931b7d04eb8f3f9aab19c730, type: 3}
@@ -2468,9 +2468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1964687639}
-  jumpClip: {fileID: 0}
-  shootClip: {fileID: 0}
-  damageClip: {fileID: 0}
+  jumpClip: {fileID: 8300000, guid: 743c8dd034ba0dd47a158641ab0c2fa5, type: 3}
+  shootClip: {fileID: 8300000, guid: e3f77898f0b47cb4887a6c6fb50d536b, type: 3}
+  damageClip: {fileID: 8300000, guid: 32d6cef935e84e04da0db178c8f13e17, type: 3}
 --- !u!1 &1969312810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5075052274391985272, guid: aa60a38dfc7165f47aaaa7cdf0b4eb18, type: 3}
