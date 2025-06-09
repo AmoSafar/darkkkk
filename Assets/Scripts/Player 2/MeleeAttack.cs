@@ -7,9 +7,15 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private LayerMask enemyLayers;
 
+    // ← این property جدید رو اضافه کن
+    public int AttackDamage
+    {
+        get => attackDamage;
+        set => attackDamage = value;
+    }
+
     public void Attack()
     {
-        // پیدا کردن دشمنان در محدوده حمله
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -18,7 +24,6 @@ public class MeleeAttack : MonoBehaviour
         }
     }
 
-    // برای نمایش دایره‌ی حمله در صحنه (Gizmos)
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;

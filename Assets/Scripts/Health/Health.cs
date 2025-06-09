@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public Vector3 lastSafePlatformPos;
 
     private PlayerIdentifier playerIdentifier;
+    private UIGameOverManger uiGameOverManager; // اضافه‌شده
 
     private void Awake()
     {
@@ -27,7 +28,8 @@ public class Health : MonoBehaviour
         playerCollider = GetComponent<Collider2D>();
         lastSafePlatformPos = transform.position;
         playerIdentifier = GetComponent<PlayerIdentifier>();
-         DontDestroyOnLoad(gameObject); // استفاده زودهنگام
+
+        uiGameOverManager = FindObjectOfType<UIGameOverManger>(); // اضافه‌شده
     }
 
     private void Start()
@@ -71,6 +73,16 @@ public class Health : MonoBehaviour
                 GetComponent<SecondPlayerMovement>().enabled = false;
 
             Dead = true;
+
+            if (uiGameOverManager != null)
+            {
+                uiGameOverManager.GameOver();
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Debug.LogWarning("UIGameOverManger not found in scene!");
+            }
         }
     }
 
@@ -84,7 +96,7 @@ public class Health : MonoBehaviour
 
     public void ForceSyncHealthToManager()
     {
-        SyncWithHealthManager(); // فقط زمان تغییر صحنه یا نیاز خاص
+        SyncWithHealthManager();
     }
 
     public void RespawnAtLastSafePos()

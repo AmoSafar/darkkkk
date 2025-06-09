@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 1b3303711c6b0fd4b9403bbc860c15bd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5360828643951407243
+    second: anyrgb.com_0
+  - first:
+      213: 7475977418428177385
+    second: anyrgb.com_1
+  - first:
+      213: -7980882199041589353
+    second: anyrgb.com_2
+  - first:
+      213: 2404671186171355533
+    second: anyrgb.com_3
+  - first:
+      213: -8836075992421875360
+    second: anyrgb.com_4
+  - first:
+      213: 5066234759988464172
+    second: anyrgb.com_5
+  - first:
+      213: 5309258961784370370
+    second: anyrgb.com_6
+  - first:
+      213: -5207432358759562589
+    second: anyrgb.com_7
+  - first:
+      213: -3597060072696682095
+    second: anyrgb.com_8
+  - first:
+      213: 6951986890066219649
+    second: anyrgb.com_9
+  - first:
+      213: -284716107257788882
+    second: anyrgb.com_10
+  - first:
+      213: -1392506861887173772
+    second: anyrgb.com_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anyrgb.com_3
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 183
+        width: 102
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d816c5d04bb1f5120800000000000000
+      internalID: 2404671186171355533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b8ca21eda4c740b40a65d7e54573e584
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      anyrgb.com_0: 5360828643951407243
+      anyrgb.com_1: 7475977418428177385
+      anyrgb.com_10: -284716107257788882
+      anyrgb.com_11: -1392506861887173772
+      anyrgb.com_2: -7980882199041589353
+      anyrgb.com_3: 2404671186171355533
+      anyrgb.com_4: -8836075992421875360
+      anyrgb.com_5: 5066234759988464172
+      anyrgb.com_6: 5309258961784370370
+      anyrgb.com_7: -5207432358759562589
+      anyrgb.com_8: -3597060072696682095
+      anyrgb.com_9: 6951986890066219649
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

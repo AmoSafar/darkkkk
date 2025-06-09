@@ -3628,9 +3628,9 @@ MonoBehaviour:
     m_Bits: 256
   boxCollider: {fileID: 2682063609837680901}
   animator: {fileID: 3521766060513373405}
-  firstAttackClip: {fileID: 0}
-  secondAttackClip: {fileID: 0}
-  destroyClip: {fileID: 0}
+  firstAttackClip: {fileID: 8300000, guid: 69444bc461fa5f64fae644fd427db76b, type: 3}
+  secondAttackClip: {fileID: 8300000, guid: 47c090c36553e554594d020ad6013314, type: 3}
+  destroyClip: {fileID: 8300000, guid: 309c17d573f33fc45a41772a1400e0a3, type: 3}
 --- !u!95 &3521766060513373405
 Animator:
   serializedVersion: 7

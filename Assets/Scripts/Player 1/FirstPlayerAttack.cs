@@ -5,13 +5,14 @@ using System.Collections;
 public class FirstPlayerAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
-    [SerializeField] private float attackCooldown = 1f;       // Cooldown برای حمله کلی
-    [SerializeField] private float shootDelay = 0.5f;         // تاخیر شلیک
+    [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float shootDelay = 0.5f;
 
     [Header("Arrow Settings")]
-    [SerializeField] private Transform arrowPoint;            // نقطه شلیک تیر
-    [SerializeField] private GameObject[] arrows;             // آرایه تیرها
-    [SerializeField] private float arrowLifetime = 2f;        // مدت زمانی که تیر فعال می‌مونه
+    [SerializeField] private Transform arrowPoint;
+    [SerializeField] private GameObject[] arrows;
+    [SerializeField] private float arrowLifetime = 2f;
+    [SerializeField] public int arrowDamage = 1; // ← اضافه شد
 
     private Animator anim;
     private PlayerMovement playerMovement;
@@ -60,15 +61,9 @@ public class FirstPlayerAttack : MonoBehaviour
 
         int arrowIndex = FindAvailableArrow();
 
-        if (arrowIndex == -1)
+        if (arrowIndex == -1 || arrowPoint == null)
         {
-            Debug.LogWarning("No available arrows.");
-            yield break;
-        }
-
-        if (arrowPoint == null)
-        {
-            Debug.LogError("ArrowPoint is not assigned.");
+            Debug.LogWarning("Arrow unavailable or ArrowPoint missing.");
             yield break;
         }
 
@@ -76,8 +71,8 @@ public class FirstPlayerAttack : MonoBehaviour
         arrow.transform.position = arrowPoint.position;
         arrow.SetActive(true);
         arrow.GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        arrow.GetComponent<Projectile>().SetDamage(arrowDamage); // ← اضافه شد
 
-        // غیرفعال‌سازی خودکار تیر
         StartCoroutine(DisableArrowAfterTime(arrow, arrowLifetime));
     }
 
