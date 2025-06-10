@@ -245,7 +245,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 9
@@ -313,7 +313,7 @@ AnimatorStateMachine:
     m_Position: {x: 230, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8545412440976765340}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 280, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3773582320578884316}
     m_Position: {x: 500, y: 110, z: 0}
@@ -322,10 +322,10 @@ AnimatorStateMachine:
     m_Position: {x: 550, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3918728083827625264}
-    m_Position: {x: 20, y: 80, z: 0}
+    m_Position: {x: 20, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3366259911544412158}
-    m_Position: {x: 450, y: 50, z: 0}
+    m_Position: {x: 490, y: 20, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1948548422601099580}
