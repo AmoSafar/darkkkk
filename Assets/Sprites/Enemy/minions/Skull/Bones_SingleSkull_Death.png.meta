@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,10 +99,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -359,7 +359,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bones_SingleSkull_Death_0: 4495769266712716395
+      Bones_SingleSkull_Death_1: -5524293445746938104
+      Bones_SingleSkull_Death_2: 6119433655663169082
+      Bones_SingleSkull_Death_3: 6192067363010349240
+      Bones_SingleSkull_Death_4: -9179821171168502004
+      Bones_SingleSkull_Death_5: 7316291155138825776
+      Bones_SingleSkull_Death_6: 8742100491152021075
+      Bones_SingleSkull_Death_7: 3783595870547217743
+      Bones_SingleSkull_Death_8: 1173024372038152049
+      Bones_SingleSkull_Death_9: 7946627785263191905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
