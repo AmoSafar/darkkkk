@@ -1,0 +1,1390 @@
+fileFormatVersion: 2
+guid: 73cf4d6010602f9418f3248ba8830e45
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5136837967311634597
+    second: decorative_cracks_coasts_animation_0
+  - first:
+      213: -2334830129808256546
+    second: decorative_cracks_coasts_animation_1
+  - first:
+      213: 3876940289565872589
+    second: decorative_cracks_coasts_animation_2
+  - first:
+      213: 4179518228861786263
+    second: decorative_cracks_coasts_animation_3
+  - first:
+      213: 7810828484873198829
+    second: decorative_cracks_coasts_animation_4
+  - first:
+      213: 1407625131206465026
+    second: decorative_cracks_coasts_animation_5
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f76a9b51946b8b0800000000000000
+      internalID: -5136837967311634597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed156ed0e54099fd0800000000000000
+      internalID: -2334830129808256546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc159f607a8adc530800000000000000
+      internalID: 3876940289565872589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79893936fa1a00a30800000000000000
+      internalID: 4179518228861786263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec9e5a9f13a56c60800000000000000
+      internalID: 7810828484873198829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20659725993e88310800000000000000
+      internalID: 1407625131206465026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_6
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b09faf0b5c52ff843b7e01384857a90e
+      internalID: 2021332281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_7
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c24e7a0457bdf41b3834458bdf9f5b
+      internalID: 649941503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_8
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 320
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0d2453e3a46c645a8a715654621c9a
+      internalID: 1874827475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2faa98bf3a0e8564188470b3972bf2e1
+      internalID: -283253571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_10
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 730fa1ec7a6e093418be3b8f3720ea9f
+      internalID: 1355929258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbd18fe10695c14fb80a1ddb10e50b9
+      internalID: 215483792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_12
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf763c2e31b28fa48993551a8dca199f
+      internalID: 614870156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1dcb423d4d07db4dafb060dd6c2e005
+      internalID: -1096557834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfef2967bfe7621468b426c1a66785a4
+      internalID: 1191826918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_15
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700ab5df5447bbc449cdde6a07eca36c
+      internalID: 794645274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_16
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdb908ed8118f74ca1b93b0126903a9
+      internalID: 815761094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_17
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 256
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e73fb6eece242499171ad156fc19ac
+      internalID: -723920329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1859e6dc5d8f1648b481f41e9dd3bf9
+      internalID: -665731059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ebdba6e99e5614e8433f657c7ad208
+      internalID: -1609858483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840de92101e55684ba19284ced4e6895
+      internalID: -1092783351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_21
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418cc258a82529e469f5305138301c4b
+      internalID: -752254557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_22
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a58c090a3d3ed2b4988ff99f1b9a9093
+      internalID: -948687675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_23
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066c0130aeb3f6347a3b68a8453f5421
+      internalID: -1907587275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_24
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8302cc1253031524ea7069658f19eb6e
+      internalID: -746193021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_25
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e97c5e1aa4abd4da9501f47d9eb39f
+      internalID: -776696687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_26
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d60abec7b3d85544ba2c5c975f36222
+      internalID: 1601845822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_27
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348e4d6b3b8dbdb48b7db7c84980d961
+      internalID: 1943474264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_28
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179923ef587e828488bf2579b2124d7f
+      internalID: 689980603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d186e96f948eb468011d8516a0993b
+      internalID: 1055751431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_30
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f46dad7edb0e984780e6336b553ce1d
+      internalID: 185995680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_31
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6637858fb28a76b42b32cc1119eb18db
+      internalID: -951416890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_32
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79896bebbcb672b4d85aaa414cb28756
+      internalID: -1153823923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_33
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3dc3932639f56641be82710e0678d60
+      internalID: -1050733981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_34
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c846ad5c85a294f88f4f8c11854e43
+      internalID: -2138560926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_35
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 128
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15675ec6b4f768479c365a2992d1547
+      internalID: 752468030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_36
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6333ebb3429504eab36a1529be819a
+      internalID: -1265158751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_37
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ffc4c6529ce42744b81871b0624a37b
+      internalID: 1494512726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_38
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e982630ef1eb52d4d88ab8fb9a033e21
+      internalID: 114122753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b1dad5baf9d1541801d56c0ed83ee0
+      internalID: 1784469088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_40
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4098825501ea246912a44d5dd6ab09
+      internalID: 1296048282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_41
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9885fef1560e1542959d22f23ea0fa1
+      internalID: -576184189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15197ea8b38e8b9409f5bb12fcb01b5b
+      internalID: 1503446569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_43
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975e21a7cddbd2d45946b3d8e588f09f
+      internalID: -916607442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_44
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 64
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4085bbb997f17429547e8ad3ddeea7
+      internalID: 1655791217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_45
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5b9dc2e817ca0418a64ec552fc3ef5
+      internalID: 703158390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_46
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f97fb3679d5a514c842060df5c8fcc1
+      internalID: -1611864870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_47
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184e5b909d036944fa8847db47999d25
+      internalID: 1094064283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_48
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d270309af474445a2ced804cd64456
+      internalID: -978020154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_49
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf0fdb5d13461f4fa7e08ee6977ef03
+      internalID: 948037369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_50
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146642509db1660438f9e7b8f3871baf
+      internalID: 1053726820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_51
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17fad08b0bc26f945be1df092d9d2ccd
+      internalID: -223254338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_52
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964044f1b55acd54fbd91fd957abb621
+      internalID: -403369984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decorative_cracks_coasts_animation_53
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a4d525888483b943943975a6c95e09f
+      internalID: 1953870211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9a09f8e159b08e5448eb02f386872da2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      decorative_cracks_coasts_animation_0: -5136837967311634597
+      decorative_cracks_coasts_animation_1: -2334830129808256546
+      decorative_cracks_coasts_animation_10: 1355929258
+      decorative_cracks_coasts_animation_11: 215483792
+      decorative_cracks_coasts_animation_12: 614870156
+      decorative_cracks_coasts_animation_13: -1096557834
+      decorative_cracks_coasts_animation_14: 1191826918
+      decorative_cracks_coasts_animation_15: 794645274
+      decorative_cracks_coasts_animation_16: 815761094
+      decorative_cracks_coasts_animation_17: -723920329
+      decorative_cracks_coasts_animation_18: -665731059
+      decorative_cracks_coasts_animation_19: -1609858483
+      decorative_cracks_coasts_animation_2: 3876940289565872589
+      decorative_cracks_coasts_animation_20: -1092783351
+      decorative_cracks_coasts_animation_21: -752254557
+      decorative_cracks_coasts_animation_22: -948687675
+      decorative_cracks_coasts_animation_23: -1907587275
+      decorative_cracks_coasts_animation_24: -746193021
+      decorative_cracks_coasts_animation_25: -776696687
+      decorative_cracks_coasts_animation_26: 1601845822
+      decorative_cracks_coasts_animation_27: 1943474264
+      decorative_cracks_coasts_animation_28: 689980603
+      decorative_cracks_coasts_animation_29: 1055751431
+      decorative_cracks_coasts_animation_3: 4179518228861786263
+      decorative_cracks_coasts_animation_30: 185995680
+      decorative_cracks_coasts_animation_31: -951416890
+      decorative_cracks_coasts_animation_32: -1153823923
+      decorative_cracks_coasts_animation_33: -1050733981
+      decorative_cracks_coasts_animation_34: -2138560926
+      decorative_cracks_coasts_animation_35: 752468030
+      decorative_cracks_coasts_animation_36: -1265158751
+      decorative_cracks_coasts_animation_37: 1494512726
+      decorative_cracks_coasts_animation_38: 114122753
+      decorative_cracks_coasts_animation_39: 1784469088
+      decorative_cracks_coasts_animation_4: 7810828484873198829
+      decorative_cracks_coasts_animation_40: 1296048282
+      decorative_cracks_coasts_animation_41: -576184189
+      decorative_cracks_coasts_animation_42: 1503446569
+      decorative_cracks_coasts_animation_43: -916607442
+      decorative_cracks_coasts_animation_44: 1655791217
+      decorative_cracks_coasts_animation_45: 703158390
+      decorative_cracks_coasts_animation_46: -1611864870
+      decorative_cracks_coasts_animation_47: 1094064283
+      decorative_cracks_coasts_animation_48: -978020154
+      decorative_cracks_coasts_animation_49: 948037369
+      decorative_cracks_coasts_animation_5: 1407625131206465026
+      decorative_cracks_coasts_animation_50: 1053726820
+      decorative_cracks_coasts_animation_51: -223254338
+      decorative_cracks_coasts_animation_52: -403369984
+      decorative_cracks_coasts_animation_53: 1953870211
+      decorative_cracks_coasts_animation_6: 2021332281
+      decorative_cracks_coasts_animation_7: 649941503
+      decorative_cracks_coasts_animation_8: 1874827475
+      decorative_cracks_coasts_animation_9: -283253571
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
