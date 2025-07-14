@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -11,8 +11,12 @@ public class EnemyHealth : MonoBehaviour
     [Header("Flash Settings")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color flashColor = Color.red;
-    [SerializeField] private float flashDuration = 1.5f;
+    [SerializeField] private float flashDuration = 0.5f;
     [SerializeField] private float flashInterval = 0.1f;
+
+    // رویدادها برای هماهنگی با انیمیشن‌ها
+    public System.Action OnHurt;
+    public System.Action OnDeath;
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => startingHealth;
@@ -37,13 +41,22 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            // می‌توانید انیمیشن یا افکت ضربه را اینجا اضافه کنید
+            OnHurt?.Invoke(); // صدا زدن انیمیشن Hurt
             StartCoroutine(FlashRed());
         }
         else
         {
             Die();
         }
+    }
+
+    private void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        OnDeath?.Invoke(); // صدا زدن انیمیشن Dead
+        StartCoroutine(FlashAndDestroy());
     }
 
     private IEnumerator FlashRed()
@@ -60,13 +73,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void Die()
-    {
-        isDead = true;
-        // می‌توانید انیمیشن مرگ را اینجا اضافه کنید
-        StartCoroutine(FlashAndDestroy());
-    }
-
     private IEnumerator FlashAndDestroy()
     {
         float elapsed = 0f;
@@ -80,6 +86,7 @@ public class EnemyHealth : MonoBehaviour
             elapsed += flashInterval * 2;
         }
 
+        // Destroy کردن شیء دشمن بعد از مرگ
         Destroy(gameObject);
     }
 }
