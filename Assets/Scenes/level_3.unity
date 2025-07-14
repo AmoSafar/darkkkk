@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 466261132}
   - component: {fileID: 466261131}
   - component: {fileID: 466261137}
+  - component: {fileID: 466261138}
   m_Layer: 0
   m_Name: Enemy5
   m_TagString: Untagged
@@ -792,6 +793,24 @@ MonoBehaviour:
   attackDuration: 1.2
   animator: {fileID: 466261135}
   enemyHealth: {fileID: 466261132}
+--- !u!114 &466261138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466261129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d475fa5947d0a4abdb0bbaa58524fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 2
+  attackOffset: {x: 1, y: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &672710610
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +937,7 @@ GameObject:
   - component: {fileID: 727172588}
   - component: {fileID: 727172587}
   - component: {fileID: 727172591}
+  - component: {fileID: 727172592}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -1141,6 +1161,24 @@ MonoBehaviour:
   attackDuration: 1.2
   animator: {fileID: 727172585}
   enemyHealth: {fileID: 727172588}
+--- !u!114 &727172592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727172583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d475fa5947d0a4abdb0bbaa58524fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 2
+  attackOffset: {x: 1, y: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &827747507
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,6 +5765,7 @@ GameObject:
   - component: {fileID: 1134430404}
   - component: {fileID: 1134430403}
   - component: {fileID: 1134430407}
+  - component: {fileID: 1134430408}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -5950,6 +5989,24 @@ MonoBehaviour:
   attackDuration: 1.2
   animator: {fileID: 1134430401}
   enemyHealth: {fileID: 1134430404}
+--- !u!114 &1134430408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134430399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d475fa5947d0a4abdb0bbaa58524fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 2
+  attackOffset: {x: 1, y: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1151530530
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,6 +6023,7 @@ GameObject:
   - component: {fileID: 1151530533}
   - component: {fileID: 1151530532}
   - component: {fileID: 1151530538}
+  - component: {fileID: 1151530539}
   m_Layer: 0
   m_Name: Enemy4
   m_TagString: Untagged
@@ -6189,6 +6247,24 @@ MonoBehaviour:
   attackDuration: 1.2
   animator: {fileID: 1151530536}
   enemyHealth: {fileID: 1151530533}
+--- !u!114 &1151530539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151530530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d475fa5947d0a4abdb0bbaa58524fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 2
+  attackOffset: {x: 1, y: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1159238557
 GameObject:
   m_ObjectHideFlags: 0
@@ -6336,6 +6412,7 @@ GameObject:
   - component: {fileID: 1168490707}
   - component: {fileID: 1168490706}
   - component: {fileID: 1168490710}
+  - component: {fileID: 1168490711}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -6559,6 +6636,24 @@ MonoBehaviour:
   attackDuration: 1.2
   animator: {fileID: 1168490704}
   enemyHealth: {fileID: 1168490707}
+--- !u!114 &1168490711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168490702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d475fa5947d0a4abdb0bbaa58524fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 1.5
+  attackDamage: 2
+  attackOffset: {x: 1, y: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1184049591
 GameObject:
   m_ObjectHideFlags: 0

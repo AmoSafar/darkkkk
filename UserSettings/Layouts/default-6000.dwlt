@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 629.3334
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 332}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 82
+  controlID: 41
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -396,9 +396,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b4ccffff
-      m_LastClickedID: -13132
-      m_ExpandedIDs: 0efbffff2ab60000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 0efbffff5ab60000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1016,9 +1016,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 11.708479, y: -1.143867, z: -15.023617}
+    m_Target: {x: 12.129069, y: -2.0642405, z: -15.025437}
     speed: 2
-    m_Value: {x: 11.716101, y: -1.1014733, z: -15.025546}
+    m_Value: {x: 12.270006, y: -2.111977, z: -15.023596}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1068,9 +1068,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.09408
+    m_Target: 4.2758393
     speed: 2
-    m_Value: 4.286995
+    m_Value: 4.0917125
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1203,10 +1203,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 51.333344}
-    m_SelectedIDs: a0d20000
-    m_LastClickedID: 53920
-    m_ExpandedIDs: 0000000098c100009ac100009cc100009ec100003ec4000062d2000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: c4c60000
+    m_LastClickedID: 50884
+    m_ExpandedIDs: 0000000036c4000038c400003ac400003cc400003ec4000082c6000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1235,7 +1235,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 309.33337}
     m_SelectedIDs: 40c9000042c9000044c9000046c9000048c900004ac900004cc900004ec9000050c9000052c9000054c9000056c9000058c900005ac900005cc900005ec9000060c9000062c9000064c9000066c90000
     m_LastClickedID: 51558
-    m_ExpandedIDs: ffffffff0000000098c100009ac100009cc100009ec10000e8c30000f6c300007cc500005aca00005cca00005eca000062ca0000ffffff7f
+    m_ExpandedIDs: 0000000036c4000038c400003ac400003cc400003ec40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
