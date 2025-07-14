@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour, IDebuffable
@@ -17,9 +18,10 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     [SerializeField] private float climbSpeed = 3f;
     [SerializeField] private float fastRunSpeed = 10f;
     [SerializeField] private float fastRunDuration = 2f;
+    [SerializeField] private float scaleMultiplier = 1f;
+    [SerializeField] private bool disableFastRunInScene3 = true;
 
     private bool isFastRunning = false;
-
     private bool isGrounded = false;
     private bool isClimbing = false;
     private bool canClimb = false;
@@ -28,7 +30,6 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
     private Vector3 lastGroundedPosition;
 
-    // کاهش سرعت هنگام برخورد با دشمن
     [SerializeField] private float slowDuration = 1f;
     [SerializeField] private float slowAmount = 0.5f;
     private bool isSlowed = false;
@@ -46,18 +47,21 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     {
         lastGroundedPosition = transform.position;
         originalMoveSpeed = moveSpeed;
+        transform.localScale *= scaleMultiplier;
+
+        if (SceneManager.GetActiveScene().buildIndex == 3 && disableFastRunInScene3)
+        {
+            fastRunDuration = 0f;
+        }
     }
 
     private void OnEnable()
     {
         inputActions.Player.Enable();
-
         inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-
         inputActions.Player.Jump.performed += ctx => TryJump();
         inputActions.Player.Shoot.performed += ctx => OnShoot();
-
         inputActions.Player.Dash.performed += ctx => TryDash();
     }
 
@@ -65,30 +69,24 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     {
         inputActions.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
-
         inputActions.Player.Jump.performed -= ctx => TryJump();
         inputActions.Player.Shoot.performed -= ctx => OnShoot();
-
         inputActions.Player.Dash.performed -= ctx => TryDash();
-
         inputActions.Player.Disable();
     }
 
     private void Update()
     {
         if (health.currentHealth <= 0) return;
-
         verticalInput = moveInput.y;
         float horizontalInput = moveInput.x;
 
-        // منطق قفل شدن در بالای نردبان (LadderExit)
         if (lockAtLadderTop)
         {
             HandleLadderLockLogic();
             return;
         }
 
-        // منطق خروج از بالای نردبان
         if (atLadderTop)
         {
             if (verticalInput < -0.1f)
@@ -108,7 +106,6 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
             HandleClimbingInput();
         }
 
-        // حرکت روی نردبان
         if (isClimbing)
         {
             rb.gravityScale = 0f;
@@ -118,26 +115,15 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         {
             rb.gravityScale = 1f;
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
-
             if (moveInput.x > 0.01f)
                 transform.localScale = new Vector3(1, 1, 1);
             else if (moveInput.x < -0.01f)
                 transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        // Update Run/Idle animation states
         bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
-
-        if (!isFastRunning)
-        {
-            anim.SetBool("Run", isMoving);
-            anim.SetBool("Idle", !isMoving);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
-            anim.SetBool("Idle", false);
-        }
+        anim.SetBool("Run", isMoving && !isFastRunning);
+        anim.SetBool("Idle", !isMoving && !isFastRunning);
     }
 
     private void HandleLadderLockLogic()
@@ -173,14 +159,12 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
     private void HandleClimbingInput()
     {
-        verticalInput = moveInput.y;
-
-        if (canClimb && Mathf.Abs(verticalInput) > 0.1f)
+        if (canClimb && Mathf.Abs(moveInput.y) > 0.1f)
         {
             isClimbing = true;
             isGrounded = false;
         }
-        else if (!canClimb || Mathf.Abs(verticalInput) <= 0.1f)
+        else
         {
             isClimbing = false;
         }
@@ -198,10 +182,35 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
 
     private void OnShoot()
     {
-        if (CanAttack())
-        {
-            anim.SetTrigger("Shoot");
-        }
+        if (CanAttack()) anim.SetTrigger("Shoot");
+    }
+
+    private void TryDash()
+    {
+        if (!isFastRunning && isGrounded && Mathf.Abs(moveInput.x) > 0.1f && fastRunDuration > 0)
+            StartCoroutine(DashCoroutine());
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        isFastRunning = true;
+        float originalSpeed = moveSpeed;
+        float originalAnimSpeed = anim.speed;
+
+        moveSpeed = fastRunSpeed;
+        anim.speed = 1.8f;
+        anim.SetBool("FastRun", true);
+
+        yield return new WaitForSeconds(fastRunDuration);
+
+        moveSpeed = originalSpeed;
+        anim.speed = originalAnimSpeed;
+        anim.SetBool("FastRun", false);
+        isFastRunning = false;
+
+        bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
+        anim.SetBool("Run", isMoving);
+        anim.SetBool("Idle", !isMoving);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -211,15 +220,13 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
             isGrounded = true;
             lastGroundedPosition = transform.position;
         }
-
-        // اگر به دشمن برخورد کرد، کاهش سرعت بده
-        if (collision.collider.CompareTag("Enemy"))
+        else if (collision.collider.CompareTag("Enemy"))
         {
             ApplySlow();
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit22D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
         {
@@ -247,7 +254,6 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         else if (collision.CompareTag("Dead"))
         {
             if (health.currentHealth <= 0) return;
-
             health.TakeDamage(1f);
 
             if (health.currentHealth > 0)
@@ -283,7 +289,6 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         return isGrounded && moveInput.x == 0 && !isClimbing && health.currentHealth > 0;
     }
 
-    // کاهش سرعت موقت پس از برخورد با دشمن
     public void ApplySlow()
     {
         if (!isSlowed)
@@ -310,8 +315,8 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
     private IEnumerator DebuffCoroutine(float speedFactor, float jumpFactor, float duration)
     {
         isSlowed = true;
-
         float originalJumpForce = jumpForce;
+
         moveSpeed *= speedFactor;
         jumpForce *= jumpFactor;
 
@@ -321,37 +326,5 @@ public class PlayerMovement : MonoBehaviour, IDebuffable
         jumpForce = originalJumpForce;
         isSlowed = false;
     }
-
-    private void TryDash()
-    {
-        if (!isFastRunning && isGrounded && Mathf.Abs(moveInput.x) > 0.1f)
-        {
-            StartCoroutine(DashCoroutine());
-        }
-    }
-
-    private IEnumerator DashCoroutine()
-    {
-        isFastRunning = true;
-        float originalSpeed = moveSpeed;
-        float originalAnimSpeed = anim.speed;
-        moveSpeed = fastRunSpeed;
-        anim.speed = 1.8f;
-        anim.SetBool("FastRun", true);
-
-        yield return new WaitForSeconds(fastRunDuration);
-
-        moveSpeed = originalSpeed;
-        anim.speed = originalAnimSpeed;
-        anim.SetBool("FastRun", false);
-
-        isFastRunning = false;
-
-        bool isMoving = Mathf.Abs(moveInput.x) > 0.1f && !isClimbing;
-        anim.SetBool("Run", isMoving);
-        anim.SetBool("Idle", !isMoving);
-
-        anim.Play(isMoving ? "Run" : "Idle");
-        anim.Update(0f);
-    }
 }
+

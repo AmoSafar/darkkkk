@@ -1,5 +1,9 @@
+// ------------------------
+// ✅ Final Version: Player 2
+// ------------------------
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class SecondPlayerMovement : MonoBehaviour, IDebuffable
@@ -16,6 +20,7 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
     [HideInInspector] public float jumpForce = 7f;
     [SerializeField] private float climbSpeed = 3f;
     [SerializeField] private int maxJumps = 2;
+    [SerializeField] private float scaleMultiplier = 1f;
 
     private int jumpCount;
 
@@ -27,10 +32,10 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
 
     private Vector3 lastGroundedPosition;
 
-    // متغیرهای دیباف
     private bool isDebuffed = false;
     private float originalMoveSpeed;
     private float originalJumpForce;
+    private int originalMaxJumps;
 
     private void Awake()
     {
@@ -45,12 +50,18 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
         lastGroundedPosition = transform.position;
         originalMoveSpeed = moveSpeed;
         originalJumpForce = jumpForce;
+        originalMaxJumps = maxJumps;
+        transform.localScale *= scaleMultiplier;
+
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            maxJumps = 1;
+        }
     }
 
     private void OnEnable()
     {
         inputActions.Player2.Enable();
-
         inputActions.Player2.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player2.Move.canceled += ctx => moveInput = Vector2.zero;
         inputActions.Player2.Jump.performed += ctx => TryJump();
@@ -142,7 +153,7 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
             isClimbing = true;
             isGrounded = false;
         }
-        else if (!canClimb || Mathf.Abs(moveInput.y) <= 0.1f)
+        else
         {
             isClimbing = false;
         }
@@ -155,12 +166,9 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             anim.SetTrigger("Jump");
             jumpCount++;
-
-            // اطمینان از غیر فعال بودن Grounded
             isGrounded = false;
         }
     }
-
 
     private void Attack()
     {
@@ -257,7 +265,6 @@ public class SecondPlayerMovement : MonoBehaviour, IDebuffable
         }
     }
 
-    // متد دیباف برای کاهش سرعت و پرش به صورت موقت
     public void ApplyDebuff(float speedAmount, float jumpAmount, float duration)
     {
         if (!isDebuffed)
