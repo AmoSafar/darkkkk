@@ -106,4 +106,17 @@ public class PlayerMovementTopDown : MonoBehaviour
 
         isJumping = false;
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Wall"))
+    {
+        // متوقف کردن حرکت بازیکن در برخورد با دیوار
+        rb.linearVelocity = Vector2.zero;
+
+        // اگر لازم است می‌توانید moveInput را صفر کنید تا ورودی حرکت هم پاک شود
+        moveInput = Vector2.zero;
+    }
+}
 }
