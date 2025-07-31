@@ -28,13 +28,15 @@ public class PrincessPatrol : MonoBehaviour
         // اجرای انیمیشن راه رفتن
         animator.SetBool("Walk", true);
 
-        // برگرداندن پرنسس در جهت مناسب
-        if (target.x > transform.position.x)
-            transform.localScale = new Vector3(1, 1, 1); // رو به راست
-        else
-            transform.localScale = new Vector3(-1, 1, 1); // رو به چپ
+        // تغییر جهت و حفظ اندازه
+        Vector3 scale = transform.localScale;
+        scale.x = target.x > transform.position.x ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+        scale.x = Mathf.Sign(scale.x) * 0.6f;
+        scale.y = 0.6f;
+        scale.z = 0.6f;
+        transform.localScale = scale;
 
-        // چک کردن رسیدن به مقصد
+        // بررسی رسیدن به نقطه هدف
         if (Vector3.Distance(transform.position, target) < 0.05f)
         {
             StartCoroutine(WaitBeforeMoveAgain());
@@ -47,7 +49,7 @@ public class PrincessPatrol : MonoBehaviour
         animator.SetBool("Walk", false); // توقف انیمیشن راه رفتن
         yield return new WaitForSeconds(waitTime);
 
-        // تغییر مقصد
+        // تغییر جهت حرکت
         movingToB = !movingToB;
         target = movingToB ? pointB.position : pointA.position;
         isWaiting = false;
