@@ -1,3 +1,4 @@
+// ------------------------- PlayerMovementTopDown.cs -------------------------
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
@@ -17,6 +18,12 @@ public class PlayerMovementTopDown : MonoBehaviour
     [SerializeField] private float jumpHeightInBlocks = 2f;
     [SerializeField] private float jumpDuration = 0.5f;
     private bool isJumping = false;
+
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
 
     private void Awake()
     {
@@ -47,7 +54,7 @@ public class PlayerMovementTopDown : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isJumping) return; // وقتی در حال پرش هست، حرکت متوقف میشه
+        if (isJumping) return;
 
         Vector2 movement = moveInput.normalized * moveSpeed;
         rb.linearVelocity = movement;
@@ -73,14 +80,11 @@ public class PlayerMovementTopDown : MonoBehaviour
         isJumping = true;
         anim.SetTrigger("Jump");
 
-        // موقعیت اولیه
         Vector3 startPos = transform.position;
-        // مقصد پرش: به اندازه ارتفاع
         Vector3 targetPos = startPos + new Vector3(0f, jumpHeightInBlocks, 0f);
 
         float elapsedTime = 0f;
 
-        // پرش به بالا
         while (elapsedTime < jumpDuration)
         {
             transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime / jumpDuration);
@@ -89,11 +93,8 @@ public class PlayerMovementTopDown : MonoBehaviour
         }
 
         transform.position = targetPos;
-
-        // مکث کوتاه در بالا (اختیاری)
         yield return new WaitForSeconds(0.1f);
 
-        // برگشت به پایین (اختیاری)
         elapsedTime = 0f;
         while (elapsedTime < jumpDuration)
         {
@@ -103,20 +104,15 @@ public class PlayerMovementTopDown : MonoBehaviour
         }
 
         transform.position = startPos;
-
         isJumping = false;
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Wall"))
     {
-        // متوقف کردن حرکت بازیکن در برخورد با دیوار
-        rb.linearVelocity = Vector2.zero;
-
-        // اگر لازم است می‌توانید moveInput را صفر کنید تا ورودی حرکت هم پاک شود
-        moveInput = Vector2.zero;
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            rb.linearVelocity = Vector2.zero;
+            moveInput = Vector2.zero;
+        }
     }
-}
 }
