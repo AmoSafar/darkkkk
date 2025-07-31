@@ -12,44 +12,56 @@ public class BossController : MonoBehaviour
     public float attackRange = 2f;
     public float cleaveDamage = 2f;
     public float timeBetweenAttacks = 3f;
-
     private float attackCooldown;
 
     private Transform player1;
     private Transform player2;
     private Animator anim;
     private bool isDead = false;
+    private bool isAttacking = false;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player1 = GameObject.FindGameObjectWithTag("Player1")?.transform;
         player2 = GameObject.FindGameObjectWithTag("Player2")?.transform;
     }
 
     private void Update()
     {
-        // تثبیت محور Z
-        Vector3 fixedPos = transform.position;
-        fixedPos.z = -3f;
-        transform.position = fixedPos;
-
         if (isDead) return;
+
+        // Fix Z
+        Vector3 pos = transform.position;
+        pos.z = -3f;
+        transform.position = pos;
 
         attackCooldown -= Time.deltaTime;
 
         Transform targetPlayer = GetClosestPlayer();
 
-        if (targetPlayer != null && Vector2.Distance(transform.position, targetPlayer.position) <= attackRange)
+        if (targetPlayer != null)
         {
-            if (attackCooldown <= 0f)
+            FlipTowards(targetPlayer);
+
+            float distance = Vector2.Distance(transform.position, targetPlayer.position);
+            if (distance <= attackRange)
             {
-                anim.SetTrigger("Cleave");
-                attackCooldown = timeBetweenAttacks;
+                anim.SetBool("Walk", false);
+
+                if (attackCooldown <= 0f && !isAttacking)
+                {
+                    anim.SetTrigger("Cleave");
+                    isAttacking = true;
+                    attackCooldown = timeBetweenAttacks;
+                }
             }
             else
             {
-                anim.SetBool("Walk", false);
+                anim.SetBool("Walk", true);
+                MoveToward(targetPlayer);
             }
         }
         else
@@ -58,28 +70,45 @@ public class BossController : MonoBehaviour
         }
     }
 
+    private void FlipTowards(Transform target)
+    {
+        if (target != null)
+        {
+            float dir = target.position.x - transform.position.x;
+            if (dir > 0)
+                spriteRenderer.flipX = false;
+            else if (dir < 0)
+                spriteRenderer.flipX = true;
+        }
+    }
+
     private Transform GetClosestPlayer()
     {
         float dist1 = player1 ? Vector2.Distance(transform.position, player1.position) : Mathf.Infinity;
         float dist2 = player2 ? Vector2.Distance(transform.position, player2.position) : Mathf.Infinity;
 
-        return (dist1 < dist2) ? player1 : player2;
+        if (dist1 < dist2) return player1;
+        else return player2;
+    }
+
+    private void MoveToward(Transform target)
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
     private void Patrol()
     {
         anim.SetBool("Walk", true);
+        Transform point = patrolPoints[currentPointIndex];
+        transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
 
-        Transform targetPoint = patrolPoints[currentPointIndex];
-        transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
+        if (Vector2.Distance(transform.position, point.position) < 0.1f)
         {
             currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
         }
     }
 
-    // این تابع توسط Animation Event در انیمیشن Cleave فراخوانی میشه
+    // Called at cleave hit moment from Animation Event
     public void CleaveAttack()
     {
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(transform.position, attackRange);
@@ -87,32 +116,37 @@ public class BossController : MonoBehaviour
         {
             if (col.CompareTag("Player1") || col.CompareTag("Player2"))
             {
-                Health playerHealth = col.GetComponent<Health>();
-                if (playerHealth != null)
+                Health hp = col.GetComponent<Health>();
+                if (hp != null)
                 {
-                    playerHealth.TakeDamage(cleaveDamage);
+                    hp.TakeDamage(cleaveDamage);
                     Debug.Log("Boss hit " + col.name + " for " + cleaveDamage + " damage!");
                 }
             }
         }
     }
 
-    // Gizmo برای نمایش محدوده حمله
-    private void OnDrawGizmosSelected()
+    // Called at end of cleave animation from Animation Event
+    public void EndAttack()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        isAttacking = false;
     }
 
     public void TakeDamage(float amount)
     {
-        // در صورت نیاز سیستم آسیب دیدن باس
+        // Add logic if needed
     }
 
     public void Die()
     {
+        if (isDead) return;
         isDead = true;
         anim.SetTrigger("Died");
-        // سایر منطق‌ها مثل پاداش، حذف آبجکت و ...
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
