@@ -1,11 +1,22 @@
 using UnityEngine;
 
-public class DoorOP : MonoBehaviour
+public class DoorOpenMap3 : MonoBehaviour
 {
     private bool isOpen = false;
+    public Sprite sprite1;
+    public Sprite sprite2;
+    
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip openSound;
+    
+    private SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprite1;
+    }
 
     public void OpenDoor()
     {
@@ -20,6 +31,8 @@ public class DoorOP : MonoBehaviour
         {
             audioSource.PlayOneShot(openSound);
         }
+        spriteRenderer.sprite = sprite2;
+
 
         Debug.Log("Door opened by KeyTriggerZone!");
     }

@@ -1086,7 +1086,7 @@ Transform:
   m_GameObject: {fileID: 136571101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.79106, y: -148.44351, z: -16}
+  m_LocalPosition: {x: 60.491062, y: -22.364407, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1201,11 +1201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857624579913913421, guid: e0a7bc1f931b7d04eb8f3f9aab19c730, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.8
+      value: 60.5
       objectReference: {fileID: 0}
     - target: {fileID: 7857624579913913421, guid: e0a7bc1f931b7d04eb8f3f9aab19c730, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -151.9
+      value: -22.7
       objectReference: {fileID: 0}
     - target: {fileID: 7857624579913913421, guid: e0a7bc1f931b7d04eb8f3f9aab19c730, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4373,7 +4373,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2421875, y: 0.25}
+    oldSize: {x: 0.484375, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5157,7 +5157,7 @@ Transform:
   m_GameObject: {fileID: 1235219037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.79106, y: -151.56439, z: -16}
+  m_LocalPosition: {x: 60.491062, y: -22.364407, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10329,12 +10329,28 @@ PrefabInstance:
       value: -8.66
       objectReference: {fileID: 0}
     - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38285714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.79
+      value: 77.97
       objectReference: {fileID: 0}
     - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.07
+      value: -16.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3017846859899469185, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3271027014877392227, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10475,6 +10491,26 @@ PrefabInstance:
     - target: {fileID: 8048513352130485387, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
       propertyPath: m_LocalPosition.x
       value: 105.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064229870432344221, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_Color.b
+      value: 0.16862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064229870432344221, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_Color.g
+      value: 0.90653664
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064229870432344221, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661309159358614304, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8661309159358614304, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8709751761390623438, guid: cb5dc6eb5a89dd844a3a4165fa454559, type: 3}
       propertyPath: m_LocalPosition.x
