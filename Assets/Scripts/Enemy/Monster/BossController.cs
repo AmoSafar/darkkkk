@@ -1,152 +1,154 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossController : MonoBehaviour
+public class BossFightController : MonoBehaviour
 {
+    [Header("Players")]
+    public Transform player1;
+    public Transform player2;
+
     [Header("Movement")]
+    [Range(0.5f, 10f)]
+    public float stopDistance = 2f;
     public float speed = 2f;
-    public Transform[] patrolPoints;
-    private int currentPointIndex = 0;
 
     [Header("Attack")]
-    public float attackRange = 2f;
-    public float cleaveDamage = 2f;
-    public float timeBetweenAttacks = 3f;
-    private float attackCooldown;
+    public float cleaveDamage = 3f;
+    public float minLockTime = 5f;
+    public float maxLockTime = 10f;
 
-    private Transform player1;
-    private Transform player2;
+    private Transform currentTarget;
     private Animator anim;
-    private bool isDead = false;
     private bool isAttacking = false;
-    private SpriteRenderer spriteRenderer;
+
+    private int lastTargetIndex = -1;
+    private float originalScaleX;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        player1 = GameObject.FindGameObjectWithTag("Player1")?.transform;
-        player2 = GameObject.FindGameObjectWithTag("Player2")?.transform;
+        originalScaleX = transform.localScale.x;
+        StartCoroutine(BossLoop());
     }
 
-    private void Update()
+    private IEnumerator BossLoop()
     {
-        if (isDead) return;
-
-        // Fix Z
-        Vector3 pos = transform.position;
-        pos.z = -3f;
-        transform.position = pos;
-
-        attackCooldown -= Time.deltaTime;
-
-        Transform targetPlayer = GetClosestPlayer();
-
-        if (targetPlayer != null)
+        while (true)
         {
-            FlipTowards(targetPlayer);
+            currentTarget = ChooseNextTarget();
 
-            float distance = Vector2.Distance(transform.position, targetPlayer.position);
-            if (distance <= attackRange)
+            if (currentTarget == null)
             {
-                anim.SetBool("Walk", false);
+                yield return null;
+                continue;
+            }
 
-                if (attackCooldown <= 0f && !isAttacking)
+            anim.SetBool("Walk", true);
+
+            while (Vector2.Distance(transform.position, currentTarget.position) > stopDistance)
+            {
+                Vector2 direction = (currentTarget.position - transform.position).normalized;
+                transform.position += (Vector3)direction * speed * Time.deltaTime;
+
+                if (direction.x != 0)
                 {
-                    anim.SetTrigger("Cleave");
-                    isAttacking = true;
-                    attackCooldown = timeBetweenAttacks;
+                    Vector3 currentScale = transform.localScale;
+                    currentScale.x = originalScaleX * Mathf.Sign(direction.x);
+                    transform.localScale = currentScale;
                 }
+
+                yield return null;
             }
-            else
+
+            // رسیدن به هدف — تنظیم موقعیت دقیق روی y و روبرو شدن
+            Vector3 pos = transform.position;
+            float directionSign = Mathf.Sign(currentTarget.position.x - pos.x);
+            pos.x = currentTarget.position.x - directionSign * stopDistance;
+            pos.y = currentTarget.position.y + 1f;
+            transform.position = pos;
+
+            anim.SetBool("Walk", false);
+
+            float lockTime = Random.Range(minLockTime, maxLockTime);
+            yield return AttackTarget(currentTarget, lockTime);
+        }
+    }
+
+    private IEnumerator AttackTarget(Transform target, float lockDuration)
+    {
+        isAttacking = true;
+        float timer = 0f;
+
+        while (timer < lockDuration)
+        {
+            anim.SetTrigger("Cleave");
+
+            Health targetHealth = target.GetComponent<Health>();
+            if (targetHealth != null)
             {
-                anim.SetBool("Walk", true);
-                MoveToward(targetPlayer);
+                targetHealth.TakeDamage(cleaveDamage);
             }
+
+            yield return new WaitForSeconds(1.5f); // فاصله بین دو ضربه Cleave
+            timer += 1.5f;
         }
-        else
-        {
-            Patrol();
-        }
-    }
 
-    private void FlipTowards(Transform target)
-    {
-        if (target != null)
-        {
-            float dir = target.position.x - transform.position.x;
-            if (dir > 0)
-                spriteRenderer.flipX = false;
-            else if (dir < 0)
-                spriteRenderer.flipX = true;
-        }
-    }
-
-    private Transform GetClosestPlayer()
-    {
-        float dist1 = player1 ? Vector2.Distance(transform.position, player1.position) : Mathf.Infinity;
-        float dist2 = player2 ? Vector2.Distance(transform.position, player2.position) : Mathf.Infinity;
-
-        if (dist1 < dist2) return player1;
-        else return player2;
-    }
-
-    private void MoveToward(Transform target)
-    {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-    }
-
-    private void Patrol()
-    {
-        anim.SetBool("Walk", true);
-        Transform point = patrolPoints[currentPointIndex];
-        transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, point.position) < 0.1f)
-        {
-            currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
-        }
-    }
-
-    // Called at cleave hit moment from Animation Event
-    public void CleaveAttack()
-    {
-        Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(transform.position, attackRange);
-        foreach (Collider2D col in hitPlayers)
-        {
-            if (col.CompareTag("Player1") || col.CompareTag("Player2"))
-            {
-                Health hp = col.GetComponent<Health>();
-                if (hp != null)
-                {
-                    hp.TakeDamage(cleaveDamage);
-                    Debug.Log("Boss hit " + col.name + " for " + cleaveDamage + " damage!");
-                }
-            }
-        }
-    }
-
-    // Called at end of cleave animation from Animation Event
-    public void EndAttack()
-    {
         isAttacking = false;
     }
 
-    public void TakeDamage(float amount)
+    private Transform ChooseNextTarget()
     {
-        // Add logic if needed
+        if (player1 == null && player2 == null) return null;
+
+        if (lastTargetIndex == 0 && player2 != null)
+        {
+            lastTargetIndex = 1;
+            return player2;
+        }
+        else if (lastTargetIndex == 1 && player1 != null)
+        {
+            lastTargetIndex = 0;
+            return player1;
+        }
+
+        float distToP1 = player1 != null ? Vector2.Distance(transform.position, player1.position) : float.MaxValue;
+        float distToP2 = player2 != null ? Vector2.Distance(transform.position, player2.position) : float.MaxValue;
+
+        if (distToP1 <= distToP2 && player1 != null)
+        {
+            lastTargetIndex = 0;
+            return player1;
+        }
+        else if (player2 != null)
+        {
+            lastTargetIndex = 1;
+            return player2;
+        }
+
+        return null;
     }
 
-    public void Die()
+    private void OnDrawGizmos()
     {
-        if (isDead) return;
-        isDead = true;
-        anim.SetTrigger("Died");
-    }
+        Gizmos.color = new Color(1f, 0f, 0f, 0.25f);
+        Gizmos.DrawSphere(transform.position, stopDistance);
 
-    private void OnDrawGizmosSelected()
-    {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        DrawWireCircle(transform.position, stopDistance);
+    }
+
+    private void DrawWireCircle(Vector3 center, float radius)
+    {
+        int segments = 64;
+        float angle = 0f;
+        Vector3 prevPoint = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+
+        for (int i = 1; i <= segments; i++)
+        {
+            angle = i * 2f * Mathf.PI / segments;
+            Vector3 newPoint = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+            Gizmos.DrawLine(prevPoint, newPoint);
+            prevPoint = newPoint;
+        }
     }
 }
