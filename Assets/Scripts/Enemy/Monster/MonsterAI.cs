@@ -36,6 +36,17 @@ public class MonsterAI : MonoBehaviour
             if (distance > attackRange)
             {
                 animator.Play("Walk");
+
+                // ✅ چرخاندن جهت بر اساس حرکت
+                Vector3 direction = (targetPlayer.position - transform.position).normalized;
+                if (direction.x != 0)
+                {
+                    Vector3 scale = transform.localScale;
+                    scale.x = Mathf.Abs(scale.x) * Mathf.Sign(direction.x); // مثبت برای راست، منفی برای چپ
+                    transform.localScale = scale;
+                }
+
+                // ✅ حرکت
                 transform.position = Vector2.MoveTowards(transform.position, targetPlayer.position, moveSpeed * Time.deltaTime);
             }
             else
@@ -44,6 +55,7 @@ public class MonsterAI : MonoBehaviour
             }
         }
     }
+
 
     private IEnumerator Attack()
     {

@@ -16,6 +16,7 @@ public class BossFightController : MonoBehaviour
     public float cleaveDamage = 3f;
     public float minLockTime = 5f;
     public float maxLockTime = 10f;
+    public float cleaveRange = 2f; // محدوده آسیب
 
     private Transform currentTarget;
     private Animator anim;
@@ -83,13 +84,21 @@ public class BossFightController : MonoBehaviour
         {
             anim.SetTrigger("Cleave");
 
-            Health targetHealth = target.GetComponent<Health>();
-            if (targetHealth != null)
+            yield return new WaitForSeconds(0.5f); // صبر برای رسیدن به فریم ضربه
+
+            Vector2 hitCenter = (Vector2)transform.position + Vector2.right * Mathf.Sign(transform.localScale.x) * cleaveRange * 0.5f;
+            Collider2D[] hits = Physics2D.OverlapCircleAll(hitCenter, cleaveRange * 0.5f);
+
+            foreach (Collider2D hit in hits)
             {
-                targetHealth.TakeDamage(cleaveDamage);
+                Health health = hit.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(cleaveDamage);
+                }
             }
 
-            yield return new WaitForSeconds(1.5f); // فاصله بین دو ضربه Cleave
+            yield return new WaitForSeconds(1f); // فاصله تا ضربه بعدی
             timer += 1.5f;
         }
 
@@ -150,5 +159,14 @@ public class BossFightController : MonoBehaviour
             Gizmos.DrawLine(prevPoint, newPoint);
             prevPoint = newPoint;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying) return;
+
+        Vector2 center = (Vector2)transform.position + Vector2.right * Mathf.Sign(transform.localScale.x) * cleaveRange * 0.5f;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(center, cleaveRange * 0.5f);
     }
 }
