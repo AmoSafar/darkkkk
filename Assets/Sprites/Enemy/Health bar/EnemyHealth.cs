@@ -14,6 +14,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float flashDuration = 0.5f;
     [SerializeField] private float flashInterval = 0.1f;
 
+    [Header("Animation")]
+    [SerializeField] private Animator anim;
+
     // رویدادها برای هماهنگی با انیمیشن‌ها
     public System.Action OnHurt;
     public System.Action OnDeath;
@@ -51,13 +54,19 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
-    {
-        if (isDead) return;
+        {
+            if (isDead) return;
 
-        isDead = true;
-        OnDeath?.Invoke(); // صدا زدن انیمیشن Dead
-        StartCoroutine(FlashAndDestroy());
-    }
+            isDead = true;
+            OnDeath?.Invoke();
+
+            // پخش انیمیشن مرگ
+            if (anim != null)
+                anim.SetTrigger("Dead");
+
+            // غیب شدن بعد از 5 ثانیه
+            StartCoroutine(WaitAndDestroy(5f));
+        }
 
     private IEnumerator FlashRed()
     {
@@ -89,4 +98,10 @@ public class EnemyHealth : MonoBehaviour
         // Destroy کردن شیء دشمن بعد از مرگ
         Destroy(gameObject);
     }
+
+    private IEnumerator WaitAndDestroy(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy(gameObject);
+        }
 }

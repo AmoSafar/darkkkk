@@ -9,6 +9,10 @@ public class EnemyHealthBar : MonoBehaviour
 
     private void Start()
     {
+        // اگر به صورت دستی ست نشده بود، خودش پیدا کن
+        if (enemyHealth == null)
+            enemyHealth = GetComponentInParent<EnemyHealth>();
+
         if (totalHealthBar != null)
             totalHealthBar.fillAmount = 1f;
     }
