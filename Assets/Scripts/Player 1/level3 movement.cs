@@ -1,4 +1,3 @@
-// ------------------------- PlayerMovementTopDown.cs -------------------------
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
@@ -19,6 +18,12 @@ public class PlayerMovementTopDown : MonoBehaviour
     [SerializeField] private float jumpDuration = 0.5f;
     private bool isJumping = false;
 
+    [Header("Shooting Settings")]
+    [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Transform arrowPoint;
+    [SerializeField] private float arrowSpeed = 10f;
+    [SerializeField] private int arrowDamage = 1;
+
     public float MoveSpeed
     {
         get => moveSpeed;
@@ -37,7 +42,11 @@ public class PlayerMovementTopDown : MonoBehaviour
         inputActions.Player.Enable();
         inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-        inputActions.Player.Shoot.performed += ctx => anim.SetTrigger("Shoot");
+        inputActions.Player.Shoot.performed += ctx =>
+        {
+            anim.SetTrigger("Shoot");
+            ShootArrow();
+        };
         inputActions.Player.Jump.performed += ctx => TryJump();
     }
 
@@ -105,6 +114,21 @@ public class PlayerMovementTopDown : MonoBehaviour
 
         transform.position = startPos;
         isJumping = false;
+    }
+
+    private void ShootArrow()
+    {
+        if (arrowPrefab == null || arrowPoint == null) return;
+
+        GameObject arrow = Instantiate(arrowPrefab, arrowPoint.position, Quaternion.identity);
+        Projectile proj = arrow.GetComponent<Projectile>();
+        if (proj != null)
+        {
+            float dir = transform.localScale.x > 0 ? 1f : -1f;
+            proj.SetDirection(dir);
+            proj.SetDamage(arrowDamage);
+            proj.SetTargetPoint(arrowPoint.position + Vector3.right * 10f * dir);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

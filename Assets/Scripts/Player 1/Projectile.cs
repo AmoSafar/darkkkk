@@ -9,6 +9,9 @@ public class Projectile : MonoBehaviour
     private float direction;
     private bool hit;
 
+    private Vector3 targetPoint;
+    private bool useTargetPoint = false;
+
     private void Start()
     {
         Destroy(gameObject, lifetime);
@@ -17,7 +20,21 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if (hit) return;
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+
+        if (useTargetPoint)
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPoint, step);
+
+            if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+        }
     }
 
     public void SetDirection(float dir)
@@ -29,9 +46,15 @@ public class Projectile : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    public void SetDamage(int value) // ← اضافه شد
+    public void SetDamage(int value)
     {
         damage = value;
+    }
+
+    public void SetTargetPoint(Vector3 target)
+    {
+        targetPoint = target;
+        useTargetPoint = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
