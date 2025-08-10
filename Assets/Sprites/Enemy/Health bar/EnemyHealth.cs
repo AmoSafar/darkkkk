@@ -17,7 +17,9 @@ public class EnemyHealth : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator anim;
 
-    // رویدادها برای هماهنگی با انیمیشن‌ها
+    [Header("Key Spawner")]
+    [SerializeField] private KeySpawner keySpawner;
+
     public System.Action OnHurt;
     public System.Action OnDeath;
 
@@ -26,12 +28,18 @@ public class EnemyHealth : MonoBehaviour
 
     private Color originalColor;
 
+    // متغیر برای جلوگیری از اجرای چندباره انیمیشن Dead
+    private bool hasTriggeredDeadAnimation = false;
+
     private void Awake()
     {
         currentHealth = startingHealth;
 
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (anim == null)
+            anim = GetComponent<Animator>();
 
         originalColor = spriteRenderer.color;
     }
@@ -44,7 +52,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            OnHurt?.Invoke(); // صدا زدن انیمیشن Hurt
+            OnHurt?.Invoke();
             StartCoroutine(FlashRed());
         }
         else
@@ -54,19 +62,42 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        OnDeath?.Invoke();
+
+        BossFightController boss = GetComponent<BossFightController>();
+        if (boss != null)
         {
-            if (isDead) return;
-
-            isDead = true;
-            OnDeath?.Invoke();
-
-            // پخش انیمیشن مرگ
-            if (anim != null)
-                anim.SetTrigger("Dead");
-
-            // غیب شدن بعد از 5 ثانیه
-            StartCoroutine(WaitAndDestroy(5f));
+            boss.StopAllCoroutines();
+            boss.enabled = false;
         }
+
+        if (anim != null && !hasTriggeredDeadAnimation)
+        {
+            anim.SetTrigger("Dead");
+            hasTriggeredDeadAnimation = true;
+        }
+
+        StartCoroutine(SpawnKeyAfterAnimation(3f)); // زمان انیمیشن Dead
+        StartCoroutine(WaitAndDestroy(6f)); // زمان حذف شیء
+    }
+
+    private IEnumerator SpawnKeyAfterAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (keySpawner != null)
+        {
+            keySpawner.SpawnKey(transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("KeySpawner reference not assigned in EnemyHealth.");
+        }
+    }
 
     private IEnumerator FlashRed()
     {
@@ -77,31 +108,13 @@ public class EnemyHealth : MonoBehaviour
             yield return new WaitForSeconds(flashInterval);
             spriteRenderer.color = originalColor;
             yield return new WaitForSeconds(flashInterval);
-
             elapsed += flashInterval * 2;
         }
-    }
-
-    private IEnumerator FlashAndDestroy()
-    {
-        float elapsed = 0f;
-        while (elapsed < flashDuration)
-        {
-            spriteRenderer.color = flashColor;
-            yield return new WaitForSeconds(flashInterval);
-            spriteRenderer.color = originalColor;
-            yield return new WaitForSeconds(flashInterval);
-
-            elapsed += flashInterval * 2;
-        }
-
-        // Destroy کردن شیء دشمن بعد از مرگ
-        Destroy(gameObject);
     }
 
     private IEnumerator WaitAndDestroy(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            Destroy(gameObject);
-        }
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
 }
