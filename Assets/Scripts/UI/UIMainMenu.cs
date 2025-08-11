@@ -41,7 +41,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1); // بارگذاری صحنه با Index 1
+        SceneManager.LoadScene(2); // بارگذاری صحنه با Index 1
     }
 
     public void QuitGame()
