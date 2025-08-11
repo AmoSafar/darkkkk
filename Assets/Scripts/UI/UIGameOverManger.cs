@@ -16,6 +16,9 @@ public class UIGameOverManager : MonoBehaviour
     [SerializeField] private GameObject WinScreen;
     [SerializeField] private AudioClip WinSound;
 
+    [Header("Background Music")]
+    [SerializeField] private AudioClip backgroundMusic;
+
     [Header("Pause")]
     [SerializeField] private GameObject PauseScreen;
 
@@ -26,29 +29,40 @@ public class UIGameOverManager : MonoBehaviour
     [SerializeField] private int restartSceneIndex = 1;
 
     private bool gameEnded = false;
-    private bool player1Dead = false;
-    private bool player2Dead = false;
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         GameOverScreen.SetActive(false);
         WinScreen.SetActive(false);
         SettingsPanel.SetActive(false);
+
+        // اضافه کردن یا گرفتن AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.loop = true;
+
+        // شروع پخش موزیک پس زمینه
+        if (backgroundMusic != null)
+        {
+            audioSource.clip = backgroundMusic;
+            audioSource.Play();
+        }
     }
 
     private void Update()
     {
-        if (!player1Dead && player1Health.currentHealth <= 0)
-            player1Dead = true;
-
-        if (!player2Dead && player2Health.currentHealth <= 0)
-            player2Dead = true;
-
-        if (!gameEnded && player1Dead && player2Dead)
+        // اگر هر دو پلیر مردند گیم اور شود
+        if (!gameEnded && player1Health.currentHealth <= 0 && player2Health.currentHealth <= 0)
         {
             gameEnded = true;
             GameOver();
         }
+
+        // اینجا می‌تونی اضافه کنی که وقتی برنده شدی موسیقی پس‌زمینه متوقف بشه یا عوض بشه
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -75,20 +89,54 @@ public class UIGameOverManager : MonoBehaviour
     public void GameOver()
     {
         GameOverScreen.SetActive(true);
-        PlayClipIgnorePause(GameOverSound, SoundManager.Instance.SFXVolume);
+
+        // قطع موسیقی پس زمینه در صورت تمایل
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        if (GameOverSound != null && SoundManager.Instance != null)
+        {
+            PlayClipIgnorePause(GameOverSound, SoundManager.Instance.SFXVolume);
+        }
+        else
+        {
+            if (GameOverSound == null)
+                Debug.LogWarning("GameOverSound is not assigned in UIGameOverManager!");
+            if (SoundManager.Instance == null)
+                Debug.LogWarning("SoundManager instance not found!");
+        }
     }
 
     public void Win()
     {
-        WinScreen.SetActive(true);
-        PlayClipIgnorePause(WinSound, SoundManager.Instance.SFXVolume);
+        if (WinScreen != null)
+            WinScreen.SetActive(true);
+        else
+            Debug.LogError("WinScreen is not assigned in UIGameOverManager!");
+
+        // قطع موسیقی پس زمینه در صورت تمایل
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        if (WinSound != null)
+        {
+            Vector3 pos = (Camera.main != null) ? Camera.main.transform.position : Vector3.zero;
+            float volume = 1f;
+            if (SoundManager.Instance != null)
+                volume = SoundManager.Instance.SFXVolume;
+
+            AudioSource.PlayClipAtPoint(WinSound, pos, volume);
+        }
+        else
+        {
+            Debug.LogWarning("WinSound clip not assigned!");
+        }
     }
 
     private void PlayClipIgnorePause(AudioClip clip, float volume)
     {
         if (clip == null) return;
 
-        // اطمینان از وجود AudioListener
         if (FindObjectsOfType<AudioListener>().Length == 0)
         {
             var listenerGO = new GameObject("RuntimeAudioListener");
@@ -103,7 +151,7 @@ public class UIGameOverManager : MonoBehaviour
         AudioSource aSource = tempAudioGO.AddComponent<AudioSource>();
         aSource.clip = clip;
         aSource.volume = volume;
-        aSource.ignoreListenerPause = true; // جلوگیری از قطع شدن هنگام Pause
+        aSource.ignoreListenerPause = true;
         aSource.Play();
         Destroy(tempAudioGO, clip.length);
     }
@@ -122,11 +170,11 @@ public class UIGameOverManager : MonoBehaviour
 
     public void Quit()
     {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
         Application.Quit();
-    #endif
+#endif
     }
 
     public void PauseGame(bool status)
