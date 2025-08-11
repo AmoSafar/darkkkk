@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class UIGameOverManger : MonoBehaviour
+public class UIGameOverManager : MonoBehaviour
 {
+    [Header("Players")]
+    [SerializeField] private Health player1Health;
+    [SerializeField] private Health player2Health;
+
     [Header("Game Over")]
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private AudioClip GameOverSound;
+
+    [Header("Win")]
+    [SerializeField] private GameObject WinScreen;
+    [SerializeField] private AudioClip WinSound;
 
     [Header("Pause")]
     [SerializeField] private GameObject PauseScreen;
@@ -14,17 +23,33 @@ public class UIGameOverManger : MonoBehaviour
     [SerializeField] private GameObject SettingsPanel;
 
     [Header("Restart Settings")]
-    [Tooltip("Index of the scene to restart from (e.g. 1 for Map1, 2 for Map2)")]
     [SerializeField] private int restartSceneIndex = 1;
+
+    private bool gameEnded = false;
+    private bool player1Dead = false;
+    private bool player2Dead = false;
 
     private void Awake()
     {
         GameOverScreen.SetActive(false);
-        SettingsPanel.SetActive(false); // مخفی کردن پنل تنظیمات در ابتدا
+        WinScreen.SetActive(false);
+        SettingsPanel.SetActive(false);
     }
 
     private void Update()
     {
+        if (!player1Dead && player1Health.currentHealth <= 0)
+            player1Dead = true;
+
+        if (!player2Dead && player2Health.currentHealth <= 0)
+            player2Dead = true;
+
+        if (!gameEnded && player1Dead && player2Dead)
+        {
+            gameEnded = true;
+            GameOver();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (SettingsPanel.activeInHierarchy)
@@ -50,24 +75,49 @@ public class UIGameOverManger : MonoBehaviour
     public void GameOver()
     {
         GameOverScreen.SetActive(true);
-
-        if (GameOverSound != null)
-        {
-            AudioSource.PlayClipAtPoint(GameOverSound, Camera.main.transform.position, SoundManager.Instance.SFXVolume);
-        }
+        PlayClipIgnorePause(GameOverSound, SoundManager.Instance.SFXVolume);
     }
 
+    public void Win()
+    {
+        WinScreen.SetActive(true);
+        PlayClipIgnorePause(WinSound, SoundManager.Instance.SFXVolume);
+    }
+
+    private void PlayClipIgnorePause(AudioClip clip, float volume)
+    {
+        if (clip == null) return;
+
+        // اطمینان از وجود AudioListener
+        if (FindObjectsOfType<AudioListener>().Length == 0)
+        {
+            var listenerGO = new GameObject("RuntimeAudioListener");
+            listenerGO.AddComponent<AudioListener>();
+            DontDestroyOnLoad(listenerGO);
+        }
+
+        Vector3 pos = Camera.main != null ? Camera.main.transform.position : Vector3.zero;
+
+        GameObject tempAudioGO = new GameObject("TempAudio");
+        tempAudioGO.transform.position = pos;
+        AudioSource aSource = tempAudioGO.AddComponent<AudioSource>();
+        aSource.clip = clip;
+        aSource.volume = volume;
+        aSource.ignoreListenerPause = true; // جلوگیری از قطع شدن هنگام Pause
+        aSource.Play();
+        Destroy(tempAudioGO, clip.length);
+    }
 
     public void Restart()
     {
-        Time.timeScale = 1f; // اطمینان از اینکه بازی از حالت pause خارج شده
-        SceneManager.LoadScene(restartSceneIndex); // بارگذاری سین مشخص‌شده
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(restartSceneIndex);
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0); // فرض بر این است که منوی اصلی ایندکس 0 دارد
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()

@@ -6,10 +6,10 @@ public class DoorOP : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip openSound;
+    [SerializeField] private UIGameOverManager gameOverManager; // اسم اصلاح شد
 
     public void OpenDoor()
     {
-
         if (isOpen) return;
         isOpen = true;
 
@@ -22,5 +22,11 @@ public class DoorOP : MonoBehaviour
         }
 
         Debug.Log("Door opened by KeyTriggerZone!");
+
+        // نمایش صفحه Win
+        if (gameOverManager != null)
+        {
+            gameOverManager.Win();
+        }
     }
 }

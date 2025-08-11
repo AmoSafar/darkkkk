@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     [HideInInspector] public Vector3 lastSafePlatformPos;
 
     private PlayerIdentifier playerIdentifier;
-    private UIGameOverManger uiGameOverManager; // اضافه‌شده
+    private UIGameOverManager uiGameOverManager; // اسم اصلاح شد
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
         lastSafePlatformPos = transform.position;
         playerIdentifier = GetComponent<PlayerIdentifier>();
 
-        uiGameOverManager = FindObjectOfType<UIGameOverManger>(); // اضافه‌شده
+        uiGameOverManager = FindObjectOfType<UIGameOverManager>(); // اصلاح شد
     }
 
     private void Start()
@@ -81,7 +81,7 @@ public class Health : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("UIGameOverManger not found in scene!");
+                Debug.LogWarning("UIGameOverManager not found in scene!");
             }
         }
     }
