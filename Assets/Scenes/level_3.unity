@@ -2557,6 +2557,131 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!1 &793121120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793121123}
+  - component: {fileID: 793121122}
+  - component: {fileID: 793121121}
+  m_Layer: 0
+  m_Name: zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &793121121
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793121120}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 18.403988, y: 9.480796}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.6004028, y: 19.961592}
+  m_EdgeRadius: 0
+--- !u!61 &793121122
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793121120}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.21889877, y: 0.1645937}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 38.33139, y: 1.3291874}
+  m_EdgeRadius: 0
+--- !u!4 &793121123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793121120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.39, y: -14.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &815020804
 GameObject:
   m_ObjectHideFlags: 0
@@ -14782,7 +14907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778400757947802403, guid: 5736fb03ccd2ab74587db6a5ecbbb719, type: 3}
       propertyPath: startingHealth
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2915758856160371169, guid: 5736fb03ccd2ab74587db6a5ecbbb719, type: 3}
       propertyPath: m_Name
@@ -15528,12 +15653,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 455363555}
   player2: {fileID: 1266929573}
-  stopDistance: 1
+  stopDistance: 5
   speed: 2
   cleaveDamage: 1
   minLockTime: 5
   maxLockTime: 10
-  cleaveRange: 2
+  cleaveRange: 5
 --- !u!114 &1726319412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15541,7 +15666,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726319404}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fce016a068604743b844e614205aa0f, type: 3}
   m_Name: 
@@ -15549,27 +15674,27 @@ MonoBehaviour:
   enemies:
   - enemyPrefab: {fileID: 1168490702}
     spawnPoint: {fileID: 83171717}
-    respawnDelay: 60
+    respawnDelay: 10
     currentInstance: {fileID: 0}
     isRespawning: 0
   - enemyPrefab: {fileID: 727172583}
     spawnPoint: {fileID: 83171717}
-    respawnDelay: 60
+    respawnDelay: 20
     currentInstance: {fileID: 0}
     isRespawning: 0
   - enemyPrefab: {fileID: 1134430399}
     spawnPoint: {fileID: 83171717}
-    respawnDelay: 60
+    respawnDelay: 25
     currentInstance: {fileID: 0}
     isRespawning: 0
   - enemyPrefab: {fileID: 1151530530}
     spawnPoint: {fileID: 83171717}
-    respawnDelay: 60
+    respawnDelay: 27
     currentInstance: {fileID: 0}
     isRespawning: 0
   - enemyPrefab: {fileID: 466261129}
     spawnPoint: {fileID: 83171717}
-    respawnDelay: 60
+    respawnDelay: 30
     currentInstance: {fileID: 0}
     isRespawning: 0
 --- !u!4 &1750699798 stripped
@@ -16911,3 +17036,4 @@ SceneRoots:
   - {fileID: 1212126822}
   - {fileID: 1884824505}
   - {fileID: 1459120419}
+  - {fileID: 793121123}

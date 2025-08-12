@@ -76,34 +76,47 @@ public class BossFightController : MonoBehaviour
     }
 
     private IEnumerator AttackTarget(Transform target, float lockDuration)
+{
+    isAttacking = true;
+    float timer = 0f;
+
+    while (timer < lockDuration)
     {
-        isAttacking = true;
-        float timer = 0f;
+        anim.SetTrigger("Cleave");
 
-        while (timer < lockDuration)
+        yield return new WaitForSeconds(0.8f); // صبر برای رسیدن به فریم ضربه
+
+        Vector2 hitCenter = (Vector2)transform.position + Vector2.right * Mathf.Sign(transform.localScale.x) * cleaveRange * 0.5f;
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hitCenter, cleaveRange * 0.5f);
+
+        foreach (Collider2D hit in hits)
         {
-            anim.SetTrigger("Cleave");
-
-            yield return new WaitForSeconds(0.5f); // صبر برای رسیدن به فریم ضربه
-
-            Vector2 hitCenter = (Vector2)transform.position + Vector2.right * Mathf.Sign(transform.localScale.x) * cleaveRange * 0.5f;
-            Collider2D[] hits = Physics2D.OverlapCircleAll(hitCenter, cleaveRange * 0.5f);
-
-            foreach (Collider2D hit in hits)
+            Health health = hit.GetComponent<Health>();
+            if (health != null)
             {
-                Health health = hit.GetComponent<Health>();
-                if (health != null)
+                // دمیج به پلیر یا دشمن
+                health.TakeDamage(cleaveDamage);
+
+                // اگه هدف پلیر باشه، دمیج بازتاب به باس وارد میشه
+                PlayerIdentifier playerId = hit.GetComponent<PlayerIdentifier>();
+                if (playerId != null)
                 {
-                    health.TakeDamage(cleaveDamage);
+                    Health bossHealth = GetComponent<Health>();
+                    if (bossHealth != null)
+                    {
+                        bossHealth.TakeDamage(cleaveDamage);
+                    }
                 }
             }
-
-            yield return new WaitForSeconds(1f); // فاصله تا ضربه بعدی
-            timer += 1.5f;
         }
 
-        isAttacking = false;
+        yield return new WaitForSeconds(1f); // فاصله تا ضربه بعدی
+        timer += 1.5f;
     }
+
+    isAttacking = false;
+}
+
 
     private Transform ChooseNextTarget()
     {
