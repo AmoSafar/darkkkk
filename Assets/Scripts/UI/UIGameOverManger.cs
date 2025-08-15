@@ -109,6 +109,17 @@ public class UIGameOverManager : MonoBehaviour
 
     public void Win()
     {
+        if (!gameEnded) // جلوگیری از اجرای چندباره
+        {
+            gameEnded = true;
+            StartCoroutine(ShowWinWithDelay(5f)); // تاخیر 5 ثانیه
+        }
+    }
+
+    private IEnumerator ShowWinWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         if (WinScreen != null)
             WinScreen.SetActive(true);
         else
@@ -132,6 +143,7 @@ public class UIGameOverManager : MonoBehaviour
             Debug.LogWarning("WinSound clip not assigned!");
         }
     }
+
 
     private void PlayClipIgnorePause(AudioClip clip, float volume)
     {
