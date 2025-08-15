@@ -1,67 +1,67 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+    using UnityEngine;
+    using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour
-{
-    [Header("Main Menu")]
-    [SerializeField] private GameObject mainMenuScreen;
-
-    [Header("Settings")]
-    [SerializeField] private GameObject SettingsPanel;
-
-    [Header("Audio")]
-    [SerializeField] private AudioClip menuMusic; // صدای پس‌زمینه منو
-    private AudioSource audioSource;
-
-    private void Awake()
+    public class MainMenuManager : MonoBehaviour
     {
-        mainMenuScreen.SetActive(true);
-        SettingsPanel.SetActive(false);
-        Time.timeScale = 1f;
+        [Header("Main Menu")]
+        [SerializeField] private GameObject mainMenuScreen;
 
-        // آماده‌سازی پخش صدا
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = menuMusic;
-        audioSource.loop = true;
-        audioSource.playOnAwake = false;
-        audioSource.volume = 0.5f; // می‌تونی به دلخواه تغییر بدی
-        audioSource.Play();
-    }
+        [Header("Settings")]
+        [SerializeField] private GameObject SettingsPanel;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        [Header("Audio")]
+        [SerializeField] private AudioClip menuMusic; // صدای پس‌زمینه منو
+        private AudioSource audioSource;
+
+        private void Awake()
         {
-            if (SettingsPanel.activeInHierarchy)
+            mainMenuScreen.SetActive(true);
+            SettingsPanel.SetActive(false);
+            Time.timeScale = 1f;
+
+            // آماده‌سازی پخش صدا
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = menuMusic;
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+            audioSource.volume = 0.5f; // می‌تونی به دلخواه تغییر بدی
+            audioSource.Play();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                CloseSettings();
+                if (SettingsPanel.activeInHierarchy)
+                {
+                    CloseSettings();
+                }
             }
         }
-    }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(4); // بارگذاری صحنه با Index 4
-    }
+        public void StartGame()
+        {
+            SceneManager.LoadScene(4); // بارگذاری صحنه با Index 4
+        }
 
-    public void QuitGame()
-    {
-    #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-    #else
-        Application.Quit();
-    #endif
-    }
+        public void QuitGame()
+        {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+        }
 
-    public void OpenSettings()
-    {
-        mainMenuScreen.SetActive(false);
-        SettingsPanel.SetActive(true);
-    }
+        public void OpenSettings()
+        {
+            mainMenuScreen.SetActive(false);
+            SettingsPanel.SetActive(true);
+        }
 
-    public void CloseSettings()
-    {
-        SettingsPanel.SetActive(false);
-        mainMenuScreen.SetActive(true);
+        public void CloseSettings()
+        {
+            SettingsPanel.SetActive(false);
+            mainMenuScreen.SetActive(true);
+        }
     }
-}
