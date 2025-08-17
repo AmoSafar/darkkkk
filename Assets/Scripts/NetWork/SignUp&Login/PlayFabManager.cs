@@ -43,12 +43,12 @@ public class PlayfabManager : MonoBehaviour
 
     void OnSignupSuccess(RegisterPlayFabUserResult result){
         Debug.Log("Signup Successful");
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene(6);
     }
 
     void OnLoginSuccess(LoginResult result)
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene(6);
     }
 
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result){

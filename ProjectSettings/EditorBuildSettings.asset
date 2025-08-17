@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mode Selection.unity
     guid: 46a0adfa2f3830f448ca95543043cb19
+  - enabled: 1
+    path: Assets/Scenes/Host & Client.unity
+    guid: 5f5ebe3ace615fd46ae7b0fc5d218104
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
