@@ -41,14 +41,15 @@ public class PlayfabManager : MonoBehaviour
         PlayFabClientAPI.SendAccountRecoveryEmail(request, OnRecoverySuccess, OnError);
     }
 
-    void OnSignupSuccess(RegisterPlayFabUserResult result){
+    void OnSignupSuccess(RegisterPlayFabUserResult result)
+    {
         Debug.Log("Signup Successful");
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(6, LoadSceneMode.Single); // صحنه آنلاین با ایندکس 6
     }
 
     void OnLoginSuccess(LoginResult result)
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(6, LoadSceneMode.Single); // صحنه آنلاین با ایندکس 6
     }
 
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result){

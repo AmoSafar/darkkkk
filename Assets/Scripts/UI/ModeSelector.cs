@@ -28,12 +28,12 @@ public class ModeSelector : MonoBehaviour
 
     public void StartOfflineMode()
     {
-        SceneManager.LoadScene(1); // ایندکس صحنه آفلاین
+        SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
     }
 
     public void StartOnlineMode()
     {
-        SceneManager.LoadScene(0); // ایندکس صحنه آنلاین
+        SceneManager.LoadScene("SignUp&Login", LoadSceneMode.Single);
     }
 
     public void QuitGame()

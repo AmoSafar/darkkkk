@@ -49,24 +49,35 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        // فقط Host اجازه استارت بازی داره
-        if (!NetworkManager.Singleton.IsHost)
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // حالت آفلاین → مستقیم ببر به level_3
+        if (currentScene == "Lobby")
         {
-            ShowError("❌ فقط هاست می‌تواند بازی را شروع کند!");
+            SceneManager.LoadScene("level_3", LoadSceneMode.Single);
             return;
         }
 
-        // باید حداقل ۲ پلیر (هاست + یک کلاینت) متصل باشند
-        int playerCount = NetworkManager.Singleton.ConnectedClients.Count;
-        if (playerCount < 2)
+        // حالت آنلاین → شرط هاست و حداقل ۲ بازیکن
+        if (currentScene == "LobbyOnline")
         {
-            ShowError("⚠️ هنوز بازیکن دوم وصل نشده است!");
-            return;
-        }
+            if (!NetworkManager.Singleton.IsHost)
+            {
+                ShowError("❌ فقط هاست می‌تواند بازی را شروع کند!");
+                return;
+            }
 
-        // همه چیز اوکی → هاست صحنه بازی را لود می‌کند
-        NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            int playerCount = NetworkManager.Singleton.ConnectedClients.Count;
+            if (playerCount < 2)
+            {
+                ShowError("⚠️ هنوز بازیکن دوم وصل نشده است!");
+                return;
+            }
+
+            NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        }
     }
+
 
     public void QuitGame()
     {
