@@ -14,6 +14,7 @@ TagManager:
   - D
   - water
   - Wall
+  - Chunk
   layers:
   - Default
   - TransparentFX

@@ -865,9 +865,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2025016621523076646}
   - component: {fileID: 5261889298879894128}
+  - component: {fileID: -7142422596195734789}
   m_Layer: 0
   m_Name: chunk_04
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,6 +918,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-7142422596195734789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721879324524337834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f09f59603c15948b6ee0f31a624f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkType: chunk4
 --- !u!1 &1570358104266133947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,6 +1588,7 @@ GameObject:
   - component: {fileID: 5319606786174510363}
   - component: {fileID: 8926238549296129508}
   - component: {fileID: 3163945844328663591}
+  - component: {fileID: 5386115927785471201}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -1887,6 +1902,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5386115927785471201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723423189045051026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16f8f32ea77ddd4fbc1842cbb473e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: frog
+  health: 3
 --- !u!1 &4963357781608429022
 GameObject:
   m_ObjectHideFlags: 0

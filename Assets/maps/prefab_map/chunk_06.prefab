@@ -303,9 +303,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3602932604525058166}
   - component: {fileID: 2248539287882589468}
+  - component: {fileID: -4582557720844103464}
   m_Layer: 0
   m_Name: chunk_06
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,6 +365,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-4582557720844103464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164640046649393697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f09f59603c15948b6ee0f31a624f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunkType: chunk6
 --- !u!1 &692774245945958954
 GameObject:
   m_ObjectHideFlags: 0

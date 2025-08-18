@@ -44,12 +44,24 @@ public class PlayfabManager : MonoBehaviour
     void OnSignupSuccess(RegisterPlayFabUserResult result)
     {
         Debug.Log("Signup Successful");
-        SceneManager.LoadScene(6, LoadSceneMode.Single); // صحنه آنلاین با ایندکس 6
+    // ست کردن شناسه‌ی اکانت برای فایل‌های سیو
+    if (!string.IsNullOrEmpty(result.PlayFabId)) {
+        PlayerPrefs.SetString("LoggedInPlayerID", result.PlayFabId);
+        PlayerPrefs.Save();
+    }
+    // رفتن به اولین سین گیم‌پلی (که GameManager دارد)
+    SceneManager.LoadScene(6, LoadSceneMode.Single);
     }
 
     void OnLoginSuccess(LoginResult result)
     {
-        SceneManager.LoadScene(6, LoadSceneMode.Single); // صحنه آنلاین با ایندکس 6
+          // ست کردن شناسه‌ی اکانت برای فایل‌های سیو
+    if (!string.IsNullOrEmpty(result.PlayFabId)) {
+        PlayerPrefs.SetString("LoggedInPlayerID", result.PlayFabId);
+        PlayerPrefs.Save();
+    }
+    // رفتن به اولین سین گیم‌پلی (که GameManager دارد)
+    SceneManager.LoadScene(6, LoadSceneMode.Single);
     }
 
     void OnRecoverySuccess(SendAccountRecoveryEmailResult result){
