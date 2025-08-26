@@ -12,11 +12,11 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject SettingsPanel;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip menuMusic; // صدای پس‌زمینه منو
+    [SerializeField] private AudioClip menuMusic;
     private AudioSource audioSource;
 
     [Header("UI")]
-    [SerializeField] private TMP_Text errorText; // متن برای نمایش ارور
+    [SerializeField] private TMP_Text errorText;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
         SettingsPanel.SetActive(false);
         Time.timeScale = 1f;
 
-        // آماده‌سازی پخش صدا
+        // Setup audio
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = menuMusic;
         audioSource.loop = true;
@@ -49,35 +49,35 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
 
-        // حالت آفلاین → مستقیم ببر به level_3
-        if (currentScene == "Lobby")
+        // Offline mode → Lobby (index 1) → go to level_3 (index 4)
+        if (currentIndex == 1)
         {
-            SceneManager.LoadScene("level_3", LoadSceneMode.Single);
+            SceneManager.LoadScene(4, LoadSceneMode.Single);
             return;
         }
 
-        // حالت آنلاین → شرط هاست و حداقل ۲ بازیکن
-        if (currentScene == "LobbyOnline")
+        // Online mode → Lobby Online (index 7)
+        if (currentIndex == 7)
         {
             if (!NetworkManager.Singleton.IsHost)
             {
-                ShowError("❌ فقط هاست می‌تواند بازی را شروع کند!");
+                ShowError("❌ Only the host can start the game!");
                 return;
             }
 
             int playerCount = NetworkManager.Singleton.ConnectedClients.Count;
             if (playerCount < 2)
             {
-                ShowError("⚠️ هنوز بازیکن دوم وصل نشده است!");
+                ShowError("⚠️ Waiting for the second player to join!");
                 return;
             }
 
-            NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            // 🔹 اینجا باید اسم صحنه رو بدی، نه ایندکس
+            NetworkManager.Singleton.SceneManager.LoadScene("level_3", LoadSceneMode.Single);
         }
     }
-
 
     public void QuitGame()
     {
@@ -106,7 +106,7 @@ public class MainMenuManager : MonoBehaviour
         {
             errorText.text = message;
             CancelInvoke(nameof(ClearError));
-            Invoke(nameof(ClearError), 3f); // بعد ۳ ثانیه پاک میشه
+            Invoke(nameof(ClearError), 3f); // clears after 3 seconds
         }
         else
         {
