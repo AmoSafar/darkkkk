@@ -1,27 +1,51 @@
-using PlayFab;
 using UnityEngine;
 
-public class PlayerIDSetter : MonoBehaviour {
-    private void Start() {
-        var pfId = PlayFabSettings.staticPlayer?.PlayFabId;
-        if (string.IsNullOrEmpty(pfId)) {
-            Debug.LogWarning("PlayerIDSetter: PlayFabId خالی است. اول باید Login انجام شود.");
+public class PlayerIDSetter : MonoBehaviour
+{
+    private void Start()
+    {
+        // همه پلیرها رو پیدا کن
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length == 0)
+        {
+            Debug.LogWarning("No players found in scene!");
             return;
         }
 
-        // ذخیره PlayerID در SaveSystem
-        PlayerPrefs.SetString("LoggedInPlayerID", pfId);
-        PlayerPrefs.Save();
+        // پلیر ۱ و پلیر ۲
+        if (players.Length > 0)
+        {
+            var p1 = players[0].GetComponent<Player>();
+            if (p1 != null)
+            {
+                p1.playerID = "Player1";
+                var id = p1.GetComponent<PlayerIdentifier>();
+                if (id != null) id.isPlayerOne = true;
+            }
+        }
 
-        // پیدا کردن همه Player ها
-        var players = Object.FindObjectsByType<Player>(FindObjectsSortMode.None);
+        if (players.Length > 1)
+        {
+            var p2 = players[1].GetComponent<Player>();
+            if (p2 != null)
+            {
+                p2.playerID = "Player2";
+                var id = p2.GetComponent<PlayerIdentifier>();
+                if (id != null) id.isPlayerOne = false;
+            }
+        }
 
-        foreach (var p in players) {
-            // اگر Slot = 2 بود میشه P2، در غیر این صورت P1
-            p.playerID = pfId + (p.slot == 2 ? "_P2" : "_P1");
+        Debug.Log("PlayerIDs assigned. Notifying GameLoader to start LoadGame if Save exists.");
 
-            // روش جایگزین اگر خواستی فقط ۱ و ۲ باشه:
-            // p.playerID = pfId + "_P" + Mathf.Clamp(p.slot, 1, 2);
+        // اطلاع دادن به GameLoader که پلیرها آماده‌اند
+        var loader = FindFirstObjectByType<GameLoader>();
+        if (loader != null)
+        {
+            loader.StartLoadAfterIDsReady();
+        }
+        else
+        {
+            Debug.LogWarning("GameLoader not found in scene!");
         }
     }
 }

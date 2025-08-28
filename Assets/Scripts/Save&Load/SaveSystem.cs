@@ -1,72 +1,100 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
 
-public static class SaveSystem {
-    private static string CurrentPlayerId => PlayerPrefs.GetString("LoggedInPlayerID", string.Empty);
-    private static string GetPath() => Application.persistentDataPath + "/" + CurrentPlayerId + "_save.json";
+public static class SaveSystem
+{
+    private static string SavePath => Path.Combine(Application.persistentDataPath, GetCurrentPlayerID() + "_save.json");
 
-    public static bool HasSave() {
-        if (string.IsNullOrEmpty(CurrentPlayerId)) return false;
-        return File.Exists(GetPath());
-    }
-
-    public static void SaveGame() {
-        if (string.IsNullOrEmpty(CurrentPlayerId)) {
-            Debug.LogWarning("SaveSystem: LoggedInPlayerID خالی است؛ ابتدا Login کنید.");
-            return;
-        }
-
+    // ---------- Save ----------
+    public static void SaveGame()
+    {
         SaveData data = new SaveData();
         data.currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
-        // Players
-        foreach (var pObj in GameObject.FindGameObjectsWithTag("Player")) {
-            var p = pObj.GetComponent<Player>();
-            if (p != null) {
-                data.players.Add(new PlayerData {
+        // --- Save Players ---
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var go in players)
+        {
+            var p = go.GetComponent<Player>();
+            if (p != null)
+            {
+                PlayerData pd = new PlayerData
+                {
                     playerID = p.playerID,
-                    posX = pObj.transform.position.x,
-                    posY = pObj.transform.position.y,
+                    posX = p.transform.position.x,
+                    posY = p.transform.position.y,
                     health = p.health
-                });
+                };
+                data.players.Add(pd);
             }
         }
 
-        // Enemies
-        foreach (var eObj in GameObject.FindGameObjectsWithTag("Enemy")) {
-            var e = eObj.GetComponent<Enemy>();
-            if (e != null) {
-                data.enemies.Add(new EnemyData {
+        // --- Save Enemies ---
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var go in enemies)
+        {
+            var e = go.GetComponent<Enemy>();
+            if (e != null)
+            {
+                EnemyData ed = new EnemyData
+                {
                     enemyType = e.enemyType,
-                    posX = eObj.transform.position.x,
-                    posY = eObj.transform.position.y,
+                    posX = go.transform.position.x,
+                    posY = go.transform.position.y,
                     health = e.health
-                });
+                };
+                data.enemies.Add(ed);
             }
         }
 
-        // Chunks (فقط اگر وجود داشته باشد)
-        foreach (var cObj in GameObject.FindGameObjectsWithTag("Chunk")) {
-            var c = cObj.GetComponent<Chunk>();
-            if (c != null) {
-                data.chunks.Add(new ChunkData {
+        // --- Save Chunks ---
+        var chunks = GameObject.FindGameObjectsWithTag("Chunk");
+        foreach (var go in chunks)
+        {
+            var c = go.GetComponent<Chunk>();
+            if (c != null)
+            {
+                ChunkData cd = new ChunkData
+                {
                     chunkType = c.chunkType,
-                    posX = cObj.transform.position.x,
-                    posY = cObj.transform.position.y
-                });
+                    posX = go.transform.position.x,
+                    posY = go.transform.position.y
+                };
+                data.chunks.Add(cd);
             }
         }
 
         string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(GetPath(), json);
-        Debug.Log("Saved: " + GetPath());
+        File.WriteAllText(SavePath, json);
+        Debug.Log($"Game Saved: {SavePath}");
     }
 
-    public static SaveData LoadGame() {
-        if (!HasSave()) return null;
-        string json = File.ReadAllText(GetPath());
-        var data = JsonUtility.FromJson<SaveData>(json);
-        Debug.Log("Loaded: " + GetPath());
+    // ---------- Load ----------
+    public static SaveData LoadGame()
+    {
+        if (!File.Exists(SavePath))
+        {
+            Debug.LogWarning("Save file not found!");
+            return null;
+        }
+
+        string json = File.ReadAllText(SavePath);
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        Debug.Log($"Loaded: {SavePath}");
         return data;
+    }
+
+    // ---------- Check Save Exists ----------
+    public static bool HasSave()
+    {
+        return File.Exists(SavePath);
+    }
+
+    // ---------- Helper ----------
+    private static string GetCurrentPlayerID()
+    {
+        return PlayerPrefs.GetString("LoggedInPlayerID", "OfflinePlayer");
     }
 }

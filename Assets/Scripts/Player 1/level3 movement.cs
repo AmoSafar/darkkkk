@@ -65,14 +65,17 @@ public class PlayerMovementTopDown : MonoBehaviour
     {
         if (isJumping) return;
 
-        Vector2 movement = moveInput.normalized * moveSpeed;
-        rb.linearVelocity = movement;
+        // حرکت با MovePosition برای جلوگیری از Override موقع Load
+        Vector2 movement = moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + movement);
 
+        // چرخش بازیکن
         if (moveInput.x > 0.01f)
             transform.localScale = new Vector3(baseScale, baseScale, 1f);
         else if (moveInput.x < -0.01f)
             transform.localScale = new Vector3(-baseScale, baseScale, 1f);
 
+        // انیمیشن‌ها
         bool isMoving = moveInput.sqrMagnitude > 0.01f;
         anim.SetBool("Run", isMoving);
         anim.SetBool("Idle", !isMoving);
@@ -135,8 +138,18 @@ public class PlayerMovementTopDown : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            rb.linearVelocity = Vector2.zero;
             moveInput = Vector2.zero;
+            rb.Sleep(); rb.WakeUp(); // جایگزین rb.velocity = Vector2.zero
         }
+    }
+
+    // -------------------
+    // تابع Reset برای Load
+    public void ResetInputAndJump()
+    {
+        moveInput = Vector2.zero;
+        isJumping = false;
+        StopAllCoroutines();
+        rb.Sleep(); rb.WakeUp();
     }
 }

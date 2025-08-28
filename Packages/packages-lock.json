@@ -198,7 +198,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.netcode.gameobjects": {
-      "version": "file:C:/Users/pc/Desktop/Unity-Technologies-com.unity.netcode.gameobjects-1e73860/com.unity.netcode.gameobjects",
+      "version": "file:C:/Users/admin/Desktop/Unity-Technologies-com.unity.netcode.gameobjects-1e73860/com.unity.netcode.gameobjects",
       "depth": 0,
       "source": "local",
       "dependencies": {

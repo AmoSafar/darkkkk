@@ -2,110 +2,127 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class GameLoader : MonoBehaviour {
-    [Header("Enemy Prefabs (همه نوع‌ها)")]
+public class GameLoader : MonoBehaviour
+{
+    [Header("Prefabs")]
+    public GameObject[] playerPrefabs;
     public GameObject[] enemyPrefabs;
-
-    [Header("Chunk Prefabs (فقط سین دینامیک)")]
     public GameObject[] chunkPrefabs;
 
-    [Header("Auto Save")]
-    public float autoSaveInterval = 10f;
-    public bool autoLoadOnStart = true; // اگر Save موجود است، به محض ورود به سین، لود کن
-
     private SaveData loadedData;
-    private float timer = 0f;
+    private bool isLoadingScene = false;
+    private static bool hasLoadedGameOnce = false;
 
-    private void Awake() {
-        SceneManager.sceneLoaded += OnSceneLoadedAutoSave;
+    private void Update()
+    {
+        // Save دستی با دکمه E
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SaveSystem.SaveGame();
+            Debug.Log("Manual Save triggered (E key).");
+        }
     }
 
-    private void Start() {
-        if (autoLoadOnStart && SaveSystem.HasSave()) {
-            // وقتی از Login وارد اولین سین گیم‌پلی شدی، بطور خودکار به سین سیو شده می‌روی
+    public void StartLoadAfterIDsReady()
+    {
+        if (!hasLoadedGameOnce && SaveSystem.HasSave())
+        {
+            hasLoadedGameOnce = true;
             LoadGame();
         }
     }
 
-    private void Update() {
-        timer += Time.deltaTime;
-        if (timer >= autoSaveInterval) {
-            SaveSystem.SaveGame();
-            timer = 0f;
-        }
-    }
+    public void LoadGame()
+    {
+        if (isLoadingScene) return;
 
-    public void LoadGame() {
         loadedData = SaveSystem.LoadGame();
-        if (loadedData != null) {
-            SceneManager.sceneLoaded += OnSceneLoadedLoadGame;
-            SceneManager.LoadScene(loadedData.currentSceneName);
-        }
-    }
-
-    private void OnSceneLoadedLoadGame(Scene scene, LoadSceneMode mode) {
         if (loadedData == null) return;
 
-        // 1) چانک‌ها (اگر در صحنه‌ی ذخیره‌شده وجود داشته‌اند)
-        if (loadedData.chunks != null && loadedData.chunks.Count > 0) {
-            foreach (var old in GameObject.FindGameObjectsWithTag("Chunk")) Destroy(old);
-            foreach (var c in loadedData.chunks) {
-                var prefab = GetChunkPrefabByType(c.chunkType);
-                if (prefab != null)
-                    Instantiate(prefab, new Vector2(c.posX, c.posY), Quaternion.identity);
-                else
-                    Debug.LogWarning("Chunk prefab not found for: " + c.chunkType);
-            }
-        }
+        isLoadingScene = true;
+        SceneManager.sceneLoaded += OnSceneLoadedLoadGame;
+        SceneManager.LoadScene(loadedData.currentSceneName);
+    }
 
-        // 2) بازیکن‌ها
-        var players = GameObject.FindGameObjectsWithTag("Player").Select(go => go.GetComponent<Player>()).ToArray();
-        foreach (var p in players) {
-            var pd = loadedData.players.FirstOrDefault(x => x.playerID == p.playerID);
-            if (pd != null) {
-                p.transform.position = new Vector2(pd.posX, pd.posY);
-                p.health = pd.health;
-            }
-        }
-
-        // 3) دشمن‌ها
-        foreach (var old in GameObject.FindGameObjectsWithTag("Enemy")) Destroy(old);
-        foreach (var e in loadedData.enemies) {
-            var prefab = GetEnemyPrefabByType(e.enemyType);
-            if (prefab != null) {
-                var enemyObj = Instantiate(prefab, new Vector2(e.posX, e.posY), Quaternion.identity);
-                var en = enemyObj.GetComponent<Enemy>();
-                if (en != null) en.health = e.health;
-            } else {
-                Debug.LogWarning("Enemy prefab not found for: " + e.enemyType);
-            }
-        }
-
+    private void OnSceneLoadedLoadGame(Scene scene, LoadSceneMode mode)
+    {
         SceneManager.sceneLoaded -= OnSceneLoadedLoadGame;
-    }
 
-    private void OnSceneLoadedAutoSave(Scene scene, LoadSceneMode mode) {
-        // سیو هنگام تعویض صحنه
-        SaveSystem.SaveGame();
-    }
-
-    private void OnDestroy() {
-        SceneManager.sceneLoaded -= OnSceneLoadedAutoSave;
-    }
-
-    private GameObject GetEnemyPrefabByType(string type) {
-        foreach (var prefab in enemyPrefabs) {
-            var e = prefab.GetComponent<Enemy>();
-            if (e != null && e.enemyType == type) return prefab;
+        if (loadedData == null)
+        {
+            isLoadingScene = false;
+            return;
         }
-        return null;
-    }
 
-    private GameObject GetChunkPrefabByType(string type) {
-        foreach (var prefab in chunkPrefabs) {
-            var c = prefab.GetComponent<Chunk>();
-            if (c != null && c.chunkType == type) return prefab;
+        // ---------- Load Chunks ----------
+        foreach (var old in GameObject.FindGameObjectsWithTag("Chunk"))
+            Destroy(old);
+
+        foreach (var c in loadedData.chunks)
+        {
+            var prefab = chunkPrefabs.FirstOrDefault(p => p.GetComponent<Chunk>()?.chunkType == c.chunkType);
+            if (prefab != null)
+                Instantiate(prefab, new Vector2(c.posX, c.posY), Quaternion.identity);
         }
-        return null;
+
+        // ---------- Load Players ----------
+        foreach (var pd in loadedData.players)
+        {
+            var prefab = playerPrefabs.FirstOrDefault(p => p.GetComponent<Player>().playerID == pd.playerID);
+            if (prefab == null) continue;
+
+            GameObject playerObj = Instantiate(prefab, Vector2.zero, Quaternion.identity);
+
+            // غیرفعال کردن Movement قبل از ست کردن Position
+            var movement = playerObj.GetComponent<PlayerMovementTopDown>();
+            if (movement != null) movement.enabled = false;
+
+            // ست کردن Position و Rigidbody
+            var rb = playerObj.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.position = new Vector2(pd.posX, pd.posY);
+                rb.Sleep(); rb.WakeUp();
+            }
+            else
+            {
+                playerObj.transform.position = new Vector2(pd.posX, pd.posY);
+            }
+
+            // ست کردن Health
+            var healthComp = playerObj.GetComponent<Health>();
+            if (healthComp != null) healthComp.SetHealth(pd.health);
+
+            // فعال کردن Movement بعد از Load
+            if (movement != null) movement.enabled = true;
+        }
+
+        // ---------- Load Enemies ----------
+        foreach (var old in GameObject.FindGameObjectsWithTag("Enemy"))
+            Destroy(old);
+
+        foreach (var e in loadedData.enemies)
+        {
+            var prefab = enemyPrefabs.FirstOrDefault(p => p.GetComponent<Enemy>()?.enemyType == e.enemyType);
+            if (prefab == null) continue;
+
+            GameObject enemyObj = Instantiate(prefab, new Vector2(e.posX, e.posY), Quaternion.identity);
+
+            var healthComp = enemyObj.GetComponent<Health>();
+            if (healthComp != null) healthComp.SetHealth(e.health);
+
+            var rb = enemyObj.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.position = new Vector2(e.posX, e.posY);
+                rb.Sleep(); rb.WakeUp();
+            }
+
+            var enemyScript = enemyObj.GetComponent<Enemy>();
+            if (enemyScript != null) enemyScript.enabled = true;
+        }
+
+        isLoadingScene = false;
+        Debug.Log("Game Loaded Successfully!");
     }
 }
